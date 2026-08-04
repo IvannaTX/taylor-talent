@@ -20,4 +20,16 @@ import { stats } from "../../data/aurora";
   .cell { padding: 32px 24px 8px 0; }
   .value { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 42px; letter-spacing: -.02em; }
   .label { margin-top: 12px; font-size: 13px; line-height: 1.55; color: var(--text-secondary); }
+  @media (max-width: 700px) {
+    .wrap { padding: 56px 20px; }
+    .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cell { min-width: 0; padding: 24px 18px 24px 0; border-bottom: 1px solid var(--border); }
+    .cell:nth-child(even) { padding-right: 0; padding-left: 18px; border-left: 1px solid var(--border); }
+    .value { font-size: clamp(34px, 10vw, 42px); }
+    .label { font-size: 13px; overflow-wrap: anywhere; }
+  }
+  @media (max-width: 360px) {
+    .stats { grid-template-columns: minmax(0, 1fr); }
+    .cell, .cell:nth-child(even) { padding: 22px 0; border-left: 0; }
+  }
 </style>
