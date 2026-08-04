@@ -37,4 +37,16 @@
   .cols > div { background: var(--bg); padding: 18px 20px; }
   .label { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; }
   .items { font-size: 13.5px; line-height: 1.7; }
+  @media (max-width: 760px) {
+    .wrap { padding: 64px 20px; }
+    .card { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+    .ring { width: min(200px, 62vw); height: min(200px, 62vw); }
+    .right { min-width: 0; }
+    .eyebrow { margin-bottom: 16px; text-align: center; }
+    .lead { font-size: 21px; line-height: 1.4; }
+    .bio { font-size: 14px; }
+    .cols { grid-template-columns: minmax(0, 1fr); gap: 1px; }
+    .cols > div { padding: 16px 18px; }
+    .items br { display: none; }
+  }
 </style>

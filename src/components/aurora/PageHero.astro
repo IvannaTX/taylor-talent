@@ -35,4 +35,13 @@ const { eyebrow, title, tagline, subtitle, primaryLabel, primaryHref, secondaryL
   .cta:hover { color: #fff; transform: translateY(-2px); }
   .outline { border: 1px solid var(--border-strong); color: var(--text-primary); padding: 16px 30px; border-radius: 10px; font-weight: 600; font-size: 15px; background: var(--bg-elevated); transition: border-color .2s ease; }
   .outline:hover { border-color: var(--accent-solid); color: var(--text-primary); }
+  @media (max-width: 640px) {
+    .hero { padding: 64px 20px 56px; }
+    .eyebrow { max-width: 100%; margin-bottom: 24px; padding: 7px 11px; font-size: 10px; letter-spacing: .12em; }
+    h1 { max-width: 14ch; margin-bottom: 22px; font-size: clamp(34px, 10vw, 46px); }
+    .tagline { margin-bottom: 22px; font-size: 18px; }
+    .sub { max-width: 34ch; margin-bottom: 32px; font-size: 15px; line-height: 1.6; }
+    .actions { width: 100%; flex-direction: column; gap: 12px; }
+    .cta, .outline { width: 100%; max-width: 320px; padding: 15px 20px; text-align: center; }
+  }
 </style>
