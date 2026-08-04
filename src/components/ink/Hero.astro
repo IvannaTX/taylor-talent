@@ -1,0 +1,41 @@
+---
+import { links } from "../../data/content";
+---
+<div class="wrap" id="top">
+  <div data-reveal class="hero">
+    <div class="meta">
+      <span class="accent">Austin, TX</span>
+      <span>/</span><span>Retained</span>
+      <span>/</span><span>Contingency</span>
+      <span>/</span><span>Interim</span>
+      <span class="right accent">Senior hires only</span>
+    </div>
+    <h1>The right people change everything.</h1>
+    <div class="grid">
+      <p>One recruiter, ten years of senior search, accountable end to end. GTM · Executive · Product · Customer Success · G&A · Legal · Technical. No junior handoff, no volume desk, no résumé spray.</p>
+      <div class="actions">
+        <a href={links.bookCall} class="cta"><span>Book an intro call</span><span>→</span></a>
+        <a href="#engagements" class="outline">Engagements</a>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .wrap { padding: 0 56px; }
+  .hero { padding: 110px 0 88px; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .meta { display: flex; gap: 18px; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: #8A8078; margin-bottom: 52px; }
+  .accent { color: #C9AE95; }
+  .right { margin-left: auto; }
+  h1 { font-family: "IBM Plex Sans", sans-serif; font-weight: 300; font-size: 104px; line-height: .96; letter-spacing: -.04em; margin: 0 0 44px; max-width: 20ch; }
+  .grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 80px; align-items: end; }
+  .grid p { font-family: "IBM Plex Mono", monospace; font-size: 14px; line-height: 1.75; color: #ADA59D; margin: 0; max-width: 52ch; }
+  .actions { display: flex; gap: 12px; }
+  .cta, .outline {
+    flex: 1; padding: 18px 22px; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; display: flex; justify-content: space-between; transition: background .2s, border-color .2s, color .2s;
+  }
+  .cta { background: #EDEAE6; color: #0A0A0A; font-weight: 500; }
+  .cta:hover { background: #C9AE95; }
+  .outline { border: 1px solid rgba(255,255,255,.22); color: #ADA59D; justify-content: center; }
+  .outline:hover { border-color: #C9AE95; color: #C9AE95; }
+</style>

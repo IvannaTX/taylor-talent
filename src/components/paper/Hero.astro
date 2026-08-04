@@ -1,0 +1,52 @@
+---
+import { links, founder } from "../../data/content";
+---
+<div class="hero" id="top">
+  <div data-reveal>
+    <div class="eyebrow">
+      <span class="rule"></span>
+      <span>Austin, TX — Senior & Executive Search</span>
+    </div>
+    <h1>The right people<br />change <em>everything.</em></h1>
+    <p>A boutique search practice for the hires that carry the most risk — GTM, executive, product, customer success, and G&A. Ten years of senior placements, one recruiter accountable for your shortlist.</p>
+    <div class="actions">
+      <a href={links.bookCall} class="cta">Book an intro call</a>
+      <a href="#engagements" class="link">See how a search runs →</a>
+    </div>
+  </div>
+  <div data-reveal class="portrait">
+    <img src="/images/founder.jpg" alt={founder.name} width="200" height="200" />
+    <div class="caption">{founder.name}<br /><span>{founder.role} — recruiting since 2015</span></div>
+  </div>
+</div>
+<style>
+  .hero {
+    max-width: 1120px; margin: 0 auto; padding: 96px 60px 0;
+    display: grid; grid-template-columns: 1.35fr 1fr; gap: 72px; align-items: end;
+  }
+  .eyebrow {
+    display: flex; align-items: center; gap: 12px; font-family: "IBM Plex Mono", monospace;
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #8C6F5C; margin-bottom: 40px;
+  }
+  .rule { width: 28px; height: 1px; background: #8C6F5C; }
+  h1 {
+    font-family: Newsreader, Georgia, serif; font-weight: 200; font-size: 78px; line-height: 1.02;
+    letter-spacing: -.022em; margin: 0 0 32px; text-wrap: pretty;
+  }
+  h1 em { font-style: italic; font-weight: 300; }
+  .hero > div:first-child p {
+    font-size: 17.5px; line-height: 1.62; font-weight: 300; color: #3D3833; max-width: 44ch; margin: 0 0 40px;
+  }
+  .actions { display: flex; align-items: center; gap: 28px; }
+  .cta {
+    background: #12100E; color: #F7F5F2; padding: 16px 30px; font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; transition: background .2s;
+  }
+  .cta:hover { background: #8C6F5C; }
+  .link { font-size: 14px; color: #3D3833; border-bottom: 1px solid rgba(18,16,14,.28); padding-bottom: 3px; }
+  .link:hover { color: #8C6F5C; border-bottom-color: #8C6F5C; }
+  .portrait { display: flex; flex-direction: column; gap: 18px; padding-bottom: 6px; }
+  .portrait img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; }
+  .caption { font-family: "IBM Plex Mono", monospace; font-size: 11px; line-height: 1.9; letter-spacing: .1em; text-transform: uppercase; color: #6B635B; }
+  .caption span { color: #A19890; }
+</style>

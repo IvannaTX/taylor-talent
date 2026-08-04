@@ -1,0 +1,58 @@
+---
+import { engagements, founder, type EngagementItem } from "../../data/content";
+---
+<div class="wrap" id="engagements">
+  <div data-reveal class="intro">
+    <div class="eyebrow">Engagement types</div>
+    <h2>Three ways to engage. The role decides which one, not a price sheet.</h2>
+  </div>
+  <div class="list">
+    {engagements.map((e: EngagementItem) => (
+      <div data-reveal class="row">
+        <div class="idx">{e.index}</div>
+        <h3>{e.title}</h3>
+        <div>
+          <p>{e.description}</p>
+          <div class="chips">
+            {e.chips.map((c: string) => <span>{c}</span>)}
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div data-reveal class="functions">
+    <div class="eyebrow">Functions</div>
+    <div class="tags">
+      {founder.functions.map((f: string, i: number) => (
+        <>
+          <span>{f}</span>
+          {i < founder.functions.length - 1 && <span class="dot">·</span>}
+        </>
+      ))}
+    </div>
+  </div>
+</div>
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 104px 60px 0; }
+  .intro { display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; margin-bottom: 56px; align-items: start; }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #8C6F5C; padding-top: 10px; }
+  h2 { font-family: Newsreader, Georgia, serif; font-weight: 200; font-size: 40px; line-height: 1.16; letter-spacing: -.018em; margin: 0; max-width: 24ch; text-wrap: pretty; }
+  .row {
+    display: grid; grid-template-columns: 56px 1fr 1.35fr; gap: 40px; padding: 34px 0;
+    border-top: 1px solid rgba(18,16,14,.14); transition: background .25s;
+  }
+  .row:last-child { border-bottom: 1px solid rgba(18,16,14,.14); }
+  .row:hover { background: rgba(140,111,92,.05); }
+  .idx { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .12em; color: #A19890; padding-top: 8px; }
+  h3 { font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: 27px; line-height: 1.2; letter-spacing: -.015em; margin: 0; }
+  .row p { font-size: 15px; line-height: 1.66; font-weight: 300; color: #3D3833; margin: 0 0 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips span {
+    font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+    color: #6B635B; border: 1px solid rgba(18,16,14,.16); padding: 5px 9px;
+  }
+  .functions { margin-top: 40px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: start; }
+  .functions .eyebrow { padding-top: 4px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 15px; font-weight: 300; color: #3D3833; }
+  .dot { color: #C9C2BA; }
+</style>

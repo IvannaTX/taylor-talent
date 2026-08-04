@@ -1,0 +1,40 @@
+---
+import { founder } from "../../data/content";
+---
+<div class="wrap" id="founder">
+  <div data-reveal class="card">
+    <div class="left">
+      <img src="/images/founder.jpg" alt={founder.name} width="148" height="148" />
+      <div class="name">{founder.name}</div>
+      <div class="role">{founder.role}<br />{founder.location}</div>
+    </div>
+    <div class="right">
+      <div class="eyebrow">Who you actually work with</div>
+      <p class="lead">{founder.lead}</p>
+      <p class="bio">{founder.bio}</p>
+      <div class="lists">
+        <div>
+          <div class="label">Worked inside</div>
+          <div class="items">{founder.inHouse.join(" · ")}</div>
+        </div>
+        <div>
+          <div class="label">Searched for</div>
+          <div class="items">{founder.agencySide.join(" · ")}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 104px 60px 0; }
+  .card { background: #12100E; color: #F0EDE9; padding: 64px 60px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: start; }
+  .left img { width: 148px; height: 148px; border-radius: 50%; object-fit: cover; margin-bottom: 26px; }
+  .name { font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: 26px; letter-spacing: -.01em; margin-bottom: 8px; }
+  .role { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: #C9AE95; line-height: 1.8; }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #8A8078; margin-bottom: 26px; }
+  .lead { font-family: Newsreader, Georgia, serif; font-weight: 200; font-size: 27px; line-height: 1.42; letter-spacing: -.012em; margin: 0 0 24px; text-wrap: pretty; }
+  .bio { font-size: 15px; line-height: 1.7; font-weight: 300; color: #B3ABA3; margin: 0 0 32px; max-width: 58ch; }
+  .lists { display: flex; gap: 48px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,.14); }
+  .label { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: #8A8078; margin-bottom: 8px; }
+  .items { font-size: 14px; font-weight: 300; line-height: 1.6; }
+</style>

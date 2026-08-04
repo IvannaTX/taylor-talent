@@ -1,0 +1,22 @@
+---
+import { stats, type StatItem } from "../../data/content";
+---
+<div class="wrap" id="record">
+  <div data-reveal class="grid">
+    {stats.map((s: StatItem) => (
+      <div class="cell">
+        <div class="value">{s.value}</div>
+        <div class="label">{s.label}</div>
+      </div>
+    ))}
+  </div>
+</div>
+<style>
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 96px 60px 0; }
+  .grid { border-top: 1px solid rgba(18,16,14,.14); display: grid; grid-template-columns: repeat(4, 1fr); }
+  .cell { padding: 32px 28px 30px; border-right: 1px solid rgba(18,16,14,.09); }
+  .cell:first-child { padding-left: 0; }
+  .cell:last-child { border-right: none; padding-right: 0; }
+  .value { font-family: Newsreader, Georgia, serif; font-weight: 200; font-size: 52px; line-height: 1; letter-spacing: -.02em; }
+  .label { margin-top: 14px; font-size: 13px; line-height: 1.55; color: #6B635B; font-weight: 300; }
+</style>

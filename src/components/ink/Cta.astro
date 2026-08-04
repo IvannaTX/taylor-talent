@@ -1,0 +1,43 @@
+---
+import { links } from "../../data/content";
+---
+<div class="wrap" id="book-a-call">
+  <div data-reveal class="grid">
+    <div>
+      <h2>Start with a 30-minute call.</h2>
+      <p>Bring the role, the constraint and the deadline. You'll leave with a market read and an honest answer on whether this search is worth running.</p>
+    </div>
+    <div class="links">
+      <a href={links.bookCall} class="cta"><span>Book an intro call</span><span>→</span></a>
+      <a href={links.email} class="outline"><span>Email direct</span><span>↗</span></a>
+      <a href={links.linkedin} class="outline"><span>LinkedIn</span><span>↗</span></a>
+    </div>
+  </div>
+  <div class="footer">
+    <img src="/images/logo.png" alt="" width="22" height="22" />
+    <span>Taylor Talent Partners</span>
+    <span class="right">Austin, Texas</span>
+    <span>© 2026</span>
+  </div>
+</div>
+<style>
+  .wrap { padding: 88px 56px 0; }
+  .grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; }
+  h2 { font-weight: 300; font-size: 62px; line-height: 1.02; letter-spacing: -.038em; margin: 0 0 26px; max-width: 18ch; }
+  p { font-family: "IBM Plex Mono", monospace; font-size: 14px; line-height: 1.75; color: #9A938C; margin: 0; max-width: 50ch; }
+  .links { display: flex; flex-direction: column; gap: 12px; }
+  .cta, .outline {
+    padding: 20px 24px; font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; display: flex; justify-content: space-between; transition: background .2s, border-color .2s, color .2s;
+  }
+  .cta { background: #EDEAE6; color: #0A0A0A; font-weight: 500; }
+  .cta:hover { background: #C9AE95; }
+  .outline { border: 1px solid rgba(255,255,255,.22); color: #ADA59D; }
+  .outline:hover { border-color: #C9AE95; color: #C9AE95; }
+  .footer {
+    margin-top: 88px; padding: 26px 0 44px; border-top: 1px solid rgba(255,255,255,.12);
+    display: flex; align-items: center; gap: 24px; font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+    letter-spacing: .14em; text-transform: uppercase; color: #6E665F;
+  }
+  .right { margin-left: auto; }
+</style>
