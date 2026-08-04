@@ -1,0 +1,32 @@
+---
+import { leaderSteps } from "../../data/aurora";
+---
+<section class="band">
+  <div class="wrap">
+    <div data-reveal class="head">
+      <div class="eyebrow">How it works</div>
+      <h2>Three conversations, on your timeline.</h2>
+    </div>
+    <div class="list">
+      {leaderSteps.map((step) => (
+        <div data-reveal class="row">
+          <div class="n">{step.n}</div>
+          <div><h3>{step.title}</h3><p>{step.desc}</p></div>
+        </div>
+      ))}
+      <div class="rule"></div>
+    </div>
+  </div>
+</section>
+<style>
+  .band { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 5vw, 48px); }
+  .head { text-align: center; margin-bottom: 56px; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-solid); margin-bottom: 16px; }
+  h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.02em; margin: 0; }
+  .row { display: grid; grid-template-columns: 72px 1fr; gap: 32px; padding: 28px 0; border-top: 1px solid var(--border); }
+  .n { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent-solid); padding-top: 4px; }
+  h3 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 19px; margin: 0 0 8px; }
+  .row p { font-size: 14.5px; line-height: 1.6; color: var(--text-secondary); margin: 0; max-width: 62ch; }
+  .rule { border-top: 1px solid var(--border); }
+</style>

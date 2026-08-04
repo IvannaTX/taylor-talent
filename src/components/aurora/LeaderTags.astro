@@ -1,0 +1,17 @@
+---
+import { leaderTags } from "../../data/aurora";
+---
+<section class="wrap">
+  <div data-reveal>
+    <div class="eyebrow">Seniority &amp; functions</div>
+    <div class="tags">
+      {leaderTags.map((tag) => <span>{tag}</span>)}
+    </div>
+  </div>
+</section>
+<style>
+  .wrap { max-width: 1240px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 5vw, 48px); text-align: center; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-solid); margin-bottom: 20px; }
+  .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .tags span { border: 1px solid var(--border-strong); border-radius: 100px; padding: 9px 18px; font-size: 13.5px; color: var(--text-secondary); }
+</style>

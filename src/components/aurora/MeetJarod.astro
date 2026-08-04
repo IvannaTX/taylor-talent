@@ -1,0 +1,40 @@
+---
+---
+<section class="band">
+  <div class="wrap">
+    <div data-reveal class="card">
+      <div class="left">
+        <div class="ring"><img src="/images/founder.png" alt="Jarod Taylor, Founder of Taylor Talent Partners" /></div>
+        <div class="name">Jarod Taylor</div>
+        <div class="role">Founder</div>
+      </div>
+      <div class="right">
+        <div class="eyebrow">Meet Jarod</div>
+        <p class="lead">Ten years of search across technical, legal, and C-suite — inside Apple, Google, and Indeed, then agency-side at GLG, DISCO, Checkr, and Talentful.</p>
+        <p class="bio">Most recently a Senior Talent Partner embedded with founders and executive teams at startups, scale-ups, and global enterprises — aligning hiring strategy to growth plans rather than filling reqs. AI-enabled sourcing, structured interview design, and one point of contact from intake to signed offer.</p>
+        <div class="cols">
+          <div><div class="label">In-house</div><div class="items">Apple · Google<br />Indeed</div></div>
+          <div><div class="label">Agency-side</div><div class="items">GLG · Checkr<br />DISCO · Talentful</div></div>
+          <div><div class="label">Functions</div><div class="items">GTM · Product · CS<br />G&amp;A · Legal</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .band { background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 5vw, 48px); }
+  .card { display: grid; grid-template-columns: 260px 1fr; gap: 64px; align-items: start; }
+  .left { text-align: center; }
+  .ring { width: 200px; height: 200px; margin: 0 auto 24px; border-radius: 24px; padding: 3px; background: var(--gradient-accent); }
+  .ring img { width: 100%; height: 100%; border-radius: 22px; object-fit: cover; display: block; }
+  .name { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 20px; }
+  .role { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-solid); margin-top: 6px; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 20px; }
+  .lead { font-family: "Bricolage Grotesque", sans-serif; font-weight: 600; font-size: clamp(20px, 2.6vw, 27px); line-height: 1.4; letter-spacing: -.01em; margin: 0 0 22px; text-wrap: pretty; }
+  .bio { font-size: 15px; line-height: 1.68; color: var(--text-secondary); margin: 0 0 32px; max-width: 62ch; }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .cols > div { background: var(--bg); padding: 18px 20px; }
+  .label { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 10px; }
+  .items { font-size: 13.5px; line-height: 1.7; }
+</style>

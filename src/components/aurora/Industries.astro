@@ -1,0 +1,29 @@
+---
+import { industries } from "../../data/aurora";
+---
+<section class="wrap">
+  <div data-reveal class="head">
+    <div class="eyebrow">Industries</div>
+    <h2>Concentrated in technology, open by necessity.</h2>
+    <p class="sub">Most searches run in technology and venture-backed teams, with mandates across legal, finance, and operations wherever a senior hire carries real weight.</p>
+  </div>
+  <div class="grid">
+    {industries.map((ind) => (
+      <div data-reveal class="card">
+        <h3>{ind.title}</h3>
+        <p>{ind.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>
+<style>
+  .wrap { max-width: 1240px; margin: 0 auto; padding: clamp(72px, 10vw, 128px) clamp(20px, 5vw, 48px); }
+  .head { text-align: center; margin-bottom: 48px; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-solid); margin-bottom: 16px; }
+  h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 42px); letter-spacing: -.02em; margin: 0 auto 20px; max-width: 22ch; }
+  .sub { font-size: 16px; line-height: 1.6; color: var(--text-secondary); max-width: 56ch; margin: 0 auto; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card { border: 1px solid var(--border); border-radius: 16px; padding: 28px; background: var(--bg-elevated); }
+  h3 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 17px; margin: 0 0 10px; }
+  .card p { font-size: 14px; line-height: 1.55; color: var(--text-secondary); margin: 0; }
+</style>

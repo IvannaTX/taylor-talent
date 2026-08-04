@@ -1,26 +1,29 @@
 # Taylor Talent Partners — Astro + TypeScript
 
-Two page directions built from the HTML design:
+Three design directions live in this repo, all Astro + TypeScript:
 
-- `/` — **Paper Record**: warm editorial, Newsreader serif, light background.
-- `/ink-ledger` — **Ink Ledger**: dark, IBM Plex Mono, matches the TTP logo mark.
+- `/` — **Aurora** (current landing page): dark-first, indigo/purple/blue gradient, Home / For Companies / For Leaders. This is what's live at the root route.
+- `/companies`, `/leaders` — Aurora's dedicated audience pages.
+- `/paper-record` — earlier warm-editorial direction (was previously `/`).
+- `/ink-ledger` — earlier dark monospace direction.
 
 ## Run it
-
 ```
 npm install
 npm run dev
 ```
 
-## Structure
+## Aurora structure
 
-- `src/data/content.ts` — all copy and stats, typed. Edit this file to change page content without touching markup.
-- `src/components/paper/*` — sections for the Paper Record direction.
-- `src/components/ink/*` — sections for the Ink Ledger direction.
-- `src/layouts/*Layout.astro` — shared `<head>`, fonts, page shell per direction.
-- `public/images/` — logo mark and founder headshot.
+- `src/data/aurora.ts` — all Aurora copy/stats/data, typed.
+- `src/components/aurora/*` — one component per section.
+- `src/layouts/AuroraLayout.astro` — head, fonts, background orbs, theme + reveal script mounts.
+- `src/scripts/theme.ts` — dark/light/system toggle, persists to `localStorage` (`ttp-theme-pref`).
+- `src/scripts/reveal.ts` — shared scroll-reveal (also used by paper-record/ink-ledger).
+
+### Removing the Search Process section
+`src/components/aurora/SearchProcess.astro` is fully standalone. To remove it, delete its import and `<SearchProcess />` usage from `src/pages/index.astro` and/or `src/pages/companies.astro`. Nothing else depends on it.
 
 ## To do before shipping
-
-- Replace `data.links.email` and `data.links.bookCall` in `src/data/content.ts` with real addresses/scheduler URL.
-- Both pages currently use client-side IntersectionObserver + scroll-fallback reveal (see `src/scripts/reveal.ts`), loaded per-page via an inline `<script>`.
+- Replace `auroraLinks.bookCall` / `.email` in `src/data/aurora.ts` with a real scheduler URL.
+- Confirm `/paper-record` and `/ink-ledger` should stay live, or unlink/remove them if not.

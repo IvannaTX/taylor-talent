@@ -1,0 +1,30 @@
+---
+import AuroraLayout from "../layouts/AuroraLayout.astro";
+import Nav from "../components/aurora/Nav.astro";
+import PageHero from "../components/aurora/PageHero.astro";
+import LeaderValueProps from "../components/aurora/LeaderValueProps.astro";
+import LeaderTags from "../components/aurora/LeaderTags.astro";
+import LeaderSteps from "../components/aurora/LeaderSteps.astro";
+import FinalCta from "../components/aurora/FinalCta.astro";
+import Footer from "../components/aurora/Footer.astro";
+import { auroraLinks } from "../data/aurora";
+---
+<AuroraLayout title="Taylor Talent Partners — For Senior Leaders">
+  <Nav />
+  <PageHero
+    eyebrow="For Senior Leaders"
+    title="The best moves aren't rushed."
+    subtitle="Taylor Talent Partners works with VPs, Directors, and executives who want a long-term relationship with a recruiter — not a transaction when they're already job-hunting."
+    primaryLabel="Start a confidential conversation"
+    primaryHref={auroraLinks.bookCall}
+  />
+  <LeaderValueProps />
+  <LeaderTags />
+  <LeaderSteps />
+  <FinalCta
+    heading="Let's talk about where you're headed."
+    subheading="No résumé blast, no pressure — just a confidential conversation about your next move."
+    primaryLabel="Start a confidential conversation"
+  />
+  <Footer />
+</AuroraLayout>

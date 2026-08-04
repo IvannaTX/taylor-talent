@@ -1,0 +1,31 @@
+---
+import AuroraLayout from "../layouts/AuroraLayout.astro";
+import Nav from "../components/aurora/Nav.astro";
+import PageHero from "../components/aurora/PageHero.astro";
+import StatsRow from "../components/aurora/StatsRow.astro";
+import Services from "../components/aurora/Services.astro";
+import SearchProcess from "../components/aurora/SearchProcess.astro";
+import FinalCta from "../components/aurora/FinalCta.astro";
+import Footer from "../components/aurora/Footer.astro";
+import { auroraLinks } from "../data/aurora";
+---
+<AuroraLayout title="Taylor Talent Partners — For Companies">
+  <Nav />
+  <PageHero
+    eyebrow="For Companies"
+    title="A search partner that moves like part of your team."
+    subtitle="Executive search, embedded recruiting, fractional recruiting, and talent strategy — scoped to how you actually hire, not a fixed retainer template."
+    primaryLabel="Start a search"
+    primaryHref={auroraLinks.bookCall}
+  />
+  <StatsRow />
+  <Services variant="detailed" />
+  <!-- Remove the line below to drop the Search Process section entirely -->
+  <SearchProcess />
+  <FinalCta
+    heading="Ready to scope the search?"
+    subheading="One call to align on the role, the timeline, and whether it's worth running."
+    primaryLabel="Start a search"
+  />
+  <Footer />
+</AuroraLayout>

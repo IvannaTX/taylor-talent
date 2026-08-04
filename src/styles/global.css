@@ -28,3 +28,29 @@ a {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Aurora theme (home / companies / leaders) */
+::selection { background: #8B5CF6; color: #fff; }
+
+@keyframes orbDrift1 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-30px) scale(1.08); } }
+@keyframes orbDrift2 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-50px,25px) scale(.95); } }
+@keyframes orbDrift3 { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,35px) scale(1.05); } }
+
+[data-theme="dark"] {
+  --bg: #0B0C10; --bg-elevated: #14151C; --bg-elevated-2: #1B1D27;
+  --border: rgba(255,255,255,.08); --border-strong: rgba(255,255,255,.16);
+  --text-primary: #F2F1F5; --text-secondary: #A8A6B3; --text-tertiary: #6E6C7A;
+  --accent-solid: #8B7CFF; --gradient-accent: linear-gradient(135deg, #6C63FF 0%, #8B5CF6 50%, #4F8CFF 100%);
+  --orb-1: rgba(108,99,255,.38); --orb-2: rgba(79,140,255,.30); --orb-3: rgba(139,92,246,.26);
+  --nav-bg: rgba(11,12,16,.72);
+}
+[data-theme="light"] {
+  --bg: #FAFAFC; --bg-elevated: #FFFFFF; --bg-elevated-2: #F1F1F6;
+  --border: rgba(10,10,20,.09); --border-strong: rgba(10,10,20,.15);
+  --text-primary: #14151C; --text-secondary: #55536A; --text-tertiary: #8A889A;
+  --accent-solid: #6D4FE0; --gradient-accent: linear-gradient(135deg, #5B4FE0 0%, #7C3AED 50%, #2563EB 100%);
+  --orb-1: rgba(91,79,224,.16); --orb-2: rgba(37,99,235,.13); --orb-3: rgba(124,58,237,.13);
+  --nav-bg: rgba(250,250,252,.72);
+}
+[data-theme] body { background: var(--bg); color: var(--text-primary); font-family: "Manrope", system-ui, sans-serif; transition: background-color .5s ease, color .5s ease; }
+[data-theme] a:hover { color: var(--accent-solid); }
