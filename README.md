@@ -1,5 +1,7 @@
 # Taylor Talent Partners — Astro + TypeScript
 
+Live site: [taylor-talent.vercel.app](https://taylor-talent.vercel.app/)
+
 Three design directions live in this repo, all Astro + TypeScript:
 
 - `/` — **Aurora** (current landing page): dark-first, indigo/purple/blue gradient, Home / For Companies / For Leaders. This is what's live at the root route.
