@@ -1,6 +1,6 @@
 # Taylor Talent Partners — Astro + TypeScript
 
-Live site: [taylor-talent.vercel.app](https://taylor-talent.vercel.app/)
+Preview site: [taylor-talent.vercel.app](https://taylor-talent.vercel.app/)
 
 Three design directions live in this repo, all Astro + TypeScript:
 
