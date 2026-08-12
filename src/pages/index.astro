@@ -1,40 +1,17 @@
 ---
-import AuroraLayout from "../layouts/AuroraLayout.astro";
-import Nav from "../components/aurora/Nav.astro";
-import PageHero from "../components/aurora/PageHero.astro";
-import WhoWeHelp from "../components/aurora/WhoWeHelp.astro";
-import Services from "../components/aurora/Services.astro";
-import WhyTaylorTalent from "../components/aurora/WhyTaylorTalent.astro";
-import Industries from "../components/aurora/Industries.astro";
-import MeetJarod from "../components/aurora/MeetJarod.astro";
-import SearchProcess from "../components/aurora/SearchProcess.astro";
-import FinalCta from "../components/aurora/FinalCta.astro";
-import Footer from "../components/aurora/Footer.astro";
-import { auroraLinks } from "../data/aurora";
+import InkLayout from "../layouts/InkLayout.astro";
+import Nav from "../components/ink/Nav.astro";
+import Hero from "../components/ink/Hero.astro";
+import Stats from "../components/ink/Stats.astro";
+import Engagements from "../components/ink/Engagements.astro";
+import Founder from "../components/ink/Founder.astro";
+import Cta from "../components/ink/Cta.astro";
 ---
-<AuroraLayout title="Taylor Talent Partners — Executive Search">
+<InkLayout title="Taylor Talent Partners — Executive Search">
   <Nav />
-  <PageHero
-    eyebrow="Executive Search — Austin, TX"
-    title="Executive search, built for the leaders who move markets."
-    tagline="The right people change everything."
-    subtitle="Taylor Talent Partners is an executive recruiting and embedded talent partner helping startups and high-growth companies hire exceptional leaders across GTM, Product, Engineering, Customer Success, G&amp;A, and AI."
-    primaryLabel="Book an intro call"
-    primaryHref={auroraLinks.bookCall}
-    secondaryLabel="For Senior Leaders →"
-    secondaryHref="/leaders"
-  />
-  <WhoWeHelp />
-  <Services variant="brief" />
-  <WhyTaylorTalent />
-  <Industries />
-  <MeetJarod />
-  <!-- Remove the line below to drop the Search Process section entirely -->
-  <SearchProcess />
-  <FinalCta
-    heading="Your next senior hire starts with a conversation."
-    subheading="Bring the role, the constraint, and the deadline. Leave with an honest read on the market."
-    primaryLabel="Book an intro call"
-  />
-  <Footer />
-</AuroraLayout>
+  <Hero />
+  <Stats />
+  <Engagements />
+  <Founder />
+  <Cta />
+</InkLayout>
