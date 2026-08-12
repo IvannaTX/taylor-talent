@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Astro (root app)
+dist/
+.astro/
+
+# Next.js (web/)
+web/.next/
+web/out/
+web/next-env.d.ts
+
+# Build/tooling caches
+*.tsbuildinfo
+.vercel/
+
+# Environment
+.env
+.env.*.local
+
+# OS
+.DS_Store
