@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Taylor Talent Partners — visual identity
+ *
+ * Dark-first. Cool neutrals carry almost everything; indigo is the single
+ * accent and is spent sparingly. The violet -> cyan gradient (sampled from the
+ * ring on the founder portrait) is reserved for the mark, the hero line and
+ * active states — never for large fills.
+ *
+ * Status hues exist because the interface artifacts need them to read as real
+ * software: a scorecard without a pass colour is just grey boxes.
+ */
+
+@layer base {
+  :root {
+    --bg: 9 10 13;
+    --surface: 15 17 21;
+    --raised: 22 25 31;
+    --sunken: 6 7 9;
+    --line: 34 38 46;
+    --line-strong: 51 57 68;
+    --ink: 246 247 249;
+    --muted: 161 167 178;
+    --faint: 134 141 154;
+
+    --a-indigo: 110 123 255;
+    --a-violet: 167 139 250;
+    --a-cyan: 52 231 228;
+
+    --ok: 94 234 180;
+    --warn: 251 191 36;
+
+    --on-accent: 9 10 13;
+
+    --orb-a: 79 70 229;
+    --orb-b: 30 64 175;
+    --orb-c: 13 148 136;
+    --orb-opacity: 0.22;
+
+    --grain-opacity: 0.04;
+    color-scheme: dark;
+  }
+
+  .light {
+    --bg: 246 247 245;
+    --surface: 255 255 255;
+    --raised: 240 242 240;
+    --sunken: 235 237 235;
+    --line: 223 226 227;
+    --line-strong: 199 204 206;
+    --ink: 25 26 28;
+    --muted: 88 94 102;
+    --faint: 104 111 120;
+
+    --a-indigo: 67 56 202;
+    --a-violet: 109 40 217;
+    --a-cyan: 13 116 133;
+
+    --ok: 3 100 72;
+    --warn: 146 84 14;
+
+    --on-accent: 255 255 255;
+
+    --orb-a: 165 180 252;
+    --orb-b: 191 219 254;
+    --orb-c: 153 246 228;
+    --orb-opacity: 0.5;
+
+    --grain-opacity: 0.02;
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-line;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    @apply font-sans antialiased;
+    /* Guarantee of the brief: never a horizontal scrollbar. */
+    overflow-x: clip;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Theme crossfade. Applied for ~500ms by the toggle only, so first paint and
+     scrolling are never taxed by global transitions. */
+  html.theme-anim,
+  html.theme-anim * {
+    transition:
+      background-color 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      color 420ms cubic-bezier(0.16, 1, 0.3, 1),
+      fill 420ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  ::selection {
+    background: rgb(var(--a-indigo) / 0.32);
+    color: rgb(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--a-indigo));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-10;
+  }
+
+  /* Display type is always the serif, always optically sized. */
+  .display {
+    @apply font-display font-normal;
+    font-optical-sizing: auto;
+  }
+
+  .eyebrow {
+    @apply font-mono text-eyebrow uppercase text-faint;
+  }
+
+  .grad-text {
+    color: rgb(var(--a-violet));
+    background: linear-gradient(
+      100deg,
+      rgb(var(--a-violet)),
+      rgb(var(--a-indigo)) 48%,
+      rgb(var(--a-cyan))
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 1px gradient border via mask — no double-border seams on rounded cards. */
+  .ring-grad {
+    position: relative;
+  }
+  .ring-grad::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      140deg,
+      rgb(var(--a-violet) / 0.5),
+      rgb(var(--a-indigo) / 0.22) 45%,
+      rgb(var(--a-cyan) / 0.4)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .card {
+    @apply relative rounded-card border border-line bg-surface;
+  }
+
+  /* ---------------------------------------------------------------- */
+  /* Interface artifacts. These mimic real application surfaces, so
+     they get their own elevation language: a hard 1px line, a soft
+     ambient shadow, and a lighter inner row fill.                    */
+  /* ---------------------------------------------------------------- */
+
+  .artifact {
+    @apply relative rounded-[1.25rem] border border-line bg-surface;
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.03) inset,
+      0 30px 60px -30px rgb(0 0 0 / 0.6),
+      0 8px 20px -12px rgb(0 0 0 / 0.4);
+  }
+
+  .light .artifact {
+    box-shadow:
+      0 1px 0 0 rgb(255 255 255 / 0.8) inset,
+      0 24px 48px -28px rgb(15 23 42 / 0.16),
+      0 6px 16px -10px rgb(15 23 42 / 0.1);
+  }
+
+  .artifact-row {
+    @apply rounded-xl border border-line bg-raised;
+  }
+
+  /* Tabular figures everywhere a number sits in a UI chrome. */
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: var(--grain-opacity);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .mask-fade-y {
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 14%, #000 86%, transparent);
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 62%, transparent 100%);
+  }
+}
+
+/* Honour the OS setting for the CSS-only ambient animations. Framer Motion is
+   handled separately by <MotionConfig reducedMotion="user">. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

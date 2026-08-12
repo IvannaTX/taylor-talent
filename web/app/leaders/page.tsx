@@ -1,0 +1,60 @@
+import type { Metadata } from "next";
+import { site } from "@/lib/site";
+import { leaderBeats } from "@/lib/copy";
+import { PageHero } from "@/components/site/page-hero";
+import { BeatRun } from "@/components/beats/run";
+import { leaderArtifacts } from "@/components/artifacts/leader";
+import { ConfidentialArtifact } from "@/components/artifacts/leader";
+import { Practice } from "@/components/site/practice";
+import { Jarod } from "@/components/site/jarod";
+import { Finale } from "@/components/site/finale";
+import { Rule } from "@/components/ui/kit";
+
+export const metadata: Metadata = {
+  title: "For Leaders",
+  description:
+    "A confidential, standing relationship for senior leaders across GTM, product, engineering, customer success, G&A and legal. Nothing is shared without your approval, and no mandate reaches you unless it fits.",
+  alternates: { canonical: "/leaders" },
+  openGraph: {
+    title: `For Leaders — ${site.name}`,
+    description:
+      "A confidential, standing relationship for senior leaders. You approve every introduction.",
+    url: "/leaders",
+  },
+};
+
+export default function LeadersPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="For senior leaders"
+        title="The best time for this conversation is before you need it."
+        lede="Senior moves rarely come from a job search. They come from a relationship that already existed when the right mandate appeared. This is that line — private, low-frequency, and entirely on your terms."
+        primary={{
+          label: "Start a confidential conversation",
+          href: site.bookCall,
+        }}
+        secondary={{ label: "How it works", href: "#relationship" }}
+        aside={<ConfidentialArtifact />}
+      />
+
+      <div className="pt-section">
+        <BeatRun
+          id="relationship"
+          label="How the relationship works"
+          beats={leaderBeats}
+          artifacts={leaderArtifacts}
+          align="left"
+        />
+      </div>
+
+      <div className="shell">
+        <Rule />
+      </div>
+
+      <Practice />
+      <Jarod />
+      <Finale />
+    </>
+  );
+}
