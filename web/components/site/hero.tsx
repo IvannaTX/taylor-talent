@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { EASE } from "@/components/motion/reveal";
 import { SearchConsole } from "@/components/artifacts/console";
-import { Provenance } from "@/components/site/marquee";
+import { TrustedCompanies } from "@/components/home/TrustedCompanies";
 
 /**
  * Hero.
@@ -112,6 +112,15 @@ export function Hero() {
           </div>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.68, ease: EASE }}
+          className="mt-14 sm:mt-16"
+        >
+          <TrustedCompanies />
+        </motion.div>
+
         {/* Proof of work, full width — no stock hero image, no gradient blob */}
         <motion.div
           style={{ y: artY }}
@@ -123,14 +132,6 @@ export function Hero() {
           <SearchConsole />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.78, ease: EASE }}
-          className="mt-14 border-t border-line pt-8 sm:mt-16"
-        >
-          <Provenance />
-        </motion.div>
       </div>
     </section>
   );

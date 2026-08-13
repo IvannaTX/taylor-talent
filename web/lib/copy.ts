@@ -14,8 +14,8 @@
 export const hero = {
   eyebrow: "Executive search · Austin, TX",
   // Two declarative sentences, the second in the gradient.
-  line1: "Senior hires decide",
-  line2: "the next five years.",
+  line1: "The Right People",
+  line2: "Change Everything.",
   lede: "Taylor Talent Partners runs retained executive search for companies where one seat changes the trajectory — and keeps a confidential line open to the leaders who fill them.",
   cta: "Book a Discovery Call",
   secondary: "See how a search runs",
