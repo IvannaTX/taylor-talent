@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { EASE } from "@/components/motion/reveal";
 import { SearchConsole } from "@/components/artifacts/console";
 import { TrustedCompanies } from "@/components/home/TrustedCompanies";
+import { ExecutiveSearchStories } from "@/components/home/ExecutiveSearchStories";
 
 /**
  * Hero.
@@ -120,6 +121,8 @@ export function Hero() {
         >
           <TrustedCompanies />
         </motion.div>
+
+        <ExecutiveSearchStories />
 
         {/* Proof of work, full width — no stock hero image, no gradient blob */}
         <motion.div
