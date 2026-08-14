@@ -8,6 +8,7 @@ import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { EASE } from "@/components/motion/reveal";
 import { TrustedCompanies } from "@/components/home/TrustedCompanies";
+import { CustomerStories } from "@/components/home/CustomerStories";
 import { ExecutiveSearchStories } from "@/components/home/ExecutiveSearchStories";
 import { ExecutiveNetwork } from "@/components/home/ExecutiveNetwork";
 
@@ -112,6 +113,7 @@ export function Hero() {
           <TrustedCompanies />
         </motion.div>
 
+        <CustomerStories />
         <ExecutiveSearchStories />
         <ExecutiveNetwork />
       </div>

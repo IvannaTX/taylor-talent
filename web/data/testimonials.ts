@@ -28,6 +28,22 @@ export type CompanyRelationship = {
   metricValue: string;
 };
 
+/**
+ * Backdrop for a story in the Customer Stories section.
+ *
+ * The five client entries currently point at photography already in the repo,
+ * reused from the network and stories sections. Each wants a dedicated
+ * boardroom or private-office frame instead — `alt` records the subject the
+ * image should show, so a replacement can be dropped in against the brief.
+ * Swapping one is a single line here; the section picks it up automatically.
+ */
+export type StoryBackground = {
+  src: string;
+  alt: string;
+  /** object-position, chosen to keep the subject clear of the quote. */
+  position?: string;
+};
+
 export type Testimonial = {
   company: string;
   quote: string;
@@ -35,6 +51,13 @@ export type Testimonial = {
   partnerTitle: string;
   relationship: CompanyRelationship;
   caseStudyUrl?: string;
+  /**
+   * Presence of a background is what puts a company in the Customer Stories
+   * row, in the order it appears in data/companies.ts.
+   */
+  background?: StoryBackground;
+  /** Where the story CTA points. Falls back to the search walkthrough. */
+  storyHref?: string;
   /** The one genuine relationship in the set. */
   featured?: boolean;
   /** Cleared for publication by the named person. */
@@ -72,6 +95,11 @@ export const testimonials: Record<string, Testimonial> = {
     partnerName: "Grace Turner",
     partnerTitle: "Head of Talent",
     relationship: client("2025", "6"),
+    background: {
+      src: "/images/search-stories/white-glove.webp",
+      alt: "Senior leaders mid-conversation in a private boardroom",
+      position: "50% 40%",
+    },
     featured: true,
     approved: false,
   },
@@ -83,6 +111,11 @@ export const testimonials: Record<string, Testimonial> = {
     partnerName: "Dana Whitfield",
     partnerTitle: "VP Talent",
     relationship: client("2025", "4"),
+    background: {
+      src: "/images/search-stories/leadership-network.webp",
+      alt: "A confidential leadership conversation in a modern headquarters",
+      position: "60% 45%",
+    },
     approved: false,
   },
 
@@ -93,6 +126,11 @@ export const testimonials: Record<string, Testimonial> = {
     partnerName: "Marcus Ellery",
     partnerTitle: "Head of Recruiting",
     relationship: client("2025", "3"),
+    background: {
+      src: "/images/executive-network/cto.webp",
+      alt: "A technology executive in a modern private office",
+      position: "70% 22%",
+    },
     approved: false,
   },
 
@@ -103,6 +141,11 @@ export const testimonials: Record<string, Testimonial> = {
     partnerName: "Priya Raghunathan",
     partnerTitle: "Chief of Staff",
     relationship: client("2026", "2"),
+    background: {
+      src: "/images/executive-network/cpo.webp",
+      alt: "A product leader working through strategy in a bright office",
+      position: "68% 20%",
+    },
     approved: false,
   },
 
@@ -113,6 +156,11 @@ export const testimonials: Record<string, Testimonial> = {
     partnerName: "Owen Brady",
     partnerTitle: "Director of Technical Recruiting",
     relationship: client("2026", "2"),
+    background: {
+      src: "/images/executive-network/cfo.webp",
+      alt: "A finance executive in a large conference room",
+      position: "66% 22%",
+    },
     approved: false,
   },
 
