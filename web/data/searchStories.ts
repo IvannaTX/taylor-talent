@@ -21,7 +21,7 @@ export const searchStories: SearchStory[] = [
   },
   {
     id: "leadership-access",
-    title: "Access to Exceptional Leadership",
+    title: "Exclusive Executive Network",
     description:
       "The best candidates rarely apply online. Long-standing relationships provide access to exceptional executives often unavailable through traditional recruiting.",
     visual: {

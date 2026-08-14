@@ -84,6 +84,19 @@ const item: Variants = {
   },
 };
 
+/** Opt-in card settle for large editorial surfaces; transform is disabled by
+ * the global MotionConfig when a visitor requests reduced motion. */
+const scaledItem: Variants = {
+  hidden: { opacity: 0, y: 32, scale: 0.985, filter: "blur(6px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: EASE },
+  },
+};
+
 export function Stagger({
   children,
   className,
@@ -116,15 +129,17 @@ export function StaggerItem({
   children,
   className,
   as = "div",
+  scale = false,
 }: {
   children: React.ReactNode;
   className?: string;
   as?: "div" | "li" | "article";
+  scale?: boolean;
 }) {
   const Comp = motion[as] as typeof motion.div;
 
   return (
-    <Comp className={className} variants={item}>
+    <Comp className={className} variants={scale ? scaledItem : item}>
       {children}
     </Comp>
   );

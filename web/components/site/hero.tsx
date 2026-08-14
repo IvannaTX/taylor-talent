@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { EASE } from "@/components/motion/reveal";
 import { TrustedCompanies } from "@/components/home/TrustedCompanies";
 import { ExecutiveSearchStories } from "@/components/home/ExecutiveSearchStories";
+import { ExecutiveNetwork } from "@/components/home/ExecutiveNetwork";
 
 /**
  * Hero.
@@ -112,7 +113,7 @@ export function Hero() {
         </motion.div>
 
         <ExecutiveSearchStories />
-
+        <ExecutiveNetwork />
       </div>
     </section>
   );
