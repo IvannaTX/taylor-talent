@@ -4,116 +4,267 @@ import * as React from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { companies, companyRows, type Company } from "@/data/companies";
+import { testimonials, type Testimonial } from "@/data/testimonials";
 import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
-const commentIsReady = (company: Company) =>
-  Boolean(company.testimonial && company.partnerName && company.partnerTitle);
+/**
+ * Brand wall.
+ *
+ * The tiles are deliberately almost invisible: no border, a whisper of fill, and
+ * a short row. Everything the eye is meant to catch is the mark itself, so the
+ * chrome gets out of the way and the logos carry equal optical weight (see the
+ * `optical` table in data/companies.ts).
+ */
+
+/** Base logo height in px. Each mark scales from here by its optical factor. */
+const LOGO_H = 20;
+
+const NOTCH_SPRING = { type: "spring", stiffness: 420, damping: 32, mass: 0.7 } as const;
+
+/** Every tile in the wall has an entry; the guard is defensive, not a state. */
+const commentFor = (company: Company): Testimonial | undefined =>
+  testimonials[company.name];
 
 function CompanyLogo({ company }: { company: Company }) {
+  if (company.wordmark) {
+    return (
+      <span
+        aria-hidden="true"
+        className="block font-sans text-[0.9375rem] font-semibold tracking-[0.14em] text-current"
+      >
+        {company.name}
+      </span>
+    );
+  }
+
   return (
     <span
       aria-hidden="true"
+      className="block w-full bg-current"
+      style={{
+        // Height drives the fit; width only caps the very wide wordmarks, which
+        // is what keeps a 7:1 mark from outweighing a 4:1 one.
+        height: Math.round(LOGO_H * (company.optical ?? 1) * 10) / 10,
+        WebkitMaskImage: `url(${company.logo})`,
+        maskImage: `url(${company.logo})`,
+        WebkitMaskPosition: "center",
+        maskPosition: "center",
+        WebkitMaskRepeat: "no-repeat",
+        maskRepeat: "no-repeat",
+        WebkitMaskSize: "contain",
+        maskSize: "contain",
+      }}
+    />
+  );
+}
+
+/** One relationship figure: mono caption over a tabular value. */
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="min-w-0">
+      <dt className="flex items-center gap-1.5 font-mono text-[0.5rem] uppercase tracking-[0.12em] text-faint">
+        <span
+          aria-hidden="true"
+          className="h-1 w-1 shrink-0 rounded-full bg-accent-indigo"
+        />
+        {label}
+      </dt>
+      <dd className="num mt-1 text-[0.8125rem] leading-none text-ink">
+        {value}
+      </dd>
+    </div>
+  );
+}
+
+/** Compact card, anchored to the tile it belongs to. */
+function PartnerComment({
+  comment,
+  placement,
+}: {
+  comment: Testimonial;
+  placement: "above" | "below";
+}) {
+  const above = placement === "above";
+  const { relationship } = comment;
+
+  return (
+    <motion.aside
+      role="status"
+      initial={{ opacity: 0, y: above ? 6 : -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: above ? 4 : -4 }}
+      /* Spring on the lift, tween on the fade — a spring on opacity settles too
+         slowly and reads as a card that will not commit. */
+      transition={{ y: NOTCH_SPRING, opacity: { duration: 0.18 } }}
       className={cn(
-        "select-none whitespace-nowrap text-[1.2rem] font-semibold tracking-[-0.04em] sm:text-[1.35rem]",
-        company.name === "Rippling" && "font-mono text-[1rem] tracking-[0.02em]",
-        company.name === "Decagon" && "font-mono text-[0.95rem] tracking-[0.09em]",
-        company.name === "Scale" && "font-normal tracking-[-0.08em]",
-        company.name === "Apple" && "display font-normal",
-        company.name === "Google" && "font-normal tracking-[-0.06em]",
-        company.name === "Indeed" && "lowercase tracking-[-0.06em]",
-        company.name === "GLG" && "tracking-[0.08em]",
-        company.name === "DISCO" && "font-mono tracking-[0.08em]",
-        company.name === "Talentful" && "font-normal tracking-[-0.05em]",
+        "pointer-events-none absolute left-1/2 z-30 w-64 -translate-x-1/2",
+        above ? "bottom-full mb-2.5" : "top-full mt-2.5",
       )}
     >
-      {company.logo}
-    </span>
+      <div className="relative rounded-xl border border-line/70 bg-raised/95 p-3.5 shadow-lift backdrop-blur-xl">
+        {/* Notch: what turns a floating card into an extension of the tile. */}
+        <span
+          aria-hidden="true"
+          className={cn(
+            "absolute left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-line/70 bg-raised",
+            above ? "-bottom-1 border-b border-r" : "-top-1 border-l border-t",
+          )}
+        />
+
+        <blockquote className="text-[0.8125rem] leading-[1.5] text-ink">
+          “{comment.quote}”
+        </blockquote>
+
+        <div className="mt-3 flex items-end justify-between gap-3 border-t border-line/70 pt-2.5">
+          <p className="min-w-0">
+            <span className="block text-[0.6875rem] font-medium text-ink">
+              {comment.partnerName}
+            </span>
+            <span className="mt-0.5 block text-[0.625rem] leading-tight text-faint">
+              {comment.partnerTitle} · {comment.company}
+            </span>
+          </p>
+          {comment.caseStudyUrl ? (
+            <span className="flex shrink-0 items-center gap-1 text-[0.625rem] text-muted">
+              Case study
+              <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+            </span>
+          ) : null}
+        </div>
+
+        <dl className="mt-3 grid grid-cols-2 gap-3 border-t border-line/70 pt-2.5">
+          <Stat
+            label={relationship.tenureLabel}
+            value={relationship.tenureValue}
+          />
+          <Stat
+            label={relationship.metricLabel}
+            value={relationship.metricValue}
+          />
+        </dl>
+      </div>
+    </motion.aside>
   );
 }
 
 function LogoTile({
   company,
   interactive = false,
+  dimmed = false,
+  active = false,
+  placement = "above",
   onEnter,
-  onFocus,
-  onBlur,
+  onLeave,
 }: {
   company: Company;
   interactive?: boolean;
+  dimmed?: boolean;
+  active?: boolean;
+  placement?: "above" | "below";
   onEnter?: () => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  onLeave?: () => void;
 }) {
-  const ready = commentIsReady(company);
-
-  return (
-    <div
-      tabIndex={interactive && ready ? 0 : undefined}
-      aria-label={company.name}
-      onMouseEnter={interactive && ready ? onEnter : undefined}
-      onFocus={interactive && ready ? onFocus : undefined}
-      onBlur={interactive && ready ? onBlur : undefined}
+  const comment = commentFor(company);
+  const face = (
+    <span
       className={cn(
-        "group grid h-[5.75rem] min-w-[10.5rem] place-items-center rounded-2xl border border-line bg-surface px-6 text-muted",
-        "transition-[color,background-color,border-color,transform] duration-500 ease-apple sm:h-[6.5rem]",
-        interactive && ready && "cursor-default hover:-translate-y-0.5 hover:border-line-strong hover:bg-raised hover:text-ink focus-visible:text-ink",
+        "flex w-full items-center justify-center text-muted",
+        "transition-opacity duration-300 ease-apple",
+        active ? "text-ink opacity-100" : dimmed ? "opacity-25" : "opacity-70",
       )}
     >
       <CompanyLogo company={company} />
+    </span>
+  );
+
+  return (
+    <div
+      className={cn(
+        "relative grid h-[3.25rem] min-w-32 place-items-center rounded-lg px-3 md:min-w-0",
+        "transition-[background-color,opacity] duration-300 ease-apple",
+        active ? "bg-raised/80" : "bg-surface/45",
+      )}
+      onMouseEnter={interactive ? onEnter : undefined}
+      onMouseLeave={interactive ? onLeave : undefined}
+    >
+      {/* A real button so the card is reachable by keyboard, not just by hover. */}
+      {interactive && comment ? (
+        <button
+          type="button"
+          aria-expanded={active}
+          aria-label={`${company.name} — relationship and reference`}
+          onFocus={onEnter}
+          onBlur={onLeave}
+          onClick={onEnter}
+          className="flex w-full items-center justify-center rounded"
+        >
+          {face}
+        </button>
+      ) : (
+        face
+      )}
+
+      <AnimatePresence>
+        {active && comment ? (
+          <PartnerComment comment={comment} placement={placement} />
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }
 
-function PartnerComment({ company }: { company: Company }) {
+function RowHeading({ children }: { children: React.ReactNode }) {
   return (
-    <motion.aside
-      key={company.name}
-      role="status"
-      initial={{ opacity: 0, y: 12, scale: 0.985 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: -8, scale: 0.99 }}
-      transition={{ type: "spring", stiffness: 260, damping: 28, mass: 0.8 }}
-      className="mx-auto w-full max-w-2xl rounded-card border border-line bg-raised/95 p-6 shadow-lift backdrop-blur-xl sm:p-7"
-    >
-      <blockquote className="display text-[1.2rem] leading-[1.4] text-ink sm:text-[1.4rem]">
-        “{company.testimonial}”
-      </blockquote>
-      <div className="mt-5 flex items-end justify-between gap-5 border-t border-line pt-4">
-        <p className="min-w-0 text-sm text-ink">
-          <span className="block font-medium">{company.partnerName}</span>
-          <span className="mt-0.5 block text-xs text-faint">{company.partnerTitle}</span>
-        </p>
-        {company.caseStudyUrl ? (
-          <a className="flex shrink-0 items-center gap-1.5 text-xs text-muted transition-colors hover:text-ink" href={company.caseStudyUrl}>
-            Case study <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-          </a>
-        ) : null}
-      </div>
-    </motion.aside>
+    <h3 className="font-mono text-[0.55rem] uppercase tracking-[0.16em] text-faint/80">
+      {children}
+    </h3>
   );
 }
 
-function DesktopRows({ onActive }: { onActive: (company: Company | null) => void }) {
+function DesktopRows() {
+  const [active, setActive] = React.useState<string | null>(null);
+
   return (
-    <div className="hidden space-y-8 md:block" onMouseLeave={() => onActive(null)}>
-      {companyRows.map((row) => {
-        const rowCompanies = companies.filter((company) => company.category === row.category);
+    <div className="hidden space-y-4 md:block">
+      {companyRows.map((row, rowIndex) => {
+        const rowCompanies = companies.filter(
+          (company) => company.category === row.category,
+        );
+
         return (
           <div key={row.category}>
             {row.category === "current-client" ? (
-              <h2 id="trusted-companies-title" className="eyebrow">Current Clients</h2>
+              <h2
+                id="trusted-companies-title"
+                className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-faint"
+              >
+                Current Clients
+              </h2>
             ) : row.category === "in-house" ? (
-              <div className="pt-4">
-                <h2 className="eyebrow">Experience</h2>
-                <h3 className="mt-5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-faint">In-House</h3>
+              <div className="pt-1">
+                <h2 className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-faint">
+                  Experience
+                </h2>
+                <RowHeading>In-House</RowHeading>
               </div>
             ) : (
-              <h3 className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-faint">Agency-Side</h3>
+              <RowHeading>Agency-Side</RowHeading>
             )}
-            <div className={cn("mt-3 grid gap-3", rowCompanies.length === 5 ? "grid-cols-5" : rowCompanies.length === 4 ? "grid-cols-4" : "grid-cols-3 max-w-3xl")}>
+
+            <div className="mt-2 grid grid-cols-5 gap-2">
               {rowCompanies.map((company) => (
-                <LogoTile key={company.name} company={company} interactive onEnter={() => onActive(company)} onFocus={() => onActive(company)} onBlur={() => onActive(null)} />
+                <LogoTile
+                  key={company.name}
+                  company={company}
+                  interactive
+                  active={active === company.name}
+                  dimmed={active !== null && active !== company.name}
+                  // The top row has no room above it inside the section.
+                  placement={rowIndex === 0 ? "below" : "above"}
+                  onEnter={() => setActive(company.name)}
+                  onLeave={() => setActive(null)}
+                />
               ))}
             </div>
           </div>
@@ -125,31 +276,66 @@ function DesktopRows({ onActive }: { onActive: (company: Company | null) => void
 
 function MobileRows() {
   const reduce = useReducedMotion();
+
   return (
-    <div className="space-y-7 md:hidden">
+    <div className="space-y-4 md:hidden">
       {companyRows.map((row, rowIndex) => {
-        const rowCompanies = companies.filter((company) => company.category === row.category);
-        const repeated = [...rowCompanies, ...rowCompanies];
+        const rowCompanies = companies.filter(
+          (company) => company.category === row.category,
+        );
+
         return (
           <div key={row.category}>
             {row.category === "current-client" ? (
-              <h2 id="trusted-companies-title-mobile" className="px-5 eyebrow sm:px-8">Current Clients</h2>
+              <h2
+                id="trusted-companies-title-mobile"
+                className="px-5 font-mono text-[0.55rem] uppercase tracking-[0.18em] text-faint sm:px-8"
+              >
+                Current Clients
+              </h2>
             ) : row.category === "in-house" ? (
-              <div className="px-5 pt-3 sm:px-8">
-                <h2 className="eyebrow">Experience</h2>
-                <h3 className="mt-5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-faint">In-House</h3>
+              <div className="px-5 pt-1 sm:px-8">
+                <h2 className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-faint">
+                  Experience
+                </h2>
+                <RowHeading>In-House</RowHeading>
               </div>
             ) : (
-              <h3 className="px-5 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-faint sm:px-8">Agency-Side</h3>
+              <div className="px-5 sm:px-8">
+                <RowHeading>Agency-Side</RowHeading>
+              </div>
             )}
-            <div className="mask-fade-x mt-3 overflow-hidden" aria-label={`${row.label}: ${rowCompanies.map((company) => company.name).join(", ")}`}>
+
+            <div
+              className="mask-fade-x mt-2 overflow-hidden"
+              aria-label={`${row.label}: ${rowCompanies
+                .map((company) => company.name)
+                .join(", ")}`}
+            >
               <motion.div
                 aria-hidden="true"
-                className="flex w-max gap-3 pl-3"
-                animate={reduce ? undefined : { x: rowIndex % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"] }}
-                transition={{ duration: 24 + rowIndex * 3, repeat: Infinity, ease: "linear" }}
+                className="flex w-max"
+                animate={
+                  reduce
+                    ? undefined
+                    : { x: rowIndex % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"] }
+                }
+                transition={{
+                  duration: 24 + rowIndex * 3,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
               >
-                {repeated.map((company, index) => <LogoTile key={`${company.name}-${index}`} company={company} />)}
+                {[0, 1].map((setIndex) => (
+                  <div key={setIndex} className="flex gap-2 pr-2">
+                    {rowCompanies.map((company) => (
+                      <LogoTile
+                        key={`${company.name}-${setIndex}`}
+                        company={company}
+                      />
+                    ))}
+                  </div>
+                ))}
               </motion.div>
             </div>
           </div>
@@ -160,19 +346,17 @@ function MobileRows() {
 }
 
 export function TrustedCompanies() {
-  const [active, setActive] = React.useState<Company | null>(null);
-  const hasComments = companies.some(commentIsReady);
-
   return (
-    <section aria-label="Company experience" className="overflow-hidden rounded-[1.5rem] border border-line bg-surface/70 py-8 shadow-card backdrop-blur-sm sm:py-10">
+    <section
+      aria-label="Company experience"
+      /* No overflow clipping: the hover card has to be able to sit outside the
+         section. The mobile marquee clips itself. */
+      className="relative my-2 rounded-[1.5rem] border border-line/30 bg-surface/20 py-5 sm:py-6"
+    >
       <div className="px-5 sm:px-8">
-        {hasComments ? (
-          <div className="relative hidden min-h-[12rem] items-end md:flex">
-            <AnimatePresence mode="wait">{active ? <PartnerComment company={active} /> : null}</AnimatePresence>
-          </div>
-        ) : null}
-
-        <Reveal dir="none" blur={false}><DesktopRows onActive={setActive} /></Reveal>
+        <Reveal dir="none" blur={false}>
+          <DesktopRows />
+        </Reveal>
       </div>
 
       <MobileRows />
