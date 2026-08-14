@@ -6,10 +6,7 @@ import { BeatRun } from "@/components/beats/run";
 import { companyArtifacts } from "@/components/artifacts/company";
 import { SearchConsole } from "@/components/artifacts/console";
 import { Practice } from "@/components/site/practice";
-import { Proof } from "@/components/site/proof";
-import { Jarod } from "@/components/site/jarod";
 import { Finale } from "@/components/site/finale";
-import { Provenance } from "@/components/site/marquee";
 import { Rule } from "@/components/ui/kit";
 
 export const metadata: Metadata = {
@@ -40,12 +37,6 @@ export default function CompaniesPage() {
         <SearchConsole />
       </div>
 
-      <div className="shell mt-8">
-        <div className="border-t border-line pt-8">
-          <Provenance />
-        </div>
-      </div>
-
       <div className="pt-section">
         <BeatRun
           id="search"
@@ -61,9 +52,12 @@ export default function CompaniesPage() {
       </div>
 
       <Practice />
-      <Proof />
-      <Jarod />
-      <Finale />
+      <Finale
+        eyebrow="Discuss the mandate"
+        title="Bring the role before the search starts."
+        lede="Pressure-test the scope, compensation and market before committing to a process."
+        bullets={["A realistic market read", "A calibrated search scope", "A clear path from intake to offer"]}
+      />
     </>
   );
 }

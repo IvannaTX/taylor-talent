@@ -1,10 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 /**
- * Original mark: a gradient-ringed aperture (the "search" idea, drawn as an
- * open ring rather than a magnifier) beside the wordmark. Pure SVG/CSS so it is
- * crisp at any size and inherits the theme.
+ * Official TTP monogram from the original Astro brand assets.
  */
 export function Wordmark({
   className,
@@ -22,45 +21,8 @@ export function Wordmark({
       )}
       aria-label="Taylor Talent Partners — home"
     >
-      <span className="relative grid h-8 w-8 shrink-0 place-items-center">
-        <svg
-          viewBox="0 0 32 32"
-          fill="none"
-          aria-hidden
-          className="h-full w-full"
-        >
-          <defs>
-            {/* userSpaceOnUse: without it these coords are read as 0-1
-                fractions and the gradient lands off the shape. */}
-            <linearGradient
-              id="tt-mark"
-              x1="4"
-              y1="28"
-              x2="28"
-              y2="4"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%" stopColor="rgb(var(--a-violet))" />
-              <stop offset="52%" stopColor="rgb(var(--a-indigo))" />
-              <stop offset="100%" stopColor="rgb(var(--a-cyan))" />
-            </linearGradient>
-          </defs>
-          {/* Open ring — the gap reads as forward motion. Rotation is done in
-              CSS only: an SVG transform="rotate(a cx cy)" attribute plus a CSS
-              transform-origin would apply the centre twice and displace it. */}
-          <g className="origin-center -rotate-[38deg] transition-transform duration-900 ease-apple [transform-box:view-box] group-hover:rotate-[38deg] motion-reduce:transition-none motion-reduce:group-hover:-rotate-[38deg]">
-            <circle
-              cx="16"
-              cy="16"
-              r="11"
-              stroke="url(#tt-mark)"
-              strokeWidth="2.75"
-              strokeLinecap="round"
-              strokeDasharray="56 13"
-            />
-          </g>
-          <circle cx="16" cy="16" r="3.25" fill="url(#tt-mark)" />
-        </svg>
+      <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-black">
+        <Image src="/brand/ttp-logo.png" alt="" fill sizes="36px" className="object-cover" priority />
       </span>
       <span className="flex flex-col leading-none">
         <span className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-ink">

@@ -21,19 +21,19 @@ const columns = [
     heading: "Practice areas",
     links: practice.functions.slice(0, 5).map((f) => ({
       label: f.name,
-      href: "/#practice",
+      href: "/companies#practice",
     })),
   },
   {
     heading: "Levels",
-    links: practice.levels.map((l) => ({ label: l, href: "/#practice" })),
+    links: practice.levels.map((l) => ({ label: l, href: "/companies#practice" })),
   },
   {
     heading: "Firm",
     links: [
-      { label: "About Jarod", href: "/#jarod" },
-      { label: "How a search runs", href: "/#search" },
-      { label: "References", href: "/#proof" },
+      { label: "About Jarod", href: "/about" },
+      { label: "How a search runs", href: "/companies#search" },
+      { label: "For senior leaders", href: "/leaders" },
     ],
   },
 ];

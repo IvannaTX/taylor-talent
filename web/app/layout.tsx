@@ -40,8 +40,8 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s — ${site.name}`,
+    default: `${site.name} | ${site.tagline}`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
@@ -60,13 +60,13 @@ export const metadata: Metadata = {
     type: "website",
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} | ${site.tagline}`,
     description: site.description,
     locale: site.locale,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} | ${site.tagline}`,
     description: site.description,
   },
   robots: {
@@ -75,7 +75,12 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [
+      { url: site.favicon, sizes: "32x32", type: "image/png" },
+      { url: site.appIcon, sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: [site.favicon],
+    apple: [{ url: site.appleTouchIcon, sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -95,6 +100,7 @@ const jsonLd = {
   name: site.name,
   url: site.url,
   description: site.description,
+  logo: new URL(site.logo, site.url).toString(),
   email: site.email,
   areaServed: "United States",
   address: {

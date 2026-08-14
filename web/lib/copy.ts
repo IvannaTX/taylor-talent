@@ -18,7 +18,6 @@ export const hero = {
   line2: "Change Everything.",
   lede: "Taylor Talent Partners runs retained executive search for companies where one seat changes the trajectory — and keeps a confidential line open to the leaders who fill them.",
   cta: "Book a Discovery Call",
-  secondary: "See how a search runs",
   note: "30 minutes. An honest read on the search, whether or not we work together.",
 };
 
@@ -148,6 +147,26 @@ export const jarod = {
     { k: "Hires in one org", v: "75+" },
     { k: "Largest global PE firms served", v: "9 of 10" },
     { k: "Metric attainment, nine months", v: "121%" },
+  ],
+};
+
+export const aboutPhilosophy = {
+  eyebrow: "Recruiting philosophy",
+  title: "Search should create clarity, not activity.",
+  lede: "The work is measured by the quality of the decision—not the size of the pipeline.",
+  principles: [
+    {
+      title: "Tell the truth early.",
+      body: "If the scope, compensation or expectations do not match the market, the useful moment to say so is before outreach begins.",
+    },
+    {
+      title: "Protect both sides.",
+      body: "Companies deserve candid evidence. Leaders deserve context, discretion and control over every introduction.",
+    },
+    {
+      title: "Stay accountable through the close.",
+      body: "The same person who calibrates the role remains in the room through interviews, references, negotiation and acceptance.",
+    },
   ],
 };
 

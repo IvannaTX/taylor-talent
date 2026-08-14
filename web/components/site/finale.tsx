@@ -15,7 +15,19 @@ import { SchedulerArtifact } from "@/components/artifacts/scheduler";
  * a day/time grid before they click, so landing on Jarod's Paraform booking page
  * is a continuation of something already started rather than a new context.
  */
-export function Finale() {
+export function Finale({
+  eyebrow = finale.eyebrow,
+  title = finale.title,
+  lede = finale.lede,
+  cta = finale.cta,
+  bullets = finale.bullets,
+}: {
+  eyebrow?: string;
+  title?: string;
+  lede?: string;
+  cta?: string;
+  bullets?: readonly string[];
+} = {}) {
   return (
     <section id="book" className="relative scroll-mt-24 py-section">
       <div className="shell">
@@ -29,22 +41,22 @@ export function Finale() {
           <div className="relative grid grid-cols-1 gap-10 p-6 sm:p-10 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-14 lg:p-14">
             <div>
               <Reveal blur={false}>
-                <Eyebrow>{finale.eyebrow}</Eyebrow>
+                <Eyebrow>{eyebrow}</Eyebrow>
               </Reveal>
 
               <DisplayHead size="md" className="mt-4 max-w-[22ch]">
-                {finale.title}
+                {title}
               </DisplayHead>
 
               <Reveal delay={0.12}>
                 <p className="mt-5 max-w-prose text-[1.0625rem] leading-relaxed text-muted">
-                  {finale.lede}
+                  {lede}
                 </p>
               </Reveal>
 
               <Reveal delay={0.18}>
                 <ul className="mt-7 space-y-2.5">
-                  {finale.bullets.map((b) => (
+                  {bullets.map((b) => (
                     <li
                       key={b}
                       className="flex items-start gap-2.5 text-[0.9375rem] text-muted"
@@ -68,7 +80,7 @@ export function Finale() {
                     size="lg"
                     className="w-full sm:w-auto"
                   >
-                    {finale.cta}
+                    {cta}
                     <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
                   </Button>
                   <Button

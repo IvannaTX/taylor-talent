@@ -7,9 +7,13 @@ export const site = {
   shortName: "Taylor Talent",
   url: "https://taylortalentpartners.com",
   locale: "en_US",
-  tagline: "Executive search and embedded recruiting",
+  tagline: "Retained Executive Search",
   description:
-    "Taylor Talent Partners runs executive search and embedded recruiting for venture- and private-equity-backed companies, and keeps a confidential bench of senior leaders. Ten years of search, one point of contact.",
+    "Taylor Talent Partners delivers retained executive search for high-impact leadership roles, with direct senior attention from market mapping through offer acceptance.",
+  logo: "/brand/ttp-logo.png",
+  favicon: "/brand/favicon-ttp.png",
+  appIcon: "/brand/app-icon-512.png",
+  appleTouchIcon: "/brand/apple-touch-icon-ttp.png",
   location: "Austin, Texas",
   founder: "Jarod Taylor",
   email: "jarod@taylortalentpartners.com",
@@ -30,6 +34,6 @@ export const site = {
 export const nav = [
   { label: "For Companies", href: "/companies" },
   { label: "For Leaders", href: "/leaders" },
-  { label: "Practice areas", href: "/#practice" },
-  { label: "About", href: "/#jarod" },
+  { label: "Practice areas", href: "/companies#practice" },
+  { label: "About", href: "/about" },
 ] as const;

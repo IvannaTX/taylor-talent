@@ -2,12 +2,11 @@
 
 import * as React from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { hero } from "@/lib/copy";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 import { EASE } from "@/components/motion/reveal";
-import { SearchConsole } from "@/components/artifacts/console";
 import { TrustedCompanies } from "@/components/home/TrustedCompanies";
 import { ExecutiveSearchStories } from "@/components/home/ExecutiveSearchStories";
 
@@ -32,7 +31,6 @@ export function Hero() {
     offset: ["start start", "end start"],
   });
   const copyY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -70]);
-  const artY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : -24]);
 
   return (
     <section ref={ref} className="relative overflow-clip pt-28 sm:pt-36">
@@ -87,7 +85,7 @@ export function Hero() {
               transition={{ duration: 0.85, delay: 0.54, ease: EASE }}
               className="min-w-0"
             >
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="flex items-center">
                 <Button
                   href={site.bookCall}
                   size="lg"
@@ -95,15 +93,6 @@ export function Hero() {
                 >
                   {hero.cta}
                   <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
-                </Button>
-                <Button
-                  href="#search"
-                  variant="secondary"
-                  size="lg"
-                  className="w-full sm:w-auto"
-                >
-                  {hero.secondary}
-                  <ArrowDown className="h-4 w-4" strokeWidth={2} />
                 </Button>
               </div>
               <p className="mt-4 text-[0.8125rem] leading-relaxed text-faint">
@@ -123,17 +112,6 @@ export function Hero() {
         </motion.div>
 
         <ExecutiveSearchStories />
-
-        {/* Proof of work, full width — no stock hero image, no gradient blob */}
-        <motion.div
-          style={{ y: artY }}
-          className="mt-14 min-w-0 sm:mt-16"
-          initial={{ opacity: 0, y: 40, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.36, ease: EASE }}
-        >
-          <SearchConsole />
-        </motion.div>
 
       </div>
     </section>

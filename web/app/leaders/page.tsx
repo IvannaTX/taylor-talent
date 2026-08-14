@@ -5,8 +5,6 @@ import { PageHero } from "@/components/site/page-hero";
 import { BeatRun } from "@/components/beats/run";
 import { leaderArtifacts } from "@/components/artifacts/leader";
 import { ConfidentialArtifact } from "@/components/artifacts/leader";
-import { Practice } from "@/components/site/practice";
-import { Jarod } from "@/components/site/jarod";
 import { Finale } from "@/components/site/finale";
 import { Rule } from "@/components/ui/kit";
 
@@ -52,9 +50,13 @@ export default function LeadersPage() {
         <Rule />
       </div>
 
-      <Practice />
-      <Jarod />
-      <Finale />
+      <Finale
+        eyebrow="Start privately"
+        title="A confidential conversation, on your terms."
+        lede="No résumé blast and no automatic introduction. Start with the move you want to make—even if the timing is not now."
+        bullets={["Nothing shared without approval", "Only relevant senior mandates", "A direct line to Jarod"]}
+        cta="Start a Confidential Conversation"
+      />
     </>
   );
 }

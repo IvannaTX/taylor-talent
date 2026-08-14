@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { site } from "@/lib/site";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
@@ -62,23 +63,20 @@ export function renderOgImage({
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
           <div
             style={{
-              width: 44,
-              height: 44,
-              borderRadius: 9999,
-              background: GRADIENT,
+              width: 52,
+              height: 52,
+              borderRadius: 9,
+              background: "#020204",
+              color: "#f4f4f8",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              fontSize: 15,
+              fontWeight: 500,
+              letterSpacing: "-0.08em",
             }}
           >
-            <div
-              style={{
-                width: 18,
-                height: 18,
-                borderRadius: 9999,
-                background: "#08080b",
-              }}
-            />
+            TTP
           </div>
           <div
             style={{
@@ -88,7 +86,7 @@ export function renderOgImage({
               fontWeight: 600,
             }}
           >
-            Taylor Talent Partners
+            {site.name}
           </div>
         </div>
 
