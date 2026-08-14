@@ -13,7 +13,9 @@ export type Company = {
    * row. 1 = base. Nudge freely; nothing else depends on them.
    */
   optical?: number;
-  /** No usable vector asset — set the name as type instead. */
+  /** Optical cap for unusually wide or compact marks. */
+  opticalWidth?: number;
+  /** Use the approved typographic fallback when an asset does not mask cleanly. */
   wordmark?: boolean;
 };
 
@@ -30,18 +32,18 @@ export type Company = {
  * of an oversized canvas and have been normalised in place.
  */
 export const companies: Company[] = [
-  { name: "Palantir", logo: "/logos/companies/palantir.svg", category: "current-client" },
-  { name: "Rippling", logo: "/logos/companies/rippling.svg", category: "current-client", optical: 1.05 },
-  { name: "Pallet", logo: "/logos/companies/pallet.svg", category: "current-client" },
-  { name: "Decagon", logo: "/logos/companies/decagon.svg", category: "current-client" },
-  { name: "Scale", logo: "/logos/companies/scale.svg", category: "current-client", optical: 0.95 },
-  { name: "Apple", logo: "/logos/companies/apple.svg", category: "in-house", optical: 1.3 },
-  { name: "Google", logo: "/logos/companies/google.svg", category: "in-house", optical: 1.05 },
-  { name: "Indeed", logo: "/logos/companies/indeed.svg", category: "in-house" },
+  { name: "Palantir", logo: "/logos/companies/palantir.svg", category: "current-client", opticalWidth: 104 },
+  { name: "Rippling", logo: "/logos/companies/rippling.svg", category: "current-client", optical: 0.9, opticalWidth: 124 },
+  { name: "Pallet", logo: "/logos/companies/pallet.svg", category: "current-client", opticalWidth: 94 },
+  { name: "Decagon", logo: "/logos/companies/decagon.svg", category: "current-client", opticalWidth: 112 },
+  { name: "Scale", logo: "/logos/companies/scale.svg", category: "current-client", optical: 0.95, opticalWidth: 88 },
+  { name: "Apple", logo: "/logos/companies/apple.svg", category: "in-house", optical: 1.3, opticalWidth: 32 },
+  { name: "Google", logo: "/logos/companies/google.svg", category: "in-house", optical: 1.05, opticalWidth: 88 },
+  { name: "Indeed", logo: "/logos/companies/indeed.svg", category: "in-house", opticalWidth: 96 },
   { name: "GLG", logo: "/logos/companies/glg.png", category: "agency-side", wordmark: true },
-  { name: "Checkr", logo: "/logos/companies/checkr.svg", category: "agency-side" },
-  { name: "DISCO", logo: "/logos/companies/disco.svg", category: "agency-side", optical: 0.92 },
-  { name: "Talentful", logo: "/logos/companies/talentful.svg", category: "agency-side", optical: 0.95 },
+  { name: "Checkr", logo: "/logos/companies/checkr.svg", category: "agency-side", optical: 1.03, opticalWidth: 94 },
+  { name: "DISCO", logo: "/logos/companies/disco.svg", category: "agency-side", optical: 0.92, opticalWidth: 88 },
+  { name: "Talentful", logo: "/logos/companies/talentful.svg", category: "agency-side", optical: 0.95, opticalWidth: 92 },
 ];
 
 export const companyRows = [

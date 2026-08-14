@@ -30,15 +30,16 @@ export const site = {
   bookCall: "https://www.paraform.com/cal/jarod",
 } as const;
 
-/** Footer-only. Kept out of `nav` so the primary bar stays four items. */
+/** Footer-only. Kept out of the primary navigation. */
 export const legalNav = [
   { label: "Terms of Use", href: "/terms" },
   { label: "Privacy Policy", href: "/privacy" },
 ] as const;
 
 export const nav = [
+  { label: "Home", href: "/" },
   { label: "For Companies", href: "/companies" },
   { label: "For Leaders", href: "/leaders" },
-  { label: "Practice areas", href: "/companies#practice" },
+  { label: "Practice Areas", href: "/practice-areas" },
   { label: "About", href: "/about" },
 ] as const;

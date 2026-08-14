@@ -5,7 +5,6 @@ import { PageHero } from "@/components/site/page-hero";
 import { BeatRun } from "@/components/beats/run";
 import { companyArtifacts } from "@/components/artifacts/company";
 import { SearchConsole } from "@/components/artifacts/console";
-import { Practice } from "@/components/site/practice";
 import { Finale } from "@/components/site/finale";
 import { Rule } from "@/components/ui/kit";
 
@@ -51,7 +50,6 @@ export default function CompaniesPage() {
         <Rule />
       </div>
 
-      <Practice />
       <Finale
         eyebrow="Discuss the mandate"
         title="Bring the role before the search starts."

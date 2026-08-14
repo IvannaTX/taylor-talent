@@ -41,11 +41,12 @@ function CompanyLogo({ company }: { company: Company }) {
   return (
     <span
       aria-hidden="true"
-      className="block w-full bg-current"
+      className="block max-w-full bg-current"
       style={{
-        // Height drives the fit; width only caps the very wide wordmarks, which
-        // is what keeps a 7:1 mark from outweighing a 4:1 one.
+        // Height sets perceived weight while the independent width cap keeps
+        // long wordmarks from overpowering compact marks.
         height: Math.round(LOGO_H * (company.optical ?? 1) * 10) / 10,
+        width: company.opticalWidth ?? 104,
         WebkitMaskImage: `url(${company.logo})`,
         maskImage: `url(${company.logo})`,
         WebkitMaskPosition: "center",
