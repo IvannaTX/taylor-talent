@@ -131,7 +131,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
-      <body className={`${sans.variable} ${display.variable} ${mono.variable}`}>
+      {/*
+        suppressHydrationWarning does not inherit — it covers only the element it
+        sits on. <html> carries it for the theme class the provider writes before
+        paint; <body> needs its own because extensions (Grammarly, password
+        managers, translators) stamp attributes like data-gr-ext-installed onto
+        body between the HTML arriving and React hydrating. Those attributes are
+        absent from our server output, so React reports a mismatch for markup it
+        never rendered. This scopes the exemption to body's own attributes and
+        leaves genuine mismatches in the tree below still reported.
+      */}
+      <body
+        suppressHydrationWarning
+        className={`${sans.variable} ${display.variable} ${mono.variable}`}
+      >
         <ThemeProvider>
           <MotionRoot>
             <Backdrop />
