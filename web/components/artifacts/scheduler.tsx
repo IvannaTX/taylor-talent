@@ -107,7 +107,7 @@ export function SchedulerArtifact({ className }: { className?: string }) {
             {booking.tz}
           </span>
           <span className="font-mono text-[0.5625rem] uppercase tracking-[0.14em] text-faint">
-            Scheduling continues on {site.bookingHost}
+            Scheduling opens in a new tab
           </span>
         </div>
       }

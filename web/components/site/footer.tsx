@@ -1,115 +1,92 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { site } from "@/lib/site";
-import { practice } from "@/lib/copy";
+import { legalNav, site } from "@/lib/site";
+import { cn } from "@/lib/utils";
 import { Wordmark } from "@/components/wordmark";
 
 /**
- * Dense, multi-column footer. The depth is deliberate: practice areas and levels
- * are real navigational surface for a search firm, not filler.
+ * Three regions on one line: the entity on the left, the legal documents in the
+ * centre, the two outbound destinations on the right. A slim identity tier sits
+ * above the hairline.
+ *
+ * The previous footer carried columns of practice areas and levels; that surface
+ * now lives on /companies, and repeating it here only diluted it. A closing
+ * footer earns more by being quiet.
  */
-const columns = [
-  {
-    heading: "Engage",
-    links: [
-      { label: "For Companies", href: "/companies" },
-      { label: "For Leaders", href: "/leaders" },
-      { label: "Book a Discovery Call", href: site.bookCall },
-    ],
-  },
-  {
-    heading: "Practice areas",
-    links: practice.functions.slice(0, 5).map((f) => ({
-      label: f.name,
-      href: "/companies#practice",
-    })),
-  },
-  {
-    heading: "Levels",
-    links: practice.levels.map((l) => ({ label: l, href: "/companies#practice" })),
-  },
-  {
-    heading: "Firm",
-    links: [
-      { label: "About Jarod", href: "/about" },
-      { label: "How a search runs", href: "/companies#search" },
-      { label: "For senior leaders", href: "/leaders" },
-    ],
-  },
-];
+
+const linkBase =
+  "text-[0.875rem] leading-relaxed text-muted transition-colors duration-300 hover:text-ink";
+
+const legalLinkBase =
+  "text-[0.6875rem] leading-5 tracking-[0.01em] text-faint transition-colors duration-300 hover:text-ink";
+
+/** Outbound link with the site's standard lifting arrow. */
+function OutboundLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn("group inline-flex items-center gap-1.5", linkBase)}
+    >
+      {children}
+      <ArrowUpRight
+        className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 ease-apple group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
+        strokeWidth={2}
+        aria-hidden
+      />
+      <span className="sr-only">(opens in a new tab)</span>
+    </a>
+  );
+}
 
 export function Footer() {
   return (
     <footer className="relative border-t border-line">
-      <div className="shell py-14 sm:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_repeat(4,1fr)] lg:gap-8">
-          <div className="lg:pr-8">
-            <Wordmark />
-            <p className="mt-5 max-w-xs text-[0.9375rem] leading-relaxed text-muted">
-              Retained executive search from {site.location}. One point of
-              contact, intake to start date.
-            </p>
-            <a
-              href={`mailto:${site.email}`}
-              className="mt-5 inline-block text-[0.875rem] text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-accent-indigo"
-            >
-              {site.email}
-            </a>
-          </div>
-
-          {columns.map((col) => (
-            <nav key={col.heading} aria-label={col.heading}>
-              <h2 className="eyebrow">{col.heading}</h2>
-              <ul className="mt-4 space-y-2.5">
-                {col.links.map((l) => {
-                  const external = /^(https?:|mailto:)/.test(l.href);
-                  const cls =
-                    "text-[0.875rem] leading-snug text-muted transition-colors duration-300 hover:text-ink";
-                  return (
-                    <li key={`${col.heading}-${l.label}`}>
-                      {external ? (
-                        <a
-                          href={l.href}
-                          className={cls}
-                          {...(l.href.startsWith("http")
-                            ? { target: "_blank", rel: "noopener noreferrer" }
-                            : {})}
-                        >
-                          {l.label}
-                        </a>
-                      ) : (
-                        <Link href={l.href} className={cls}>
-                          {l.label}
-                        </Link>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </nav>
-          ))}
+      <div className="shell py-12 sm:py-14">
+        {/* Identity */}
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <Wordmark />
+          <a
+            href={`mailto:${site.email}`}
+            className="text-[0.875rem] text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-accent-indigo"
+          >
+            {site.email}
+          </a>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-line pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
-            © {new Date().getFullYear()} {site.name} · {site.location}
+        <div
+          aria-hidden
+          className="mt-9 h-px w-full bg-gradient-to-r from-transparent via-line to-transparent"
+        />
+
+        {/* Entity · legal · destinations. Each region is two lines, so the three
+            columns balance without any of them needing a heading. */}
+        <div className="mt-9 grid gap-8 md:grid-cols-3 md:items-start">
+          <p className="text-[0.8125rem] leading-relaxed text-faint">
+            © {new Date().getFullYear()} {site.legalEntity}
+            <span className="block">{site.location}</span>
           </p>
-          <div className="flex items-center gap-5">
-            <a
-              href={site.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-faint transition-colors duration-300 hover:text-ink"
-            >
-              LinkedIn
-              <ArrowUpRight
-                className="h-3 w-3 transition-transform duration-300 ease-apple group-hover:-translate-y-0.5 group-hover:translate-x-0.5 motion-reduce:transition-none"
-                strokeWidth={2}
-              />
-            </a>
-            <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
-              Scheduling via {site.bookingHost}
-            </span>
+
+          <nav aria-label="Legal" className="flex flex-wrap items-center gap-x-5 gap-y-1 md:justify-center">
+            {legalNav.map((item) => (
+              <Link key={item.href} href={item.href} className={legalLinkBase}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="flex flex-col items-start md:items-end">
+            <OutboundLink href={site.linkedin}>LinkedIn</OutboundLink>
+            <OutboundLink href={site.bookCall}>
+              Schedule a Discovery Call
+            </OutboundLink>
           </div>
         </div>
       </div>

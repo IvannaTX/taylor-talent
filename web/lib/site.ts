@@ -16,6 +16,8 @@ export const site = {
   appleTouchIcon: "/brand/apple-touch-icon-ttp.png",
   location: "Austin, Texas",
   founder: "Jarod Taylor",
+  /** The operating entity. Used in the footer copyright and both legal documents. */
+  legalEntity: "Jarod Taylor Enterprises",
   email: "jarod@taylortalentpartners.com",
   linkedin: "https://www.linkedin.com/company/taylortalent/",
 
@@ -26,10 +28,13 @@ export const site = {
    * rel="noopener noreferrer" automatically.
    */
   bookCall: "https://www.paraform.com/cal/jarod",
-
-  /** Shown wherever we reference where scheduling happens. */
-  bookingHost: "Paraform",
 } as const;
+
+/** Footer-only. Kept out of `nav` so the primary bar stays four items. */
+export const legalNav = [
+  { label: "Terms of Use", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
+] as const;
 
 export const nav = [
   { label: "For Companies", href: "/companies" },
