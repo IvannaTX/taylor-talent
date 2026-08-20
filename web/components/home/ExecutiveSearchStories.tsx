@@ -72,7 +72,7 @@ function StoryVisual({ story }: { story: SearchStory }) {
   if (story.visual.type === "workflow") return <SearchWorkflow />;
   return (
     <div className="relative h-full min-h-[22rem] overflow-hidden bg-sunken">
-      <Image src={story.visual.src} alt={story.visual.alt} fill sizes="(min-width: 1024px) 62vw, 100vw" className="object-cover" priority={story.id === "white-glove"} />
+      <Image src={story.visual.src} alt={story.visual.alt} fill sizes="(min-width: 1024px) 62vw, 100vw" className="object-cover" style={{ objectPosition: story.visual.position ?? "center" }} priority={story.id === "white-glove"} />
       <div className="absolute inset-0 bg-gradient-to-t from-sunken/45 via-transparent to-transparent" aria-hidden />
     </div>
   );

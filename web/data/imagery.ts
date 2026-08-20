@@ -123,13 +123,13 @@ export const provenance: Record<string, Provenance> = {
 
   /* ---- Story carousel: generated wides ------------------------------ */
   ...Object.fromEntries(
-    ["white-glove-support-v2", "leadership-access-v2"].map((id) => [
+    ["white-glove-support", "executive-network"].map((id) => [
       `/images/search-stories/${id}.webp`,
       {
         kind: "generated",
-        by: "OpenAI built-in image generation tool (story-specific editorial photography prompt)",
-        on: "2026-08-19",
-        note: "Authored as a unique 3:2 wide story visual, not derived from or reused by any Leadership Search portrait; converted to WebP with cwebp.",
+        by: "OpenAI image generation (ChatGPT), supplied by the client as the approved final asset for this card",
+        on: "2026-08-20",
+        note: "Used as supplied — converted from PNG to WebP with sharp at native resolution, no crop or retouch. Authored as a unique wide story visual; not derived from, and not reused by, any Leadership Search portrait.",
       } satisfies Provenance,
     ]),
   ),
@@ -230,14 +230,14 @@ export const imageSlots: ImageSlot[] = [
     id: "search-story-white-glove",
     surface: "ExecutiveSearchStories",
     role: "White glove support",
-    asset: "/images/search-stories/white-glove-support-v2.webp",
+    asset: "/images/search-stories/white-glove-support.webp",
     photographic: true,
   },
   {
     id: "search-story-leadership-access",
     surface: "ExecutiveSearchStories",
     role: "Exclusive executive network",
-    asset: "/images/search-stories/leadership-access-v2.webp",
+    asset: "/images/search-stories/executive-network.webp",
     photographic: true,
   },
 

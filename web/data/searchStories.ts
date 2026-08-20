@@ -3,7 +3,20 @@ export type SearchStory = {
   title: string;
   description: string;
   metric?: { value: string; label: string };
-  visual: { type: "image"; src: string; alt: string } | { type: "workflow" };
+  visual:
+    | {
+        type: "image";
+        src: string;
+        alt: string;
+        /**
+         * object-position for the crop. The visual panel runs from roughly
+         * 1.35:1 on desktop down to ~0.95:1 on mobile, so a 3:2 source loses a
+         * third of its width at the narrow end — this is what keeps the people
+         * who matter inside the frame rather than trusting dead centre.
+         */
+        position?: string;
+      }
+    | { type: "workflow" };
 };
 
 export const searchStories: SearchStory[] = [
@@ -15,8 +28,11 @@ export const searchStories: SearchStory[] = [
     metric: { value: "100%", label: "Client Satisfaction" },
     visual: {
       type: "image",
-      src: "/images/search-stories/white-glove-support-v2.webp",
-      alt: "Search partner and company leader reviewing a brief in a bright private meeting",
+      src: "/images/search-stories/white-glove-support.webp",
+      alt: "A search partner and a candidate in an unhurried one-to-one conversation, seated in a warm, book-lined lounge",
+      /* Two subjects, at ~22% and ~70% across. Both survive the mobile crop
+         from centre; the upward bias holds the faces, which sit high in frame. */
+      position: "50% 35%",
     },
   },
   {
@@ -26,8 +42,11 @@ export const searchStories: SearchStory[] = [
       "The best candidates rarely apply online. Long-standing relationships provide access to exceptional executives often unavailable through traditional recruiting.",
     visual: {
       type: "image",
-      src: "/images/search-stories/leadership-access-v2.webp",
-      alt: "Two leadership archetypes in a discreet editorial-style conversation",
+      src: "/images/search-stories/executive-network.webp",
+      alt: "A startup leadership team working through a hiring pipeline around a long table, beside a whiteboard in a timber-and-glass office",
+      /* The central group spans ~30-72% across and stays whole at every
+         breakpoint; only the two figures at the outer edges lose anything. */
+      position: "50% 45%",
     },
   },
   {

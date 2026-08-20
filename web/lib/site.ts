@@ -71,7 +71,7 @@ export const recruitingDomains = [
     href: "/practice-areas#executive-search",
     short: "Executive Search",
     summary:
-      "Retained search for C-suite and senior leadership seats where a miss is expensive to unwind, including founder-adjacent and board-visible roles.",
+      "Executive search for C-suite and senior leadership seats where a miss is expensive to unwind, including founder-adjacent and board-visible roles.",
     roles: [
       "Chief Executive Officer",
       "Chief Operating Officer",

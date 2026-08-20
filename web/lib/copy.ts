@@ -122,7 +122,7 @@ export const practice = {
   functions: [
     { name: "Go-to-market", note: "Sales, marketing, revenue ops" },
     { name: "Executive / C-suite", note: "CEO, COO, CFO, CRO, CTO, CPO" },
-    { name: "Engineering & technical", note: "VP Eng, platform, infra, data, AI" },
+    { name: "Technical", note: "VP Eng, platform, infra, data, AI" },
     { name: "Product", note: "CPO through senior PM" },
     { name: "Customer success", note: "CS, support, post-sales" },
     { name: "Finance, operations & G&A", note: "Finance, people, business ops" },

@@ -23,7 +23,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
   {
     id: "chief-technology-officer",
     title: "Chief Technology Officer",
-    practiceArea: "Technical & Engineering",
+    practiceArea: "Technical Recruiting",
     industry: "Series C SaaS",
     location: "Austin, TX",
     previously: ["Google", "Snowflake", "Datadog"],
@@ -51,7 +51,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
   {
     id: "vp-engineering",
     title: "VP of Engineering",
-    practiceArea: "Technical & Engineering",
+    practiceArea: "Technical Recruiting",
     industry: "Cloud Infrastructure",
     location: "Seattle, WA",
     previously: ["Cloudflare", "HashiCorp", "Confluent"],
@@ -135,7 +135,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
   {
     id: "staff-engineer",
     title: "Staff Software Engineer",
-    practiceArea: "Technical & Engineering",
+    practiceArea: "Technical Recruiting",
     industry: "Seed-Stage Infrastructure",
     location: "Remote · U.S.",
     previously: ["Stripe", "Vercel", "Supabase"],
@@ -149,7 +149,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
   {
     id: "technical-lead",
     title: "Principal Technical Lead",
-    practiceArea: "Technical & Engineering",
+    practiceArea: "Technical Recruiting",
     industry: "Data Platform",
     location: "Boston, MA",
     previously: ["AWS", "Databricks", "MongoDB"],

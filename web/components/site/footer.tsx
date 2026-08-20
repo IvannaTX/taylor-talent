@@ -69,25 +69,25 @@ export function Footer() {
         className="absolute inset-x-0 top-0 h-px bg-ring-gradient opacity-30"
       />
 
-      <div className="shell pb-10 pt-16 sm:pb-12 sm:pt-20 lg:pt-24">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] lg:gap-16">
+      <div className="shell pb-7 pt-12">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] lg:gap-14">
           {/* ---- identity ------------------------------------------- */}
           <div className="min-w-0">
             <Wordmark />
-            <p className="mt-5 max-w-[34ch] text-[0.9375rem] leading-relaxed text-muted">
+            <p className="mt-4 max-w-[34ch] text-[0.9375rem] leading-relaxed text-muted">
               {site.tagline} across go-to-market, executive search and
               technical hiring.
             </p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-6 inline-block text-[0.875rem] text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-accent-indigo"
+              className="mt-5 inline-block text-[0.875rem] text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-accent-indigo"
             >
               {site.email}
             </a>
           </div>
 
           {/* ---- navigation ----------------------------------------- */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:gap-x-6">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 lg:gap-x-6">
             {footerNav.map((column) => {
               const headingId = `footer-${column.id}`;
               return (
@@ -98,8 +98,8 @@ export function Footer() {
                   >
                     {column.heading}
                   </h2>
-                  <nav aria-labelledby={headingId} className="mt-5">
-                    <ul className="flex flex-col gap-3">
+                  <nav aria-labelledby={headingId} className="mt-4">
+                    <ul className="flex flex-col gap-3 sm:gap-2.5">
                       {column.links.map((link) => (
                         <li key={link.href}>
                           <Link href={link.href} className={columnLink}>
@@ -123,11 +123,11 @@ export function Footer() {
 
         <div
           aria-hidden
-          className="mt-14 h-px w-full bg-hairline-b sm:mt-16"
+          className="mt-6 h-px w-full bg-hairline-b"
         />
 
         {/* ---- bottom bar ----------------------------------------- */}
-        <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+        <div className="mt-4 flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
           <p className="text-[0.8125rem] leading-relaxed text-faint">
             © {year} {site.alternateName}
             {/* Both names are recorded in lib/site.ts and neither is invented:
