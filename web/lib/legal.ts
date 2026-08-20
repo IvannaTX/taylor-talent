@@ -63,7 +63,7 @@ export const terms: LegalDoc = {
       id: "agreement",
       title: "Agreement to these terms",
       blocks: [
-        `This website is operated by ${ENTITY} (“${site.shortName},” “we,” “us,” or “our”). By accessing or using ${site.url.replace("https://", "")} and any of its pages, you agree to these Terms of Use.`,
+        `This website is operated by ${ENTITY} (“${site.name},” “we,” “us,” or “our”). By accessing or using ${site.url.replace("https://", "")} and any of its pages, you agree to these Terms of Use.`,
         "If you do not agree with any part of them, please do not use the site. Continuing to use it after we post a revised version means you accept that revision.",
         "These terms govern the website only. Retained executive search, embedded recruiting, and every other service we provide are governed by a separate written agreement signed by both parties. Where a signed agreement and these terms conflict, the signed agreement controls for that engagement.",
       ],

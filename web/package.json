@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start -p 3100",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "backdrops": "node scripts/generate-backdrops.ts",
+    "backdrops:check": "node scripts/check-backdrop-contrast.ts",
+    "imagery:audit": "node scripts/audit-imagery.ts",
+    "checks": "npm run typecheck && npm run lint && npm run imagery:audit && npm run backdrops:check"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

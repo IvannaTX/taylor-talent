@@ -201,13 +201,13 @@ export const trajectory = [
 /**
  * Booking details for the scheduler artifact that closes the page.
  *
- * These mirror Jarod's actual Paraform page (host name, 30 minutes, Google Meet,
- * month-grid calendar) so clicking through is a continuation rather than a new
- * context. Keep them in sync if the real booking page changes.
+ * Mirrors the real booking page (host, platform, month-grid calendar) so
+ * clicking through is a continuation rather than a new context. No meeting
+ * length is stated anywhere: the site does not promise a fixed duration.
  */
 export const booking = {
   host: "Jarod Taylor",
-  duration: "30 min",
+  subtitle: "Discovery call",
   platform: "Google Meet",
   tz: "CT — Austin",
   times: ["9:00 AM", "10:30 AM", "1:00 PM", "2:30 PM", "4:00 PM"],

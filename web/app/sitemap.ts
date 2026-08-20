@@ -1,10 +1,20 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 
+/**
+ * Ordered by importance rather than by route depth. /archive is deliberately
+ * absent: it is a superseded snapshot, noindexed and disallowed in robots.
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return [
     { url: site.url, lastModified, changeFrequency: "monthly", priority: 1 },
+    {
+      url: `${site.url}/practice-areas`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
     {
       url: `${site.url}/companies`,
       lastModified,
@@ -16,12 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.9,
-    },
-    {
-      url: `${site.url}/practice-areas`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
     },
     {
       url: `${site.url}/about`,

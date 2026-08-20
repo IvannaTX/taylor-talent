@@ -15,10 +15,7 @@ import { cn } from "@/lib/utils";
  * borrowed logos would be the one dishonest thing on the page.
  */
 export function Provenance({ className }: { className?: string }) {
-  const groups = [
-    { key: "In-house", names: provenance.inHouse },
-    { key: "Agency-side", names: provenance.agency },
-  ];
+  const groups = [{ key: "In-House Experience", names: provenance.inHouse }];
 
   return (
     <div className={cn("", className)}>

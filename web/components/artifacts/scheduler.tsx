@@ -36,7 +36,7 @@ function monthShape(year: number, month: number) {
 /**
  * The close: a scheduling preview that mirrors Jarod's real Paraform page.
  *
- * That page shows his avatar, a 30-minute Google Meet, and a month-grid calendar.
+ * That page shows his avatar, a Google Meet link, and a month-grid calendar.
  * Matching that structure here is the entire point — a visitor picks a day and a
  * time in a surface they recognise, then clicks through and lands on the same
  * mental model instead of a fresh context.
@@ -129,7 +129,7 @@ export function SchedulerArtifact({ className }: { className?: string }) {
             {booking.host}
           </div>
           <div className="num font-mono text-[0.625rem] uppercase tracking-[0.14em] text-faint">
-            {booking.duration}
+            {booking.subtitle}
           </div>
         </div>
       </div>

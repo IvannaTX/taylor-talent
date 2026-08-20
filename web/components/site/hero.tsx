@@ -72,14 +72,22 @@ export function Hero() {
           </h1>
 
           <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-16">
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.44, ease: EASE }}
-              className="max-w-[52ch] text-[1.0625rem] leading-relaxed text-muted sm:text-lg"
+              className="min-w-0"
             >
-              {hero.lede}
-            </motion.p>
+              <p className="max-w-[52ch] text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
+                {hero.lede}
+              </p>
+              {/* The plain statement of who we serve and how engagements run.
+                  Kept as ordinary text so a crawler or an agent can read it
+                  without executing anything. */}
+              <p className="mt-4 max-w-[56ch] text-[0.9375rem] leading-relaxed text-faint">
+                {hero.positioning}
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 16 }}

@@ -6,7 +6,7 @@ import { LegalDocument } from "@/components/legal/legal-document";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Taylor Talent Partners handles personal information: what we collect, scheduling requests, cookies, analytics, third-party services, retention periods, and your rights.",
+    "How Taylor Talent handles personal information: what we collect, scheduling requests, cookies, analytics, third-party services, retention periods, and your rights.",
   alternates: { canonical: "/privacy" },
   openGraph: {
     title: `Privacy Policy | ${site.name}`,

@@ -41,6 +41,22 @@
     --orb-opacity: 0.22;
 
     --grain-opacity: 0.04;
+
+    /* Client showcase backdrops. Defined once and deliberately NOT overridden
+       in .light: every piece of type in that section is hardcoded white, so the
+       surface is unconditionally dark in both themes — it was a photograph under
+       black scrims before, and it is generated artwork now. Pointing it at the
+       theme-aware tokens would turn the ground pale in light mode and leave
+       white text on it. Values are the dark-theme --orb-* and accent ramp.
+       Mirrored as ORB_RGB / ACCENT_RGB in lib/backdrops.ts for the generator. */
+    --bd-ground: 6 7 9;
+    --bd-a: 79 70 229;
+    --bd-b: 30 64 175;
+    --bd-c: 13 148 136;
+    --bd-violet: 167 139 250;
+    --bd-indigo: 110 123 255;
+    --bd-cyan: 52 231 228;
+
     color-scheme: dark;
   }
 

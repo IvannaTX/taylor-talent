@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/site";
+import { site, recruitingDomains, legalSpecialty } from "@/lib/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { MotionRoot } from "@/components/motion/config";
 import { Backdrop } from "@/components/backdrop";
@@ -47,13 +47,16 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.founder }],
   keywords: [
+    "startup recruiting",
+    "scale-up recruiting",
+    "go-to-market recruiting",
     "executive search",
-    "embedded recruiting",
-    "fractional recruiting",
+    "technical recruiting",
+    "engineering recruiting",
+    "legal search",
     "retained search",
-    "Austin executive recruiter",
-    "VP and C-suite hiring",
-    "talent strategy",
+    "contingency search",
+    "Austin recruiting firm",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -93,34 +96,99 @@ export const viewport: Viewport = {
   ],
 };
 
-/** Organization + Person structured data for rich results. */
+/**
+ * Structured data, as a single @graph so the Organization, the WebSite and the
+ * service catalogue resolve to one another by @id rather than floating as three
+ * unrelated blobs. Everything below is stated elsewhere on the site in plain
+ * text — schema restates it for machines, it does not add claims.
+ */
+const ORG_ID = `${site.url}/#organization`;
+const SITE_ID = `${site.url}/#website`;
+
+const services = [...recruitingDomains, legalSpecialty].map((domain) => ({
+  "@type": "Service",
+  "@id": `${site.url}${domain.href}`,
+  name: domain.name,
+  description: domain.summary,
+  serviceType: domain.name,
+  category: "Recruiting",
+  provider: { "@id": ORG_ID },
+  areaServed: { "@type": "Country", name: "United States" },
+  audience: {
+    "@type": "BusinessAudience",
+    name: "Venture- and private-equity-backed startups and scale-ups",
+  },
+}));
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: site.name,
-  url: site.url,
-  description: site.description,
-  logo: new URL(site.logo, site.url).toString(),
-  email: site.email,
-  areaServed: "United States",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Austin",
-    addressRegion: "TX",
-    addressCountry: "US",
-  },
-  founder: {
-    "@type": "Person",
-    name: site.founder,
-    jobTitle: "Founder",
-    sameAs: site.linkedin,
-  },
-  sameAs: [site.linkedin],
-  serviceType: [
-    "Executive Search",
-    "Embedded Recruiting",
-    "Fractional Recruiting",
-    "Talent Strategy",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService", "EmploymentAgency"],
+      "@id": ORG_ID,
+      name: site.name,
+      alternateName: site.alternateName,
+      legalName: site.legalEntity,
+      url: site.url,
+      description: site.description,
+      slogan: site.summary,
+      logo: {
+        "@type": "ImageObject",
+        url: new URL(site.logo, site.url).toString(),
+      },
+      image: new URL(site.logo, site.url).toString(),
+      email: site.email,
+      areaServed: { "@type": "Country", name: "United States" },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Austin",
+        addressRegion: "TX",
+        addressCountry: "US",
+      },
+      founder: {
+        "@type": "Person",
+        name: site.founder,
+        jobTitle: "Founder",
+        sameAs: [site.linkedin],
+      },
+      sameAs: [site.linkedin],
+      knowsAbout: [
+        "Startup recruiting",
+        "Scale-up recruiting",
+        "Go-to-market recruiting",
+        "Executive search",
+        "Technical and engineering recruiting",
+        "Legal search",
+        "Retained search",
+        "Contingency search",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "Sales",
+        email: site.email,
+        url: site.bookCall,
+        areaServed: "US",
+        availableLanguage: "English",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Recruiting services",
+        itemListElement: [...recruitingDomains, legalSpecialty].map((domain) => ({
+          "@type": "Offer",
+          itemOffered: { "@id": `${site.url}${domain.href}` },
+        })),
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": SITE_ID,
+      url: site.url,
+      name: site.name,
+      description: site.description,
+      inLanguage: "en-US",
+      publisher: { "@id": ORG_ID },
+    },
+    ...services,
   ],
 };
 

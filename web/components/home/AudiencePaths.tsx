@@ -7,7 +7,7 @@ const paths = [
   {
     eyebrow: "For companies",
     title: "A search you can see working.",
-    body: "See how retained search moves from calibration to a signed offer.",
+    body: "See how a search moves from calibration to a signed offer, retained or contingency.",
     href: "/companies",
   },
   {
@@ -17,9 +17,15 @@ const paths = [
     href: "/leaders",
   },
   {
+    eyebrow: "Practice areas",
+    title: "Go-to-market, executive, technical.",
+    body: "The three domains we recruit across, the roles in each, and how engagements are structured.",
+    href: "/practice-areas",
+  },
+  {
     eyebrow: "About Jarod",
     title: "The person behind every search.",
-    body: "Read the experience and principles behind Taylor Talent Partners.",
+    body: "Read the experience and principles behind Taylor Talent.",
     href: "/about",
   },
 ] as const;
@@ -33,7 +39,7 @@ export function AudiencePaths() {
         lede="Choose the side of the search you are here for."
         size="sm"
       />
-      <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {paths.map((path, index) => (
           <Reveal key={path.href} delay={index * 0.07} className="h-full">
             <Link

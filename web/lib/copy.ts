@@ -12,20 +12,26 @@
  */
 
 export const hero = {
-  eyebrow: "Executive search · Austin, TX",
+  eyebrow: "Startup & scale-up recruiting · Austin, TX",
   // Two declarative sentences, the second in the gradient.
   line1: "The Right People",
   line2: "Change Everything.",
-  lede: "Taylor Talent Partners runs retained executive search for companies where one seat changes the trajectory — and keeps a confidential line open to the leaders who fill them.",
+  lede: "Taylor Talent is a recruiting firm for startups and scale-ups, hiring across go-to-market, executive search, and technical and engineering roles — with legal search as a specialty.",
   cta: "Book a Discovery Call",
-  note: "30 minutes. An honest read on the search, whether or not we work together.",
+  note: "A conversation about the roles you are hiring for, the market for them, and how a search would run.",
+  /**
+   * Plain text under the hero. Deliberately not inside an animation or an image:
+   * it is the paragraph a crawler or an AI agent should be able to lift to
+   * answer what the firm does and who it serves.
+   */
+  positioning:
+    "We recruit for venture- and private-equity-backed startups and scale-ups, from first commercial hires through executive leadership. Engagements run as retained search or on a contingency, success-based basis.",
 };
 
 /** Provenance, not endorsement — the label makes that explicit on the page. */
 export const provenance = {
-  label: "Ten years of searches run inside and for",
-  inHouse: ["Apple", "Google", "Indeed"],
-  agency: ["GLG", "Checkr", "DISCO", "Talentful"],
+  label: "Ten years of searches run inside and alongside",
+  inHouse: ["Apple", "Google", "Indeed", "GLG", "Checkr", "DISCO", "Talentful"],
 };
 
 export type Beat = {
@@ -111,24 +117,68 @@ export const leaderBeats: Beat[] = [
 
 export const practice = {
   eyebrow: "Practice areas",
-  title: "Where the map is already in hand.",
-  lede: "Depth beats breadth in search. These are the functions and levels where the network is live and the comp data is current.",
+  title: "Three recruiting domains, one point of contact.",
+  lede: "Taylor Talent recruits across go-to-market, executive search, and technical and engineering hiring for startups and scale-ups, with legal search as a specialty.",
   functions: [
-    { name: "Executive / C-suite", note: "CEO, COO, CRO, CTO, CPO" },
     { name: "Go-to-market", note: "Sales, marketing, revenue ops" },
+    { name: "Executive / C-suite", note: "CEO, COO, CFO, CRO, CTO, CPO" },
+    { name: "Engineering & technical", note: "VP Eng, platform, infra, data, AI" },
     { name: "Product", note: "CPO through senior PM" },
-    { name: "Engineering & technical", note: "VP Eng, platform, infra, AI" },
     { name: "Customer success", note: "CS, support, post-sales" },
-    { name: "G&A & finance", note: "CFO, controller, people" },
+    { name: "Finance, operations & G&A", note: "Finance, people, business ops" },
+    { name: "High-volume & evergreen", note: "Repeatable roles as a team scales" },
     { name: "Legal", note: "GC, deputy GC, commercial" },
   ],
-  levels: ["C-suite", "SVP", "VP", "Head of", "Director"],
-  sectors: [
-    { name: "Technology & SaaS", note: "First VP through IPO-stage bench" },
-    { name: "Venture-backed", note: "Founding and early leadership" },
-    { name: "Private equity portfolios", note: "Nine of the ten largest global firms served" },
-    { name: "Professional & legal services", note: "Leadership under the partners" },
+  levels: [
+    "Individual contributor",
+    "Manager",
+    "Director",
+    "Senior Director",
+    "Head of",
+    "VP",
+    "SVP",
+    "C-suite",
   ],
+  sectors: [
+    { name: "Venture-backed startups", note: "Seed through growth stage" },
+    { name: "Scale-ups", note: "First leadership bench through IPO-stage teams" },
+    { name: "Technology & SaaS", note: "Product, platform and infrastructure teams" },
+    { name: "Private equity portfolios", note: "Nine of the ten largest global firms served" },
+  ],
+};
+
+/**
+ * How an engagement is structured. Deliberately free of contractual specifics —
+ * fee percentages, guarantee windows and replacement terms belong in the
+ * recruiter agreement, not on a marketing page.
+ */
+export const engagementModels = {
+  eyebrow: "Engagement models",
+  title: "Two ways to run a search.",
+  lede: "Retained search is one model, not the only one. The right structure depends on the role, the urgency and how much of the market has to be covered.",
+  models: [
+    {
+      id: "retained-search",
+      name: "Retained search",
+      body: "An exclusive engagement for roles that need the whole market covered. Taylor Talent runs the search end to end — calibration, market map, shortlist, evaluation and close — as the single point of contact.",
+      points: [
+        "Exclusive, committed engagement",
+        "Full market map rather than a pipeline",
+        "Typically executive and business-critical roles",
+      ],
+    },
+    {
+      id: "contingency-search",
+      name: "Contingency / success-based search",
+      body: "No upfront payment. The fee is due when a hire is made. Suited to roles where speed matters and the search can run alongside your own sourcing.",
+      points: [
+        "No upfront payment",
+        "Fee due on a successful hire",
+        "Runs alongside in-house recruiting",
+      ],
+    },
+  ],
+  note: "Specific fee structures and agreement terms are confirmed in writing before a search begins.",
 };
 
 export const jarod = {
@@ -139,7 +189,7 @@ export const jarod = {
   role: "Founder",
   location: "Austin, Texas",
   body: [
-    "Ten years of search across technical, legal and C-suite mandates — recruiting inside Apple, Google and Indeed before moving agency-side at GLG, DISCO, Checkr and Talentful.",
+    "Ten years of recruiting across go-to-market, technical, legal and C-suite hiring — inside and alongside Apple, Google, Indeed, GLG, DISCO, Checkr and Talentful.",
     "Most recently a Senior Talent Partner embedded with founders and executive teams, aligning hiring to the growth plan rather than working a req queue.",
   ],
   facts: [
@@ -170,44 +220,30 @@ export const aboutPhilosophy = {
   ],
 };
 
-/** Placeholder testimonials, in the format the real ones will drop into. */
+/**
+ * References. No quote is published without written approval and attribution
+ * from the person who said it, so this section carries none until then.
+ */
 export const proof = {
   eyebrow: "References",
-  title: "What clients repeat.",
-  lede: "Real references are available on request. The three below are placeholders and are marked as such until they are replaced.",
-  quotes: [
-    {
-      quote:
-        "Placeholder — a client on calibration: the moment the scope changed because of an honest read on the market.",
-      name: "Client name",
-      role: "Title",
-      company: "Company",
-    },
-    {
-      quote:
-        "Placeholder — a placed executive on how the process felt from the candidate side of the table.",
-      name: "Placed executive",
-      role: "Title",
-      company: "Company",
-    },
-    {
-      quote:
-        "Placeholder — a founder or board member on speed and signal-to-noise on the shortlist.",
-      name: "Founder or board member",
-      role: "Title",
-      company: "Company",
-    },
-  ],
+  title: "References available on request.",
+  lede: "Client and candidate references are provided directly during a discovery conversation rather than published as marketing copy.",
+  quotes: [] as {
+    quote: string;
+    name: string;
+    role: string;
+    company: string;
+  }[],
 };
 
 export const finale = {
   eyebrow: "Book a discovery call",
-  title: "Bring the role, the constraint and the deadline.",
-  lede: "Thirty minutes with Jarod. You will leave knowing whether the search is straightforward, hard, or scoped wrong — and what it would take either way.",
+  title: "Start a conversation about your hiring.",
+  lede: "Bring the roles you are hiring for. You will leave knowing how the market looks for them, what a realistic timeline is, and which engagement model fits.",
   cta: "Book a Discovery Call",
   bullets: [
-    "An honest read on the market for this role",
-    "A realistic comp band and timeline",
-    "No obligation, and no follow-up sequence",
+    "An honest read on the market for the roles you are filling",
+    "A realistic compensation band and timeline",
+    "The engagement model that fits — retained or contingency",
   ],
 };

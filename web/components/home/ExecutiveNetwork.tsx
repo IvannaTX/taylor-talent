@@ -11,7 +11,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { Pause, Play } from "lucide-react";
-import { executiveProfiles } from "@/data/executiveNetwork";
+import { photographedProfiles } from "@/data/executiveNetwork";
 import { EASE, Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
@@ -24,7 +24,10 @@ export function ExecutiveNetwork() {
   const sectionRef = React.useRef<HTMLElement>(null);
   const stageRef = React.useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { amount: 0.28 });
-  const count = executiveProfiles.length;
+  /* Only profiles with their own photograph. The roster in data/executiveNetwork.ts
+     runs ahead of the imagery, and a card is never filled by borrowing another
+     slot's picture, so the stage renders what exists. */
+  const count = photographedProfiles.length;
 
   const [active, setActive] = React.useState(0);
   const [manualPaused, setManualPaused] = React.useState(false);
@@ -71,6 +74,9 @@ export function ExecutiveNetwork() {
     return () => controls.stop();
   }, [active, paused, progress, reduce, step]);
 
+  /* With an even count the antipodal card is not wrapped symmetrically — it can
+     sit at +half or -half depending on parity. It is past distance 2 either way,
+     so it is fully transparent and off-stage; not worth a branch. */
   const offsetOf = (index: number) => {
     let offset = index - active;
     const half = Math.floor(count / 2);
@@ -124,7 +130,7 @@ export function ExecutiveNetwork() {
             else if (info.offset.x > threshold || info.velocity.x > 420) step(-1);
           }}
         >
-          {executiveProfiles.map((profile, index) => {
+          {photographedProfiles.map((profile, index) => {
             const offset = offsetOf(index);
             const distance = Math.abs(offset);
             const featured = distance === 0;
@@ -173,7 +179,9 @@ export function ExecutiveNetwork() {
                     fill
                     sizes="(min-width: 1024px) 24rem, 70vw"
                     className="object-cover"
-                    priority={index === 0}
+                    /* Five cards are within the visible band; loading only the
+                       centre one meant the neighbours popped in on first drag. */
+                    priority={index <= 2}
                   />
                 </motion.div>
 
@@ -211,7 +219,7 @@ export function ExecutiveNetwork() {
 
       <div className="mt-8 flex items-center justify-center gap-3">
         <div className="flex items-center gap-2 rounded-pill border border-line bg-raised p-2">
-          {executiveProfiles.map((profile, index) => {
+          {photographedProfiles.map((profile, index) => {
             const current = index === active;
             return (
               <motion.button

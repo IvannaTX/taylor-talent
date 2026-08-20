@@ -4,7 +4,7 @@ import * as React from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { companies, companyRows, type Company } from "@/data/companies";
-import { testimonials, type Testimonial } from "@/data/testimonials";
+import { clients, type ClientRecord } from "@/data/clients";
 import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
@@ -23,8 +23,8 @@ const LOGO_H = 20;
 const NOTCH_SPRING = { type: "spring", stiffness: 420, damping: 32, mass: 0.7 } as const;
 
 /** Every tile in the wall has an entry; the guard is defensive, not a state. */
-const commentFor = (company: Company): Testimonial | undefined =>
-  testimonials[company.name];
+const recordFor = (company: Company): ClientRecord | undefined =>
+  clients[company.name];
 
 function CompanyLogo({ company }: { company: Company }) {
   if (company.wordmark) {
@@ -60,34 +60,21 @@ function CompanyLogo({ company }: { company: Company }) {
   );
 }
 
-/** One relationship figure: mono caption over a tabular value. */
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="min-w-0">
-      <dt className="flex items-center gap-1.5 font-mono text-[0.5rem] uppercase tracking-[0.12em] text-faint">
-        <span
-          aria-hidden="true"
-          className="h-1 w-1 shrink-0 rounded-full bg-accent-indigo"
-        />
-        {label}
-      </dt>
-      <dd className="num mt-1 text-[0.8125rem] leading-none text-ink">
-        {value}
-      </dd>
-    </div>
-  );
-}
-
-/** Compact card, anchored to the tile it belongs to. */
-function PartnerComment({
-  comment,
+/**
+ * Compact card, anchored to the tile it belongs to.
+ *
+ * Carries only what is verifiable: how Taylor Talent is connected to the company
+ * and what that company does. No quote and no named individual appears here
+ * unless and until one is supplied in writing and approved for publication.
+ */
+function RelationshipCard({
+  record,
   placement,
 }: {
-  comment: Testimonial;
+  record: ClientRecord;
   placement: "above" | "below";
 }) {
   const above = placement === "above";
-  const { relationship } = comment;
 
   return (
     <motion.aside
@@ -99,7 +86,7 @@ function PartnerComment({
          slowly and reads as a card that will not commit. */
       transition={{ y: NOTCH_SPRING, opacity: { duration: 0.18 } }}
       className={cn(
-        "pointer-events-none absolute left-1/2 z-30 w-64 -translate-x-1/2",
+        "pointer-events-none absolute left-1/2 z-30 w-60 -translate-x-1/2",
         above ? "bottom-full mb-2.5" : "top-full mt-2.5",
       )}
     >
@@ -113,37 +100,28 @@ function PartnerComment({
           )}
         />
 
-        <blockquote className="text-[0.8125rem] leading-[1.5] text-ink">
-          “{comment.quote}”
-        </blockquote>
+        <p className="flex items-center gap-1.5 font-mono text-[0.5rem] uppercase tracking-[0.12em] text-faint">
+          <span
+            aria-hidden="true"
+            className="h-1 w-1 shrink-0 rounded-full bg-accent-indigo"
+          />
+          {record.relationship}
+        </p>
 
-        <div className="mt-3 flex items-end justify-between gap-3 border-t border-line/70 pt-2.5">
-          <p className="min-w-0">
-            <span className="block text-[0.6875rem] font-medium text-ink">
-              {comment.partnerName}
-            </span>
-            <span className="mt-0.5 block text-[0.625rem] leading-tight text-faint">
-              {comment.partnerTitle} · {comment.company}
-            </span>
+        <p className="mt-2 text-[0.875rem] font-medium leading-none text-ink">
+          {record.company}
+        </p>
+
+        <p className="mt-2 text-[0.75rem] leading-[1.5] text-muted">
+          {record.sector}
+        </p>
+
+        {record.url ? (
+          <p className="mt-3 flex items-center gap-1 border-t border-line/70 pt-2.5 text-[0.625rem] text-faint">
+            {record.url.replace(/^https?:\/\/(www\.)?/, "")}
+            <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
           </p>
-          {comment.caseStudyUrl ? (
-            <span className="flex shrink-0 items-center gap-1 text-[0.625rem] text-muted">
-              Case study
-              <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
-            </span>
-          ) : null}
-        </div>
-
-        <dl className="mt-3 grid grid-cols-2 gap-3 border-t border-line/70 pt-2.5">
-          <Stat
-            label={relationship.tenureLabel}
-            value={relationship.tenureValue}
-          />
-          <Stat
-            label={relationship.metricLabel}
-            value={relationship.metricValue}
-          />
-        </dl>
+        ) : null}
       </div>
     </motion.aside>
   );
@@ -166,7 +144,7 @@ function LogoTile({
   onEnter?: () => void;
   onLeave?: () => void;
 }) {
-  const comment = commentFor(company);
+  const record = recordFor(company);
   const face = (
     <span
       className={cn(
@@ -190,11 +168,11 @@ function LogoTile({
       onMouseLeave={interactive ? onLeave : undefined}
     >
       {/* A real button so the card is reachable by keyboard, not just by hover. */}
-      {interactive && comment ? (
+      {interactive && record ? (
         <button
           type="button"
           aria-expanded={active}
-          aria-label={`${company.name} — relationship and reference`}
+          aria-label={`${company.name} — ${record.relationship}`}
           onFocus={onEnter}
           onBlur={onLeave}
           onClick={onEnter}
@@ -207,19 +185,11 @@ function LogoTile({
       )}
 
       <AnimatePresence>
-        {active && comment ? (
-          <PartnerComment comment={comment} placement={placement} />
+        {active && record ? (
+          <RelationshipCard record={record} placement={placement} />
         ) : null}
       </AnimatePresence>
     </div>
-  );
-}
-
-function RowHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="font-mono text-[0.55rem] uppercase tracking-[0.16em] text-faint/80">
-      {children}
-    </h3>
   );
 }
 
@@ -242,18 +212,15 @@ function DesktopRows() {
               >
                 Current Clients
               </h2>
-            ) : row.category === "in-house" ? (
+            ) : (
               <div className="pt-1">
                 <h2 className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-faint">
-                  Experience
+                  In-House Experience
                 </h2>
-                <RowHeading>In-House</RowHeading>
               </div>
-            ) : (
-              <RowHeading>Agency-Side</RowHeading>
             )}
 
-            <div className="mt-2 grid grid-cols-5 gap-2">
+            <div className="mt-2 grid grid-cols-4 gap-2 lg:grid-cols-7">
               {rowCompanies.map((company) => (
                 <LogoTile
                   key={company.name}
@@ -294,16 +261,11 @@ function MobileRows() {
               >
                 Current Clients
               </h2>
-            ) : row.category === "in-house" ? (
+            ) : (
               <div className="px-5 pt-1 sm:px-8">
                 <h2 className="font-mono text-[0.55rem] uppercase tracking-[0.18em] text-faint">
-                  Experience
+                  In-House Experience
                 </h2>
-                <RowHeading>In-House</RowHeading>
-              </div>
-            ) : (
-              <div className="px-5 sm:px-8">
-                <RowHeading>Agency-Side</RowHeading>
               </div>
             )}
 

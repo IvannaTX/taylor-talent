@@ -19,7 +19,7 @@ export function Wordmark({
         "group inline-flex items-center gap-2.5 rounded-pill outline-none",
         className,
       )}
-      aria-label="Taylor Talent Partners — home"
+      aria-label="Taylor Talent — home"
     >
       <span className="relative h-9 w-9 shrink-0 overflow-hidden rounded-lg bg-black">
         <Image src="/brand/ttp-logo.png" alt="" fill sizes="36px" className="object-cover" priority />

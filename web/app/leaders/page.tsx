@@ -7,6 +7,7 @@ import { leaderArtifacts } from "@/components/artifacts/leader";
 import { ConfidentialArtifact } from "@/components/artifacts/leader";
 import { Finale } from "@/components/site/finale";
 import { Rule } from "@/components/ui/kit";
+import { breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "For Leaders",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
     "A confidential, standing relationship for senior leaders across GTM, product, engineering, customer success, G&A and legal. Nothing is shared without your approval, and no mandate reaches you unless it fits.",
   alternates: { canonical: "/leaders" },
   openGraph: {
-    title: `For Leaders — ${site.name}`,
+    title: `For Leaders | ${site.name}`,
     description:
       "A confidential, standing relationship for senior leaders. You approve every introduction.",
     url: "/leaders",
@@ -57,6 +58,8 @@ export default function LeadersPage() {
         bullets={["Nothing shared without approval", "Only relevant senior mandates", "A direct line to Jarod"]}
         cta="Start a Confidential Conversation"
       />
+
+      <script {...jsonLdProps(breadcrumbSchema("For Leaders", "/leaders"))} />
     </>
   );
 }
