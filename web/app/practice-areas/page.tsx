@@ -9,14 +9,14 @@ import { Rule } from "@/components/ui/kit";
 import { breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Practice Areas — Go-to-Market, Executive Search, Technical & Engineering",
+  title: "Practice Areas — Go-to-Market, Executive Search, Technical Recruiting",
   description:
-    "Taylor Talent recruits across three domains for startups and scale-ups: go-to-market, executive search, and technical and engineering hiring, with legal search as a specialty.",
+    "Taylor Talent recruits across three domains for startups and scale-ups: go-to-market, executive search, and technical hiring, with legal search as a specialty.",
   alternates: { canonical: "/practice-areas" },
   openGraph: {
     title: `Practice Areas | ${site.name}`,
     description:
-      "Go-to-market, executive search, and technical and engineering recruiting for venture- and private-equity-backed startups and scale-ups.",
+      "Go-to-market, executive search, and technical recruiting for venture- and private-equity-backed startups and scale-ups.",
     url: "/practice-areas",
   },
 };
@@ -42,7 +42,7 @@ export default function PracticeAreasPage() {
       <PageHero
         eyebrow="Practice areas"
         title="Where Taylor Talent recruits."
-        lede="Three recruiting domains for startups and scale-ups — go-to-market, executive search, and technical and engineering — with legal search as a specialty. Roles run from individual contributor through the C-suite."
+        lede="Three recruiting domains for startups and scale-ups — go-to-market, executive search, and technical recruiting — with legal search as a specialty. Roles run from individual contributor through the C-suite."
         primary={{ label: "Book a Discovery Call", href: site.bookCall }}
         secondary={{ label: "How a search runs", href: "/companies#search" }}
       />

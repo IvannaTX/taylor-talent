@@ -6,6 +6,7 @@ import { BeatRun } from "@/components/beats/run";
 import { leaderArtifacts } from "@/components/artifacts/leader";
 import { ConfidentialArtifact } from "@/components/artifacts/leader";
 import { Finale } from "@/components/site/finale";
+import { ExecutiveNetwork } from "@/components/home/ExecutiveNetwork";
 import { Rule } from "@/components/ui/kit";
 import { breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
@@ -44,6 +45,20 @@ export default function LeadersPage() {
           beats={leaderBeats}
           artifacts={leaderArtifacts}
           align="left"
+        />
+      </div>
+
+      {/* The same carousel the homepage runs, reading the same roster — the
+          company-facing version frames it as reach into a senior network; here
+          it answers the question a candidate actually has, which is whether
+          their seat is one Taylor Talent recruits for at all. */}
+      <div className="shell">
+        <ExecutiveNetwork
+          eyebrow="Your next move"
+          title="Your experience belongs in the right room."
+          lede="Taylor Talent works with startup and scale-up teams hiring across go-to-market, technical, operational, and executive roles."
+          ariaLabel="Roles Taylor Talent recruits for"
+          className="mt-section border-t border-line pt-16 sm:pt-20"
         />
       </div>
 

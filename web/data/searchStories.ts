@@ -15,8 +15,8 @@ export const searchStories: SearchStory[] = [
     metric: { value: "100%", label: "Client Satisfaction" },
     visual: {
       type: "image",
-      src: "/images/search-stories/white-glove.webp",
-      alt: "Senior leaders in a private boardroom conversation",
+      src: "/images/search-stories/white-glove-support-v2.webp",
+      alt: "Search partner and company leader reviewing a brief in a bright private meeting",
     },
   },
   {
@@ -26,8 +26,8 @@ export const searchStories: SearchStory[] = [
       "The best candidates rarely apply online. Long-standing relationships provide access to exceptional executives often unavailable through traditional recruiting.",
     visual: {
       type: "image",
-      src: "/images/search-stories/leadership-network.webp",
-      alt: "A senior executive in a confidential leadership conversation",
+      src: "/images/search-stories/leadership-access-v2.webp",
+      alt: "Two leadership archetypes in a discreet editorial-style conversation",
     },
   },
   {

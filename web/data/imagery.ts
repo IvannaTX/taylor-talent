@@ -14,7 +14,7 @@
  *      should not carry unattributed photographs of people, and nothing in this
  *      repo recorded it before.
  *
- * Unknown is recorded as unknown. The six photographs inherited here carry no
+ * Unknown is recorded as unknown. The retained inherited photographs carry no
  * EXIF, IPTC or XMP, no licence file accompanied them, and the commits that
  * introduced them say nothing about their source — so the commit is recorded,
  * because that much is verifiable, and the source is not guessed.
@@ -85,13 +85,58 @@ export const provenance: Record<string, Provenance> = {
     addedOn: "2026-08-19",
   },
 
+  /* ---- Leadership Search: generated portraits ----------------------- */
+  ...Object.fromEntries(
+    [
+      "chief-technology-officer-v2",
+      "chief-product-officer-v2",
+      "vp-engineering-v2",
+      "vp-customer-success-v2",
+      "vp-gtm-v2",
+      "director-warehouse-operations-v2",
+    ].map((id) => [
+      `/images/executive-network/${id}.webp`,
+      {
+        kind: "generated",
+        by: "OpenAI built-in image generation tool (role-specific editorial portrait prompt)",
+        on: "2026-08-19",
+        note: "Generated as a unique 3:4 archetype portrait for this slot, then converted to WebP with cwebp. The depicted person is not an actual Taylor Talent candidate.",
+      } satisfies Provenance,
+    ]),
+  ),
+
+  /* ---- Leadership Search: Pexels-licensed portraits ----------------- */
+  "/images/executive-network/staff-software-engineer-pexels.webp": {
+    kind: "licensed",
+    source: "Pexels — cottonbro studio, photo 6803534",
+    license: "Pexels License — free for commercial use; attribution not required. Cropped, resized, and converted to WebP for this slot.",
+    url: "https://www.pexels.com/photo/a-man-in-a-hoodie-working-on-a-computer-6803534/",
+    addedOn: "2026-08-19",
+  },
+  "/images/executive-network/technical-lead-pexels.webp": {
+    kind: "licensed",
+    source: "Pexels — Mikhail Nilov, photo 8937939",
+    license: "Pexels License — free for commercial use; attribution not required. Cropped, resized, and converted to WebP for this slot.",
+    url: "https://www.pexels.com/photo/woman-beside-a-laptop-in-front-of-a-whiteboard-8937939/",
+    addedOn: "2026-08-19",
+  },
+
+  /* ---- Story carousel: generated wides ------------------------------ */
+  ...Object.fromEntries(
+    ["white-glove-support-v2", "leadership-access-v2"].map((id) => [
+      `/images/search-stories/${id}.webp`,
+      {
+        kind: "generated",
+        by: "OpenAI built-in image generation tool (story-specific editorial photography prompt)",
+        on: "2026-08-19",
+        note: "Authored as a unique 3:2 wide story visual, not derived from or reused by any Leadership Search portrait; converted to WebP with cwebp.",
+      } satisfies Provenance,
+    ]),
+  ),
+
   /* ---- inherited photographs: origin unknown ----------------------- */
-  "/images/executive-network/cto.webp": { kind: "unknown", firstCommit: "0fb1882", note: UNATTRIBUTED },
-  "/images/executive-network/coo.webp": { kind: "unknown", firstCommit: "0fb1882", note: UNATTRIBUTED },
   "/images/executive-network/cpo.webp": { kind: "unknown", firstCommit: "0fb1882", note: UNATTRIBUTED },
   "/images/executive-network/cfo.webp": { kind: "unknown", firstCommit: "0fb1882", note: UNATTRIBUTED },
-  "/images/search-stories/white-glove.webp": { kind: "unknown", firstCommit: "3dfa4e3", note: UNATTRIBUTED },
-  "/images/search-stories/leadership-network.webp": { kind: "unknown", firstCommit: "3dfa4e3", note: UNATTRIBUTED },
   "/images/founder.png": {
     kind: "unknown",
     firstCommit: "8b1c255",
@@ -151,7 +196,7 @@ const backdrop = (id: string, company: string): ImageSlot => ({
 
 const portrait = (id: string, role: string, asset: string | null): ImageSlot => ({
   id: `exec-network-${id}`,
-  surface: "ExecutiveNetwork — leadership carousel",
+  surface: "Leadership Search — leadership carousel",
   role,
   asset,
   photographic: true,
@@ -167,15 +212,17 @@ export const imageSlots: ImageSlot[] = [
   backdrop("valley", "Sierra"),
   backdrop("drift", "Swap Commerce"),
 
-  /* Executive network — four inherited, four briefed and pending. */
-  portrait("engineering", "VP of Engineering", "/images/executive-network/cto.webp"),
-  portrait("revenue", "Chief Revenue Officer", "/images/executive-network/coo.webp"),
-  portrait("product", "Head of Product", "/images/executive-network/cpo.webp"),
-  portrait("operations", "Senior Director, Operations", "/images/executive-network/cfo.webp"),
-  portrait("staff-engineer", "Staff Software Engineer", null),
-  portrait("warehouse-operations", "Director of Warehouse Operations", null),
-  portrait("account-executive", "Enterprise Account Executive", null),
-  portrait("head-of-legal", "Head of Legal & Compliance", null),
+  /* Leadership Search — ten distinct profile photographs. */
+  portrait("chief-technology-officer", "Chief Technology Officer", "/images/executive-network/chief-technology-officer-v2.webp"),
+  portrait("chief-product-officer", "Chief Product Officer", "/images/executive-network/chief-product-officer-v2.webp"),
+  portrait("vp-engineering", "VP of Engineering", "/images/executive-network/vp-engineering-v2.webp"),
+  portrait("vp-customer-success", "VP of Customer Success", "/images/executive-network/vp-customer-success-v2.webp"),
+  portrait("vp-gtm", "VP, Go-to-Market", "/images/executive-network/vp-gtm-v2.webp"),
+  portrait("head-of-product", "Head of Product", "/images/executive-network/cpo.webp"),
+  portrait("senior-director-operations", "Senior Director, Operations", "/images/executive-network/cfo.webp"),
+  portrait("warehouse-operations", "Director of Warehouse Operations", "/images/executive-network/director-warehouse-operations-v2.webp"),
+  portrait("staff-engineer", "Staff Software Engineer", "/images/executive-network/staff-software-engineer-pexels.webp"),
+  portrait("technical-lead", "Principal Technical Lead", "/images/executive-network/technical-lead-pexels.webp"),
 
   /* Search stories. Sole users of these two files now that the client showcase
      no longer borrows them. */
@@ -183,14 +230,14 @@ export const imageSlots: ImageSlot[] = [
     id: "search-story-white-glove",
     surface: "ExecutiveSearchStories",
     role: "White glove support",
-    asset: "/images/search-stories/white-glove.webp",
+    asset: "/images/search-stories/white-glove-support-v2.webp",
     photographic: true,
   },
   {
     id: "search-story-leadership-access",
     surface: "ExecutiveSearchStories",
     role: "Exclusive executive network",
-    asset: "/images/search-stories/leadership-network.webp",
+    asset: "/images/search-stories/leadership-access-v2.webp",
     photographic: true,
   },
 

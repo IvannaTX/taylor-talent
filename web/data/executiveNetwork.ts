@@ -1,27 +1,11 @@
 /**
- * Representative leadership profiles for the network showcase.
+ * Representative leadership profiles for the Leadership Search showcase.
  *
- * Deliberately framed as role archetypes, not active candidates — no profile
- * describes a real person, and no photograph on this site is of anyone we have
- * placed or represent.
- *
- * Titles span the recruiting domains rather than sitting entirely at C-suite,
- * because the practice is not executive-only. That claim used to be made in this
- * comment and contradicted by the content: all four profiles were C-suite, all
- * four photographed the same way. The four added below sit at senior-IC,
- * director and function-head level, which is also where the range in age, dress
- * and setting naturally lives.
- *
- * PHOTOGRAPHY. Each profile carries a `brief`, which is the art direction for
- * its slot. It stays here after the asset lands so a replacement can be matched
- * to the same intent rather than re-derived, and so the set can be audited as a
- * set — the failure mode being eight photographs that individually pass and
- * collectively read as one person in one room.
- *
- * `image: null` means the brief is written and the asset is not in the repo yet.
- * The carousel renders only profiles that have one, so this file can carry the
- * full roster ahead of the photography without shipping empty cards. Nothing is
- * ever reused to fill a gap: see data/imagery.ts.
+ * These are role archetypes, not active candidates. The people in the imagery
+ * are stock or generated models and are not represented by Taylor Talent.
+ * Every profile owns one unique 3:4 image; data/imagery.ts records its source
+ * and the imagery audit prevents a photograph from being reused in another
+ * slot.
  */
 export type ExecutiveProfile = {
   id: string;
@@ -30,72 +14,124 @@ export type ExecutiveProfile = {
   industry: string;
   location: string;
   previously: string[];
-  /** Art direction for this slot. Read data/imagery.ts for the shared axes. */
+  /** Persistent art direction for this slot and any future replacement. */
   brief: string;
-  /** null until the asset exists. Never filled by borrowing another slot's. */
-  image: { src: string; alt: string } | null;
+  image: { src: string; alt: string };
 };
 
 export const executiveProfiles: ExecutiveProfile[] = [
   {
-    id: "engineering",
-    title: "VP of Engineering",
+    id: "chief-technology-officer",
+    title: "Chief Technology Officer",
     practiceArea: "Technical & Engineering",
     industry: "Series C SaaS",
     location: "Austin, TX",
     previously: ["Google", "Snowflake", "Datadog"],
     brief:
-      "Composed, mid-40s, dark tailoring, low-key boardroom. Held as the set's formal anchor — but flagged for replacement, since the range it sits in is the one the rest of the set exists to break.",
+      "Late-40s technology executive in rolled shirt sleeves and clear-frame glasses, photographed in high-key daylight beside a glass architecture wall. Bright, composed, and deliberately free of formal tailoring.",
     image: {
-      src: "/images/executive-network/cto.webp",
-      alt: "Editorial portrait representing an engineering leader",
+      src: "/images/executive-network/chief-technology-officer-v2.webp",
+      alt: "Technology leadership archetype standing in a bright modern workspace",
     },
   },
   {
-    id: "revenue",
-    title: "Chief Revenue Officer",
-    practiceArea: "Go-to-Market",
-    industry: "Enterprise Software",
-    location: "New York, NY",
-    previously: ["Rippling", "Gong", "Klaviyo"],
-    brief:
-      "Mid-50s, open-collar shirt under a blazer, warm lobby. The most relaxed of the four originals; keep the posture, lose the blazer on replacement.",
-    image: {
-      src: "/images/executive-network/coo.webp",
-      alt: "Editorial portrait representing a revenue leader",
-    },
-  },
-  {
-    id: "product",
-    title: "Head of Product",
-    practiceArea: "Executive Search",
-    industry: "Growth-Stage Marketplace",
-    location: "Remote · U.S.",
+    id: "chief-product-officer",
+    title: "Chief Product Officer",
+    practiceArea: "Product & Design",
+    industry: "Enterprise AI",
+    location: "San Francisco, CA",
     previously: ["Microsoft", "Figma", "Atlassian"],
     brief:
-      "Early-50s, knit under a blazer, dim library. Flagged for replacement toward a working setting — a product lead reads better mid-work than mid-portrait.",
+      "Early-50s product executive in a textured knit polo, working with a physical prototype in a daylight product studio. Environmental and mid-task rather than posed.",
     image: {
-      src: "/images/executive-network/cpo.webp",
-      alt: "Editorial portrait representing a product leader",
+      src: "/images/executive-network/chief-product-officer-v2.webp",
+      alt: "Product leadership archetype reviewing a prototype in a daylight studio",
     },
   },
   {
-    id: "operations",
-    title: "Senior Director, Operations",
-    practiceArea: "Executive Search",
-    industry: "PE-Backed Technology",
-    location: "San Francisco, CA",
-    previously: ["Indeed", "Airbnb", "Block"],
+    id: "vp-engineering",
+    title: "VP of Engineering",
+    practiceArea: "Technical & Engineering",
+    industry: "Cloud Infrastructure",
+    location: "Seattle, WA",
+    previously: ["Cloudflare", "HashiCorp", "Confluent"],
     brief:
-      "Mid-50s, charcoal suit, seated at a boardroom table against a city window. The most formal frame in the set; keep exactly one like it, not four.",
+      "Late-30s engineering leader in an indigo overshirt and glasses, captured mid-explanation at a technical whiteboard in a bright collaborative workspace.",
     image: {
-      src: "/images/executive-network/cfo.webp",
-      alt: "Editorial portrait representing an operations leader",
+      src: "/images/executive-network/vp-engineering-v2.webp",
+      alt: "Engineering leadership archetype explaining a system design at a whiteboard",
     },
   },
-
-  /* ---- added with the photography brief; assets pending -------------- */
-
+  {
+    id: "vp-customer-success",
+    title: "VP of Customer Success",
+    practiceArea: "Go-to-Market",
+    industry: "Vertical SaaS",
+    location: "Denver, CO",
+    previously: ["Rippling", "Gong", "Klaviyo"],
+    brief:
+      "Early-40s customer leader in a dress without a blazer, seated in a lived-in home office with soft morning daylight. Relaxed, warm, and conversational.",
+    image: {
+      src: "/images/executive-network/vp-customer-success-v2.webp",
+      alt: "Customer success leadership archetype in a relaxed home-office conversation",
+    },
+  },
+  {
+    id: "vp-gtm",
+    title: "VP, Go-to-Market",
+    practiceArea: "Go-to-Market",
+    industry: "Growth-Stage Software",
+    location: "New York, NY",
+    previously: ["Salesforce", "Toast", "ServiceTitan"],
+    brief:
+      "Early-30s go-to-market leader in rust-colored knitwear, captured mid-laugh in a warm coworking space. Tight, candid framing supplies energy and personality.",
+    image: {
+      src: "/images/executive-network/vp-gtm-v2.webp",
+      alt: "Go-to-market leadership archetype sharing a candid laugh in a coworking space",
+    },
+  },
+  {
+    id: "head-of-product",
+    title: "Head of Product",
+    practiceArea: "Product & Design",
+    industry: "Growth-Stage Marketplace",
+    location: "Remote · U.S.",
+    previously: ["Adobe", "Notion", "Airbnb"],
+    brief:
+      "Mid-50s product leader in knitwear and a single tailored layer, standing in a library-like workspace. Retained as one of the set's two formal anchors.",
+    image: {
+      src: "/images/executive-network/cpo.webp",
+      alt: "Product leadership archetype in a quiet library workspace",
+    },
+  },
+  {
+    id: "senior-director-operations",
+    title: "Senior Director, Operations",
+    practiceArea: "Operations & Logistics",
+    industry: "PE-Backed Technology",
+    location: "Chicago, IL",
+    previously: ["Indeed", "Airbnb", "Block"],
+    brief:
+      "Mid-50s operations leader seated beside a city window in formal tailoring. The set's composed boardroom anchor and its only seated formal portrait.",
+    image: {
+      src: "/images/executive-network/cfo.webp",
+      alt: "Operations leadership archetype seated beside a city office window",
+    },
+  },
+  {
+    id: "warehouse-operations",
+    title: "Director of Warehouse Operations",
+    practiceArea: "Operations & Logistics",
+    industry: "Logistics & Freight",
+    location: "Memphis, TN",
+    previously: ["Pallet", "Flexport", "XPO"],
+    brief:
+      "Late-60s warehouse leader in a high-visibility vest over flannel, holding a hard hat on an active distribution-center floor. Full environmental frame in strong daylight.",
+    image: {
+      src: "/images/executive-network/director-warehouse-operations-v2.webp",
+      alt: "Warehouse operations leadership archetype on a bright distribution-center floor",
+    },
+  },
   {
     id: "staff-engineer",
     title: "Staff Software Engineer",
@@ -104,46 +140,24 @@ export const executiveProfiles: ExecutiveProfile[] = [
     location: "Remote · U.S.",
     previously: ["Stripe", "Vercel", "Supabase"],
     brief:
-      "Late 20s. Hoodie or plain tee, no jacket anywhere in frame. Daylight, high-key — the brightest photograph in the set. Candid and mid-thought at a desk with a whiteboard behind, not addressing the camera. Tight-to-mid framing. Deliberately the least corporate frame here: a senior individual contributor, not a manager.",
-    image: null,
+      "Late-20s senior individual contributor in a hoodie, focused at a workstation in a bright office. Tight, candid framing and the least corporate styling in the set.",
+    image: {
+      src: "/images/executive-network/staff-software-engineer-pexels.webp",
+      alt: "Senior technical contributor archetype focused at a workstation in a bright office",
+    },
   },
   {
-    id: "warehouse-operations",
-    title: "Director of Warehouse Operations",
-    practiceArea: "Executive Search",
-    industry: "Logistics & Freight",
-    location: "Memphis, TN",
-    previously: ["Pallet", "Flexport", "XPO"],
+    id: "technical-lead",
+    title: "Principal Technical Lead",
+    practiceArea: "Technical & Engineering",
+    industry: "Data Platform",
+    location: "Boston, MA",
+    previously: ["AWS", "Databricks", "MongoDB"],
     brief:
-      "Sixties, and visibly so — the set currently stops at about 55. Hi-vis vest over a flannel shirt, hard hat in hand rather than worn. Environmental wide on a distribution-centre floor, daylight through high windows, racking legible behind. The one frame with no office in it, and the reason it belongs is that logistics is a real part of this book of business.",
-    image: null,
-  },
-  {
-    id: "account-executive",
-    title: "Enterprise Account Executive",
-    practiceArea: "Go-to-Market",
-    industry: "Vertical SaaS",
-    location: "Chicago, IL",
-    previously: ["Klaviyo", "Toast", "ServiceTitan"],
-    brief:
-      "Thirties. Knit sweater, no blazer. Warm window light in a co-working space with other people softly out of focus behind. Genuinely mid-laugh — the set has no warmth in it at all right now and this is the frame that supplies it. Tight portrait.",
-    image: null,
-  },
-  {
-    id: "head-of-legal",
-    title: "Head of Legal & Compliance",
-    practiceArea: "Legal",
-    industry: "Series B Fintech",
-    location: "Denver, CO",
-    previously: ["Checkr", "Brex", "Plaid"],
-    brief:
-      "Forties. Blouse, no jacket. Seated and relaxed — leaning back, not squared to camera — in a home office with real daylight and domestic detail in shot. Mid framing. Covers the legal specialty, which has no photography of its own.",
-    image: null,
+      "Early-30s technical lead in a patterned headscarf, speaking beside a whiteboard and laptop in a bright working session. A natural headwear and side-profile frame.",
+    image: {
+      src: "/images/executive-network/technical-lead-pexels.webp",
+      alt: "Technical leadership archetype speaking beside a whiteboard during a working session",
+    },
   },
 ];
-
-/** Profiles the carousel can actually render. */
-export const photographedProfiles = executiveProfiles.filter(
-  (profile): profile is ExecutiveProfile & { image: NonNullable<ExecutiveProfile["image"]> } =>
-    profile.image !== null,
-);

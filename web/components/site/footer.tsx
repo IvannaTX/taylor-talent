@@ -1,39 +1,50 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { legalNav, site } from "@/lib/site";
+import { footerNav, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "@/components/wordmark";
 
 /**
- * Three regions on one line: the entity on the left, the legal documents in the
- * centre, the two outbound destinations on the right. A slim identity tier sits
- * above the hairline.
+ * Global footer.
  *
- * The previous footer carried columns of practice areas and levels; that surface
- * now lives on /companies, and repeating it here only diluted it. A closing
- * footer earns more by being quiet.
+ * A closing surface rather than a utility strip: the brand and its one-line
+ * positioning on the left, four navigation columns on the right, and a bottom
+ * bar carrying the entity, the legal documents and the outbound destinations.
+ *
+ * The columns are not authored here — they come from `footerNav` in lib/site.ts,
+ * which composes them from the same constants the primary navigation, the
+ * practice-areas page, the JSON-LD service catalogue and /llms.txt read. The
+ * footer therefore restates the site's service taxonomy for crawlers and AI
+ * agents without being able to drift from it.
+ *
+ * Markup is deliberately landmark-heavy: one <nav> per column, each labelled by
+ * its own visible heading via aria-labelledby, so a screen reader or an agent
+ * walking the document gets four named groups instead of one undifferentiated
+ * pile of links.
  */
 
-const linkBase =
-  "text-[0.875rem] leading-relaxed text-muted transition-colors duration-300 hover:text-ink";
+const columnLink =
+  "group/link inline-flex items-baseline gap-1.5 text-[0.9375rem] leading-relaxed text-muted transition-colors duration-300 hover:text-ink focus-visible:text-ink";
 
-const legalLinkBase =
-  "text-[0.6875rem] leading-5 tracking-[0.01em] text-faint transition-colors duration-300 hover:text-ink";
+const bottomLink =
+  "text-[0.8125rem] leading-5 text-faint transition-colors duration-300 hover:text-ink";
 
 /** Outbound link with the site's standard lifting arrow. */
 function OutboundLink({
   href,
   children,
+  className,
 }: {
   href: string;
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn("group inline-flex items-center gap-1.5", linkBase)}
+      className={cn("group inline-flex items-center gap-1.5", className)}
     >
       {children}
       <ArrowUpRight
@@ -47,44 +58,94 @@ function OutboundLink({
 }
 
 export function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="relative border-t border-line">
-      <div className="shell py-12 sm:py-14">
-        {/* Identity */}
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-          <Wordmark />
-          <a
-            href={`mailto:${site.email}`}
-            className="text-[0.875rem] text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-accent-indigo"
-          >
-            {site.email}
-          </a>
+    <footer className="relative mt-section border-t border-line">
+      {/* The one accent on the surface: the brand gradient, at the weight the
+          identity reserves it for — a hairline, not a fill. */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-ring-gradient opacity-30"
+      />
+
+      <div className="shell pb-10 pt-16 sm:pb-12 sm:pt-20 lg:pt-24">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] lg:gap-16">
+          {/* ---- identity ------------------------------------------- */}
+          <div className="min-w-0">
+            <Wordmark />
+            <p className="mt-5 max-w-[34ch] text-[0.9375rem] leading-relaxed text-muted">
+              {site.tagline} across go-to-market, executive search and
+              technical hiring.
+            </p>
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-6 inline-block text-[0.875rem] text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-accent-indigo"
+            >
+              {site.email}
+            </a>
+          </div>
+
+          {/* ---- navigation ----------------------------------------- */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4 lg:gap-x-6">
+            {footerNav.map((column) => {
+              const headingId = `footer-${column.id}`;
+              return (
+                <div key={column.id} className="min-w-0">
+                  <h2
+                    id={headingId}
+                    className="font-mono text-eyebrow uppercase text-faint"
+                  >
+                    {column.heading}
+                  </h2>
+                  <nav aria-labelledby={headingId} className="mt-5">
+                    <ul className="flex flex-col gap-3">
+                      {column.links.map((link) => (
+                        <li key={link.href}>
+                          <Link href={link.href} className={columnLink}>
+                            {link.label}
+                            {/* Sits in the flow at zero width so a hover never
+                                shifts the label sideways. */}
+                            <span
+                              aria-hidden
+                              className="h-1 w-1 shrink-0 rounded-full bg-accent-indigo opacity-0 transition-opacity duration-300 group-hover/link:opacity-100"
+                            />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         <div
           aria-hidden
-          className="mt-9 h-px w-full bg-gradient-to-r from-transparent via-line to-transparent"
+          className="mt-14 h-px w-full bg-hairline-b sm:mt-16"
         />
 
-        {/* Entity · legal · destinations. Each region is two lines, so the three
-            columns balance without any of them needing a heading. */}
-        <div className="mt-9 grid gap-8 md:grid-cols-3 md:items-start">
+        {/* ---- bottom bar ----------------------------------------- */}
+        <div className="mt-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <p className="text-[0.8125rem] leading-relaxed text-faint">
-            © {new Date().getFullYear()} {site.legalEntity}
-            <span className="block">{site.location}</span>
+            © {year} {site.alternateName}
+            {/* Both names are recorded in lib/site.ts and neither is invented:
+                the trading name above, the operating entity below, phrased the
+                way lib/legal.ts phrases it in both documents. */}
+            <span className="block">
+              {site.legalEntity}, doing business as {site.name} ·{" "}
+              {site.location}
+            </span>
           </p>
 
-          <nav aria-label="Legal" className="flex flex-wrap items-center gap-x-5 gap-y-1 md:justify-center">
-            {legalNav.map((item) => (
-              <Link key={item.href} href={item.href} className={legalLinkBase}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex flex-col items-start md:items-end">
-            <OutboundLink href={site.linkedin}>LinkedIn</OutboundLink>
-            <OutboundLink href={site.bookCall}>
+          {/* Legal lives in its own column above; repeating it here would only
+              duplicate the links and give the pair two places to drift. */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <OutboundLink href={site.linkedin} className={bottomLink}>
+              LinkedIn
+            </OutboundLink>
+            <OutboundLink href={site.bookCall} className={bottomLink}>
               Schedule a Discovery Call
             </OutboundLink>
           </div>

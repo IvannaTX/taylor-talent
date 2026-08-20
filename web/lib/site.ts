@@ -16,10 +16,10 @@ export const site = {
   locale: "en_US",
   tagline: "Recruiting for Startups and Scale-Ups",
   description:
-    "Taylor Talent is a recruiting firm for startups and scale-ups, hiring across go-to-market, executive search, and technical and engineering roles. Retained and contingency engagements, led personally by founder Jarod Taylor from Austin, Texas.",
+    "Taylor Talent is a recruiting firm for startups and scale-ups, hiring across go-to-market, executive search, and technical roles. Retained and contingency engagements, led personally by founder Jarod Taylor from Austin, Texas.",
   /** One sentence an AI agent can lift verbatim to answer "what do they do?". */
   summary:
-    "Taylor Talent is a startup and scale-up recruiting firm covering go-to-market, executive search, and technical and engineering hiring, with legal search as a specialty.",
+    "Taylor Talent is a startup and scale-up recruiting firm covering go-to-market, executive search, and technical hiring, with legal search as a specialty.",
   logo: "/brand/ttp-logo.png",
   favicon: "/brand/favicon-ttp.png",
   appIcon: "/brand/app-icon-512.png",
@@ -83,12 +83,12 @@ export const recruitingDomains = [
     ],
   },
   {
-    id: "technical-engineering",
-    name: "Technical and Engineering Recruiting",
-    href: "/practice-areas#technical-engineering",
-    short: "Technical & Engineering",
+    id: "technical-recruiting",
+    name: "Technical Recruiting",
+    href: "/practice-areas#technical-recruiting",
+    short: "Technical Recruiting",
     summary:
-      "Engineering and technical hiring from individual contributors through leadership, including platform, infrastructure, data and AI teams.",
+      "Technical hiring from individual contributors through leadership, including platform, infrastructure, data and AI teams.",
     roles: [
       "VP of Engineering",
       "Director of Engineering",
@@ -130,3 +130,61 @@ export const nav = [
   { label: "Practice Areas", href: "/practice-areas" },
   { label: "About", href: "/about" },
 ] as const;
+
+/** Where the engagement terms live. Its own route so the footer never dead-ends. */
+export const recruitingAgreement = {
+  label: "Recruiting Agreement",
+  href: "/recruiting-agreement",
+} as const;
+
+export type FooterLink = { label: string; href: string };
+
+export type FooterColumn = {
+  /** Anchors the column heading to its nav landmark. */
+  id: string;
+  heading: string;
+  links: readonly FooterLink[];
+};
+
+/**
+ * Footer information architecture.
+ *
+ * Every column composes from a canonical source rather than restating it: the
+ * services column is `recruitingDomains` plus `legalSpecialty`, and the company
+ * column is `nav` minus Home. So the footer cannot disagree with the primary
+ * navigation, the practice-areas page, the JSON-LD service catalogue or
+ * /llms.txt about what this firm does or how the site is organised.
+ *
+ * The service order is load-bearing for both search engines and AI agents:
+ * go-to-market, executive search, then technical  engineering, with legal
+ * following as a specialty rather than a fourth equal domain. That is the same
+ * hierarchy `site.summary` states in prose.
+ */
+export const footerNav: readonly FooterColumn[] = [
+  {
+    id: "services",
+    heading: "Services",
+    links: [
+      ...recruitingDomains.map((domain) => ({
+        label: domain.short,
+        href: domain.href,
+      })),
+      { label: legalSpecialty.short, href: legalSpecialty.href },
+    ],
+  },
+  {
+    id: "company",
+    heading: "Company",
+    links: nav.filter((item) => item.href !== "/"),
+  },
+  {
+    id: "engagement",
+    heading: "Engagement",
+    links: [recruitingAgreement],
+  },
+  {
+    id: "legal",
+    heading: "Legal",
+    links: legalNav,
+  },
+];

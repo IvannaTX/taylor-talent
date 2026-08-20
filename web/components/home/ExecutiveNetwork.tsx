@@ -11,7 +11,7 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { Pause, Play } from "lucide-react";
-import { photographedProfiles } from "@/data/executiveNetwork";
+import { executiveProfiles } from "@/data/executiveNetwork";
 import { EASE, Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
@@ -19,15 +19,35 @@ const STEP_MS = 5600;
 const CARD_SPRING = { type: "spring", stiffness: 260, damping: 34, mass: 1 } as const;
 const MORPH_SPRING = { type: "spring", stiffness: 380, damping: 34, mass: 0.9 } as const;
 
-export function ExecutiveNetwork() {
+/**
+ * Shared leadership carousel.
+ *
+ * Rendered on the homepage and on /leaders. Only the framing copy differs — the
+ * roster, the photography, the autoplay clock, the drag and keyboard transport
+ * and the responsive card maths are all one implementation reading one data
+ * source, so adding a profile or an image in data/executiveNetwork.ts appears on
+ * every surface at once.
+ *
+ * Defaults reproduce the homepage exactly; /leaders overrides them.
+ */
+export function ExecutiveNetwork({
+  eyebrow = "Leadership Search",
+  title = "Relationships with leaders who rarely enter the market.",
+  lede = "A representative view of the senior leadership Taylor Talent knows, understands, and can reach discreetly.",
+  ariaLabel = "Leadership Search showcase",
+  className = "mt-16 border-t border-line pt-16 sm:mt-20 sm:pt-20",
+}: {
+  eyebrow?: string;
+  title?: string;
+  lede?: string;
+  ariaLabel?: string;
+  className?: string;
+} = {}) {
   const reduce = useReducedMotion();
   const sectionRef = React.useRef<HTMLElement>(null);
   const stageRef = React.useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { amount: 0.28 });
-  /* Only profiles with their own photograph. The roster in data/executiveNetwork.ts
-     runs ahead of the imagery, and a card is never filled by borrowing another
-     slot's picture, so the stage renders what exists. */
-  const count = photographedProfiles.length;
+  const count = executiveProfiles.length;
 
   const [active, setActive] = React.useState(0);
   const [manualPaused, setManualPaused] = React.useState(false);
@@ -89,8 +109,8 @@ export function ExecutiveNetwork() {
     <section
       ref={sectionRef}
       aria-roledescription="carousel"
-      aria-label="Executive network showcase"
-      className="mt-16 border-t border-line pt-16 sm:mt-20 sm:pt-20"
+      aria-label={ariaLabel}
+      className={className}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
       onFocusCapture={() => setHovering(true)}
@@ -101,13 +121,11 @@ export function ExecutiveNetwork() {
       <Reveal dir="up" blur={false} className="mx-auto max-w-[46rem] text-center">
         <div className="flex items-center justify-center gap-2.5">
           <span aria-hidden className="h-1 w-1 rounded-full bg-accent-indigo" />
-          <span className="eyebrow">Confidential Executive Network</span>
+          <span className="eyebrow">{eyebrow}</span>
         </div>
-        <h2 className="display mt-5 text-display-sm text-ink">
-          Relationships with leaders who rarely enter the market.
-        </h2>
+        <h2 className="display mt-5 text-display-sm text-ink">{title}</h2>
         <p className="mx-auto mt-4 max-w-[50ch] text-sm leading-relaxed text-muted sm:text-base">
-          A representative view of the senior leadership Taylor Talent knows, understands, and can reach discreetly.
+          {lede}
         </p>
       </Reveal>
 
@@ -130,7 +148,7 @@ export function ExecutiveNetwork() {
             else if (info.offset.x > threshold || info.velocity.x > 420) step(-1);
           }}
         >
-          {photographedProfiles.map((profile, index) => {
+          {executiveProfiles.map((profile, index) => {
             const offset = offsetOf(index);
             const distance = Math.abs(offset);
             const featured = distance === 0;
@@ -219,7 +237,7 @@ export function ExecutiveNetwork() {
 
       <div className="mt-8 flex items-center justify-center gap-3">
         <div className="flex items-center gap-2 rounded-pill border border-line bg-raised p-2">
-          {photographedProfiles.map((profile, index) => {
+          {executiveProfiles.map((profile, index) => {
             const current = index === active;
             return (
               <motion.button

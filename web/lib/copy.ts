@@ -16,7 +16,7 @@ export const hero = {
   // Two declarative sentences, the second in the gradient.
   line1: "The Right People",
   line2: "Change Everything.",
-  lede: "Taylor Talent is a recruiting firm for startups and scale-ups, hiring across go-to-market, executive search, and technical and engineering roles — with legal search as a specialty.",
+  lede: "Taylor Talent is a recruiting firm for startups and scale-ups, hiring across go-to-market, executive search, and technical roles — with legal search as a specialty.",
   cta: "Book a Discovery Call",
   note: "A conversation about the roles you are hiring for, the market for them, and how a search would run.",
   /**
@@ -118,7 +118,7 @@ export const leaderBeats: Beat[] = [
 export const practice = {
   eyebrow: "Practice areas",
   title: "Three recruiting domains, one point of contact.",
-  lede: "Taylor Talent recruits across go-to-market, executive search, and technical and engineering hiring for startups and scale-ups, with legal search as a specialty.",
+  lede: "Taylor Talent recruits across go-to-market, executive search, and technical hiring for startups and scale-ups, with legal search as a specialty.",
   functions: [
     { name: "Go-to-market", note: "Sales, marketing, revenue ops" },
     { name: "Executive / C-suite", note: "CEO, COO, CFO, CRO, CTO, CPO" },
