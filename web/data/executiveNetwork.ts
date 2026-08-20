@@ -31,7 +31,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
       "Late-40s technology executive in rolled shirt sleeves and clear-frame glasses, photographed in high-key daylight beside a glass architecture wall. Bright, composed, and deliberately free of formal tailoring.",
     image: {
       src: "/images/executive-network/chief-technology-officer-v2.webp",
-      alt: "Technology leadership archetype standing in a bright modern workspace",
+      alt: "Technology leadership",
     },
   },
   {
@@ -44,8 +44,8 @@ export const executiveProfiles: ExecutiveProfile[] = [
     brief:
       "Early-50s product executive in a textured knit polo, working with a physical prototype in a daylight product studio. Environmental and mid-task rather than posed.",
     image: {
-      src: "/images/executive-network/chief-product-officer-v2.webp",
-      alt: "Product leadership archetype reviewing a prototype in a daylight studio",
+      src: "/images/executive-network/clay-shoe-guy.png",
+      alt: "Product leadership",
     },
   },
   {
@@ -58,8 +58,8 @@ export const executiveProfiles: ExecutiveProfile[] = [
     brief:
       "Late-30s engineering leader in an indigo overshirt and glasses, captured mid-explanation at a technical whiteboard in a bright collaborative workspace.",
     image: {
-      src: "/images/executive-network/vp-engineering-v2.webp",
-      alt: "Engineering leadership archetype explaining a system design at a whiteboard",
+      src: "/images/executive-network/mug-guy.png",
+      alt: "Engineering leadership",
     },
   },
   {
@@ -72,8 +72,8 @@ export const executiveProfiles: ExecutiveProfile[] = [
     brief:
       "Early-40s customer leader in a dress without a blazer, seated in a lived-in home office with soft morning daylight. Relaxed, warm, and conversational.",
     image: {
-      src: "/images/executive-network/vp-customer-success-v2.webp",
-      alt: "Customer success leadership archetype in a relaxed home-office conversation",
+      src: "/images/executive-network/blue-dress.png",
+      alt: "Customer success leadership",
     },
   },
   {
@@ -87,7 +87,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
       "Early-30s go-to-market leader in rust-colored knitwear, captured mid-laugh in a warm coworking space. Tight, candid framing supplies energy and personality.",
     image: {
       src: "/images/executive-network/vp-gtm-v2.webp",
-      alt: "Go-to-market leadership archetype sharing a candid laugh in a coworking space",
+      alt: "Go-to-market leadership",
     },
   },
   {
@@ -101,7 +101,7 @@ export const executiveProfiles: ExecutiveProfile[] = [
       "Mid-50s product leader in knitwear and a single tailored layer, standing in a library-like workspace. Retained as one of the set's two formal anchors.",
     image: {
       src: "/images/executive-network/cpo.webp",
-      alt: "Product leadership archetype in a quiet library workspace",
+      alt: "Product leadership",
     },
   },
   {
@@ -114,22 +114,22 @@ export const executiveProfiles: ExecutiveProfile[] = [
     brief:
       "Mid-50s operations leader seated beside a city window in formal tailoring. The set's composed boardroom anchor and its only seated formal portrait.",
     image: {
-      src: "/images/executive-network/cfo.webp",
-      alt: "Operations leadership archetype seated beside a city office window",
+      src: "/images/executive-network/sr-dir.png",
+      alt: "Operations leadership",
     },
   },
   {
-    id: "warehouse-operations",
-    title: "Director of Warehouse Operations",
-    practiceArea: "Operations & Logistics",
-    industry: "Logistics & Freight",
-    location: "Memphis, TN",
-    previously: ["Pallet", "Flexport", "XPO"],
+    id: "talent-acquisition",
+    title: "Director of Talent Acquisition",
+    practiceArea: "Talent & People",
+    industry: "Technolgy",
+    location: "Charlotte, NC",
+    previously: ["Pallet", "Wise", "Red Ventures"],
     brief:
-      "Late-60s warehouse leader in a high-visibility vest over flannel, holding a hard hat on an active distribution-center floor. Full environmental frame in strong daylight.",
+      "Talent acquisition leader",
     image: {
-      src: "/images/executive-network/director-warehouse-operations-v2.webp",
-      alt: "Warehouse operations leadership archetype on a bright distribution-center floor",
+      src: "/images/executive-network/warehouse-woman.png",
+      alt: "VP leadership",
     },
   },
   {

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { footerNav, site } from "@/lib/site";
+import { ArrowUpRight, Linkedin } from "lucide-react";
+import { footerNav, legalNav, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "@/components/wordmark";
 
@@ -87,7 +87,12 @@ export function Footer() {
           </div>
 
           {/* ---- navigation ----------------------------------------- */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-4 lg:gap-x-6">
+          {/* Three columns now that Legal has moved to the bottom row. Sized to
+              their content and pushed right with ml-auto, so the slack sits
+              between the identity block and Services rather than leaving an
+              empty fourth column hanging off the right edge. The minmax floor
+              keeps the narrow column from collapsing out of rhythm. */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-8 sm:grid-cols-3 lg:ml-auto lg:grid-cols-[repeat(3,minmax(7rem,auto))] lg:gap-x-14">
             {footerNav.map((column) => {
               const headingId = `footer-${column.id}`;
               return (
@@ -127,28 +132,50 @@ export function Footer() {
         />
 
         {/* ---- bottom bar ----------------------------------------- */}
-        <div className="mt-4 flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
-          <p className="text-[0.8125rem] leading-relaxed text-faint">
-            © {year} {site.alternateName}
+        <div className="mt-4 grid grid-cols-[minmax(0,1fr)_minmax(8rem,auto)] gap-x-5 gap-y-4 lg:grid-cols-3 lg:items-start lg:gap-5">
+          <p className="col-start-1 row-start-1 min-w-0 text-[0.8125rem] leading-relaxed text-faint">
+            © {year} {site.legalEntity}
             {/* Both names are recorded in lib/site.ts and neither is invented:
                 the trading name above, the operating entity below, phrased the
                 way lib/legal.ts phrases it in both documents. */}
             <span className="block">
-              {site.legalEntity}, doing business as {site.name} ·{" "}
+              {/* {site.legalEntity}, doing business as {site.name} ·{" "} */}
               {site.location}
             </span>
           </p>
 
-          {/* Legal lives in its own column above; repeating it here would only
-              duplicate the links and give the pair two places to drift. */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <OutboundLink href={site.linkedin} className={bottomLink}>
-              LinkedIn
-            </OutboundLink>
+          <div className="col-start-2 row-start-1 flex flex-wrap items-center justify-end gap-x-2 gap-y-1 text-right lg:col-start-3 lg:flex-col lg:items-end lg:justify-start lg:gap-x-0">
+            {/* Icon rather than the word, and deliberately not an OutboundLink:
+                that component appends the lifting arrow, which reads as clutter
+                beside a brand mark. The new-tab notice moves into the label,
+                and the 36px box keeps a real touch target around a 16px glyph. */}
+            <a
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn (opens in a new tab)"
+              /* The 36px box stays for the touch target; the negative margin
+                 keeps it from occupying more flow height than a text line, which
+                 is what holds it level with the copyright. */
+              className="-my-2 grid h-9 w-9 shrink-0 place-items-center rounded-full text-faint transition-colors duration-300 hover:bg-raised hover:text-ink focus-visible:text-ink lg:-mr-2"
+            >
+              <Linkedin className="h-4 w-4" strokeWidth={2} aria-hidden />
+            </a>
             <OutboundLink href={site.bookCall} className={bottomLink}>
               Schedule a Discovery Call
             </OutboundLink>
           </div>
+
+          <nav
+            aria-label="Legal"
+            className="col-span-2 col-start-1 row-start-2 flex flex-nowrap items-center gap-x-6 border-t border-line pt-4 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:justify-center lg:self-end lg:border-t-0 lg:pt-0"
+          >
+            {legalNav.map((item) => (
+              <Link key={item.href} href={item.href} className={bottomLink}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>

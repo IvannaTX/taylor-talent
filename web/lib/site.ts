@@ -28,7 +28,7 @@ export const site = {
   founder: "Jarod Taylor",
   /** The operating entity. Used in the footer copyright and both legal documents. */
   legalEntity: "Jarod Taylor Enterprises",
-  email: "jarod@taylortalentpartners.com",
+  email: "jarod@taylortalentpartners.com", 
   linkedin: "https://www.linkedin.com/company/taylortalent/",
 
   /**
@@ -155,6 +155,10 @@ export type FooterColumn = {
  * navigation, the practice-areas page, the JSON-LD service catalogue or
  * /llms.txt about what this firm does or how the site is organised.
  *
+ * `legalNav` is deliberately not a column here — Terms and Privacy live in the
+ * bottom row instead, so the main navigation carries only the three columns a
+ * visitor actually navigates by.
+ *
  * The service order is load-bearing for both search engines and AI agents:
  * go-to-market, executive search, then technical  engineering, with legal
  * following as a specialty rather than a fourth equal domain. That is the same
@@ -181,10 +185,5 @@ export const footerNav: readonly FooterColumn[] = [
     id: "engagement",
     heading: "Engagement",
     links: [recruitingAgreement],
-  },
-  {
-    id: "legal",
-    heading: "Legal",
-    links: legalNav,
   },
 ];

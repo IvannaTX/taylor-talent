@@ -38,16 +38,6 @@ export default function LeadersPage() {
         aside={<ConfidentialArtifact />}
       />
 
-      <div className="pt-section">
-        <BeatRun
-          id="relationship"
-          label="How the relationship works"
-          beats={leaderBeats}
-          artifacts={leaderArtifacts}
-          align="left"
-        />
-      </div>
-
       {/* The same carousel the homepage runs, reading the same roster — the
           company-facing version frames it as reach into a senior network; here
           it answers the question a candidate actually has, which is whether
@@ -59,6 +49,16 @@ export default function LeadersPage() {
           lede="Taylor Talent works with startup and scale-up teams hiring across go-to-market, technical, operational, and executive roles."
           ariaLabel="Roles Taylor Talent recruits for"
           className="mt-section border-t border-line pt-16 sm:pt-20"
+        />
+      </div>
+
+      <div className="pt-section">
+        <BeatRun
+          id="relationship"
+          label="How the relationship works"
+          beats={leaderBeats}
+          artifacts={leaderArtifacts}
+          align="left"
         />
       </div>
 
