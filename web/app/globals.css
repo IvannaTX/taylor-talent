@@ -140,8 +140,15 @@
 }
 
 @layer components {
+  /* The site container. 78rem holds the reading measure honest from the phone
+     up through a laptop; past that the cap was the only thing creating the wide
+     empty margins on a large display, so from xl the container tracks the
+     viewport instead and is held off the edges by the gutter alone. 120rem is
+     the ceiling — an ultra-wide monitor stops widening rather than pulling a
+     two-column section apart. Sections that set their own measure (legal prose
+     at 62rem, hero copy at 34-52ch) are unaffected; only the outer frame moves. */
   .shell {
-    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-shell px-5 sm:px-8 lg:px-10 xl:max-w-[96rem] xl:px-12 2xl:max-w-[120rem] 2xl:px-14;
   }
 
   /* Display type is always the serif, always optically sized. */

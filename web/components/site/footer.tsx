@@ -69,7 +69,14 @@ export function Footer() {
         className="absolute inset-x-0 top-0 h-px bg-ring-gradient opacity-30"
       />
 
-      <div className="shell pb-7 pt-12">
+      {/* Large-screen widths are restated here rather than inherited. .shell now
+          carries the same xl/2xl steps, so these are redundant by value — but
+          the bottom bar is the one row on the site that breaks if the container
+          runs wide (three items, one per corner, drifting apart), so it pins its
+          own ceiling instead of tracking whatever the shell is set to next.
+          Below xl the shell defaults stand, which is what keeps the tablet and
+          mobile footer untouched. */}
+      <div className="shell pb-7 pt-12 xl:max-w-[96rem] xl:px-12 2xl:max-w-[120rem] 2xl:px-14">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,2fr)] lg:gap-14">
           {/* ---- identity ------------------------------------------- */}
           <div className="min-w-0">
@@ -168,7 +175,7 @@ export function Footer() {
 
           <nav
             aria-label="Legal"
-            className="col-span-2 col-start-1 row-start-2 flex flex-nowrap items-center gap-x-6 border-t border-line pt-4 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:justify-center lg:self-end lg:border-t-0 lg:pt-0"
+            className="col-span-2 col-start-1 row-start-2 flex flex-nowrap items-center justify-center gap-x-6 border-t border-line pt-4 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:self-end lg:border-t-0 lg:pt-0"
           >
             {legalNav.map((item) => (
               <Link key={item.href} href={item.href} className={bottomLink}>
