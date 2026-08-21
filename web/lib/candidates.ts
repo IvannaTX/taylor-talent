@@ -48,7 +48,7 @@ export const candidates: Candidate[] = [
     name: "Daniel Osei",
     title: "Head of Platform",
     company: "Verity Labs",
-    location: "Remote — EST",
+    location: "Remote · EST",
     photo: null,
     fit: 88,
     stage: "Shortlisted",
@@ -118,8 +118,8 @@ export const marketMap = {
   total: 214,
   segments: [
     { label: "Engaged", count: 96, tone: "ok" as const },
-    { label: "Passed — comp", count: 47, tone: "warn" as const },
-    { label: "Passed — stage", count: 38, tone: "warn" as const },
+    { label: "Passed on comp", count: 47, tone: "warn" as const },
+    { label: "Passed on stage", count: 38, tone: "warn" as const },
     { label: "No reply", count: 33, tone: "muted" as const },
   ],
   passes: [
@@ -155,7 +155,7 @@ export const scorecard = {
     { label: "Founder partnership", score: 3, max: 4 },
     { label: "Communication", score: 4, max: 4 },
   ],
-  note: "Strongest on scaling evidence. The founder-partnership score is the one to probe in round 4 — she has always had a layer above her.",
+  note: "Strongest on scaling evidence. The founder-partnership score is the one to probe in round 4, since she has always had a layer above her.",
 };
 
 /** Offer tracker for the closing beat. */
@@ -166,7 +166,7 @@ export const offer = {
     { label: "Base", value: "$345,000", done: true },
     { label: "Equity", value: "0.55%, 4yr / 1yr cliff", done: true },
     { label: "References", value: "3 of 3 complete", done: true },
-    { label: "Counter-offer", value: "Declined — handled", done: true },
+    { label: "Counter-offer", value: "Declined, handled", done: true },
     { label: "Notice period", value: "4 weeks", done: true },
     { label: "Start date", value: "Confirmed", done: false },
   ],
@@ -194,7 +194,7 @@ export const introRequest = {
 
 export const trajectory = [
   { when: "Now", what: "Director, 40 engineers", state: "current" as const },
-  { when: "Next", what: "VP at Series B — org-building scope", state: "target" as const },
+  { when: "Next", what: "VP at Series B, org-building scope", state: "target" as const },
   { when: "After", what: "CTO track, or VP at scale", state: "future" as const },
 ];
 
@@ -209,7 +209,7 @@ export const booking = {
   host: "Jarod Taylor",
   subtitle: "Discovery call",
   platform: "Google Meet",
-  tz: "CT — Austin",
+  tz: "CT · Austin",
   times: ["9:00 AM", "10:30 AM", "1:00 PM", "2:30 PM", "4:00 PM"],
   weekdays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
   /**

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site, recruitingDomains, legalSpecialty } from "@/lib/site";
+import { site, practiceAreas } from "@/lib/site";
 import { PageHero } from "@/components/site/page-hero";
 import { RecruitingDomains } from "@/components/site/domains";
 import { EngagementModels } from "@/components/site/engagement";
@@ -9,14 +9,14 @@ import { Rule } from "@/components/ui/kit";
 import { breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Practice Areas — Go-to-Market, Executive Search, Technical Recruiting",
+  title: "Practice Areas: Go-to-Market, Technical, Executive, Legal",
   description:
-    "Taylor Talent recruits across three domains for startups and scale-ups: go-to-market, executive search, and technical hiring, with legal search as a specialty.",
+    "Taylor Talent recruits across four practice areas for high-growth VC and PE-backed startups and scale-ups: go-to-market, technical, executive and legal.",
   alternates: { canonical: "/practice-areas" },
   openGraph: {
     title: `Practice Areas | ${site.name}`,
     description:
-      "Go-to-market, executive search, and technical recruiting for venture- and private-equity-backed startups and scale-ups.",
+      "Go-to-market, technical, executive and legal recruiting for high-growth VC and PE-backed startups and scale-ups.",
     url: "/practice-areas",
   },
 };
@@ -26,14 +26,12 @@ const serviceList = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Taylor Talent recruiting practice areas",
-  itemListElement: [...recruitingDomains, legalSpecialty].map(
-    (domain, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: domain.name,
-      url: `${site.url}${domain.href}`,
-    }),
-  ),
+  itemListElement: practiceAreas.map((area, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    name: area.name,
+    url: `${site.url}${area.href}`,
+  })),
 };
 
 export default function PracticeAreasPage() {
@@ -42,7 +40,7 @@ export default function PracticeAreasPage() {
       <PageHero
         eyebrow="Practice areas"
         title="Where Taylor Talent recruits."
-        lede="Three recruiting domains for startups and scale-ups — go-to-market, executive search, and technical recruiting — with legal search as a specialty. Roles run from individual contributor through the C-suite."
+        lede="Four practice areas for high-growth VC and PE-backed startups and scale-ups: go-to-market, technical, executive and legal. Roles run from individual contributor through the C-suite."
         primary={{ label: "Book a Discovery Call", href: site.bookCall }}
         secondary={{ label: "How a search runs", href: "/companies#search" }}
       />
@@ -70,7 +68,7 @@ export default function PracticeAreasPage() {
         bullets={[
           "A market read on the roles you are hiring for",
           "A realistic compensation band and timeline",
-          "Retained or contingency — whichever fits the search",
+          "Retained or contingency, whichever fits the search",
         ]}
       />
 

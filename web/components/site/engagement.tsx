@@ -17,6 +17,7 @@ export function EngagementModels() {
         eyebrow={engagementModels.eyebrow}
         title={engagementModels.title}
         lede={engagementModels.lede}
+        align="center"
       />
 
       <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-2">
@@ -52,7 +53,7 @@ export function EngagementModels() {
       </div>
 
       <Reveal delay={0.14}>
-        <p className="mt-6 text-[0.8125rem] leading-relaxed text-faint">
+        <p className="mt-6 text-center text-[0.8125rem] leading-relaxed text-faint">
           {engagementModels.note}
         </p>
       </Reveal>

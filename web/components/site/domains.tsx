@@ -1,23 +1,19 @@
 import Link from "next/link";
-import { recruitingDomains, legalSpecialty, site } from "@/lib/site";
+import { practiceAreas, site } from "@/lib/site";
 import { Reveal } from "@/components/motion/reveal";
 
 /**
- * The three recruiting domains, plus legal as a specialty.
+ * The four practice areas: go-to-market, technical, executive, legal.
  *
- * Rendered as plain semantic HTML — a heading, a paragraph and a role list per
- * domain — rather than inside a carousel or an image. This is the section that
- * has to answer "what does Taylor Talent do, for whom, and which roles" without
+ * Rendered as plain semantic HTML (a heading, a paragraph and a role list per
+ * area) rather than inside a carousel or an image. This is the section that has
+ * to answer "what does Taylor Talent do, for whom, and which roles" without
  * JavaScript, so nothing here is hidden behind an interaction.
  */
 export function RecruitingDomains() {
-  const entries = [...recruitingDomains, legalSpecialty];
-
   return (
     <div className="mt-14 space-y-12 sm:mt-16 sm:space-y-14">
-      {entries.map((domain, index) => {
-        const specialty = domain.id === legalSpecialty.id;
-
+      {practiceAreas.map((domain, index) => {
         return (
           <Reveal key={domain.id} delay={index * 0.05}>
             <section
@@ -28,9 +24,7 @@ export function RecruitingDomains() {
               <div className="grid grid-cols-1 gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
                 <div>
                   <span className="font-mono text-[0.5625rem] uppercase tracking-[0.14em] text-faint">
-                    {specialty
-                      ? "Specialty"
-                      : `Domain ${String(index + 1).padStart(2, "0")}`}
+                    {`Practice ${String(index + 1).padStart(2, "0")}`}
                   </span>
                   <h3
                     id={`${domain.id}-heading`}

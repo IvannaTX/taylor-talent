@@ -17,7 +17,10 @@ import { ExecutiveNetwork } from "@/components/home/ExecutiveNetwork";
  *
  * Stacked rather than split: the serif claim gets the full measure so each line
  * lands whole, and the console gets the full width its six-stage rail needs.
- * Order is the argument — claim, one sentence, one CTA, then proof of work.
+ * Order is the argument: claim, one sentence, one CTA, then proof of work.
+ *
+ * The copy column is centred, matching the section heads and the leadership
+ * carousel below it, so standalone text reads the same way down the whole page.
  *
  * The console lifts on scroll slightly slower than the copy, so the two layers
  * separate as you leave. That is the only parallax on the page.
@@ -37,7 +40,7 @@ export function Hero() {
   return (
     <section ref={ref} className="relative overflow-clip pt-28 sm:pt-36">
       <div className="shell">
-        <motion.div style={{ y: copyY }} className="min-w-0">
+        <motion.div style={{ y: copyY }} className="min-w-0 text-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -48,7 +51,7 @@ export function Hero() {
 
           {/* Two deliberate lines, each masked so it rises from behind the one
               above. The second carries the gradient and the italic. */}
-          <h1 className="display mt-6 max-w-[17ch] text-display-lg text-ink sm:max-w-none">
+          <h1 className="display mx-auto mt-6 max-w-[17ch] text-display-lg text-ink sm:max-w-none">
             {[hero.line1, hero.line2].map((line, i) => (
               <span key={line} className="block overflow-hidden pb-[0.06em]">
                 <motion.span
@@ -71,20 +74,20 @@ export function Hero() {
             ))}
           </h1>
 
-          <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_1fr] lg:items-end lg:gap-16">
+          <div className="mt-8 flex flex-col items-center gap-8">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.44, ease: EASE }}
               className="min-w-0"
             >
-              <p className="max-w-[52ch] text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
+              <p className="mx-auto max-w-[52ch] text-[1.0625rem] leading-relaxed text-muted sm:text-lg">
                 {hero.lede}
               </p>
               {/* The plain statement of who we serve and how engagements run.
                   Kept as ordinary text so a crawler or an agent can read it
                   without executing anything. */}
-              <p className="mt-4 max-w-[56ch] text-[0.9375rem] leading-relaxed text-faint">
+              <p className="mx-auto mt-4 max-w-[56ch] text-[0.9375rem] leading-relaxed text-faint">
                 {hero.positioning}
               </p>
             </motion.div>
@@ -95,7 +98,7 @@ export function Hero() {
               transition={{ duration: 0.85, delay: 0.54, ease: EASE }}
               className="min-w-0"
             >
-              <div className="flex items-center">
+              <div className="flex items-center justify-center">
                 <Button
                   href={site.bookCall}
                   size="lg"

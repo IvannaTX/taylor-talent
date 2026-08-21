@@ -1,4 +1,4 @@
-import { site, recruitingDomains, legalSpecialty } from "@/lib/site";
+import { site, practiceAreas } from "@/lib/site";
 import { engagementModels } from "@/lib/copy";
 import { companies } from "@/data/companies";
 import { clients } from "@/data/clients";
@@ -14,7 +14,7 @@ export const dynamic = "force-static";
  * and it states nothing the site does not already say in plain text.
  */
 function build(): string {
-  const domain = (d: (typeof recruitingDomains)[number] | typeof legalSpecialty) =>
+  const area = (d: (typeof practiceAreas)[number]) =>
     [
       `### ${d.name}`,
       "",
@@ -31,7 +31,7 @@ function build(): string {
     .map((company) => {
       const record = clients[company.name];
       const url = company.url ? ` (${company.url})` : "";
-      return `- ${company.name}${url}${record ? ` — ${record.sector}` : ""}`;
+      return `- ${company.name}${url}${record ? `: ${record.sector}` : ""}`;
     })
     .join("\n");
 
@@ -54,16 +54,13 @@ name, carried by the domain. The operating entity is ${site.legalEntity}.
 
 ## Who Taylor Talent serves
 
-Venture-backed and private-equity-backed startups and scale-ups, from seed stage
-through IPO-stage teams, primarily in technology and SaaS. Engagements cover
-first commercial hires through executive leadership.
+High-growth VC and PE-backed startups and scale-ups, from pre-seed to late
+stage, primarily in technology and SaaS. Engagements cover first commercial
+hires through executive leadership.
 
-## Recruiting domains
+## Practice areas
 
-${recruitingDomains.map(domain).join("\n")}
-## Specialty
-
-${domain(legalSpecialty)}
+${practiceAreas.map(area).join("\n")}
 ## Engagement models
 
 ${engagementModels.models

@@ -98,9 +98,9 @@ export const terms: LegalDoc = {
       id: "intellectual-property",
       title: "Intellectual property",
       blocks: [
-        `The site and everything in it — page copy, layout, design system, graphics, logos, the ${site.name} name and mark, photographs, interface artifacts, and the underlying code — is owned by ${site.legalEntity} or licensed to us, and is protected by United States and international copyright, trademark, and other intellectual property laws.`,
+        `The site and everything in it (page copy, layout, design system, graphics, logos, the ${site.name} name and mark, photographs, interface artifacts, and the underlying code) is owned by ${site.legalEntity} or licensed to us, and is protected by United States and international copyright, trademark, and other intellectual property laws.`,
         "We grant you a limited, revocable, non-exclusive, non-transferable license to view and use the site for personal or internal business purposes. No other rights are granted, expressly or by implication.",
-        "You may quote a short excerpt with attribution and a link back to the source page. Any other use — reproduction, adaptation, distribution, public display, or the creation of derivative works — requires our written permission.",
+        "You may quote a short excerpt with attribution and a link back to the source page. Any other use, including reproduction, adaptation, distribution, public display, or the creation of derivative works, requires our written permission.",
         "Third-party marks that appear on the site, including the names and logos of companies we have worked with, remain the property of their respective owners and are used for identification only. Their appearance is not an endorsement of us by them.",
       ],
     },
@@ -118,7 +118,7 @@ export const terms: LegalDoc = {
       id: "no-employment-guarantee",
       title: "No employment guarantee",
       blocks: [
-        "Using this site, sending us your background, speaking with us, or being considered for a search does not create an employment relationship, an agency relationship, or a promise of any kind — between you and us, or between you and any client of ours.",
+        "Using this site, sending us your background, speaking with us, or being considered for a search does not create an employment relationship, an agency relationship, or a promise of any kind, between you and us or between you and any client of ours.",
         "We do not guarantee that we will present you to a client, that a client will interview you, that you will receive an offer, or that any role described to you will stay open, funded, or scoped as described. Hiring decisions belong to the hiring company alone.",
         "We are not the employer for the roles we search. Compensation, benefits, and every condition of employment are set by the hiring company and are a matter between that company and the person it hires.",
       ],
@@ -129,7 +129,7 @@ export const terms: LegalDoc = {
       blocks: [
         "Executive search depends on market conditions, timing, compensation, internal alignment, and the decisions of individual people. We commit to process, judgment, and effort. We do not commit to an outcome.",
         "Nothing on this site guarantees that a search will result in a placement, that a placed executive will succeed or stay for any period, or that any timeline, response rate, or figure shown here will be repeated in your search.",
-        "Examples, metrics, and timelines on this site are illustrative of how we work. They describe past or representative engagements and are not a prediction of your results. Any guarantee, replacement provision, or service level that applies to your engagement appears in your signed agreement — not here.",
+        "Examples, metrics, and timelines on this site are illustrative of how we work. They describe past or representative engagements and are not a prediction of your results. Any guarantee, replacement provision, or service level that applies to your engagement appears in your signed agreement, not here.",
       ],
     },
     {
@@ -143,7 +143,7 @@ export const terms: LegalDoc = {
       id: "third-party-links",
       title: "Third-party links and services",
       blocks: [
-        "This site links to destinations we do not control — most notably the third-party provider that hosts the booking page for discovery calls, and our profile on LinkedIn.",
+        "This site links to destinations we do not control, most notably the third-party provider that hosts the booking page for discovery calls, and our profile on LinkedIn.",
         "We are not responsible for the content, availability, security, accuracy, or practices of those services. A link is not an endorsement. When you follow one you leave this site, and that service’s terms and privacy policy govern what happens there.",
         "Please read the terms and privacy notice of any third-party service before giving it your information.",
       ],
@@ -152,7 +152,7 @@ export const terms: LegalDoc = {
       id: "availability",
       title: "Availability and changes to the site",
       blocks: [
-        "This site is a working description of a live practice. Its content — including examples, roles, and figures — may be updated, corrected, or removed at any time without notice.",
+        "This site is a working description of a live practice. Its content, including examples, roles, and figures, may be updated, corrected, or removed at any time without notice.",
         "We do not warrant that the site will be available without interruption or free of errors. Access may be suspended for maintenance or discontinued entirely at our discretion.",
       ],
     },
@@ -169,7 +169,7 @@ export const terms: LegalDoc = {
       id: "limitation-of-liability",
       title: "Limitation of liability",
       blocks: [
-        `To the fullest extent permitted by law, ${site.legalEntity}, ${site.name}, and their owners, officers, employees, contractors, and agents will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any lost profits, lost revenue, lost business opportunity, lost data, or loss of goodwill, arising out of or relating to your use of — or inability to use — this site. That applies whether the claim is based in contract, tort, negligence, strict liability, or any other theory, and even if we were advised that such damages were possible.`,
+        `To the fullest extent permitted by law, ${site.legalEntity}, ${site.name}, and their owners, officers, employees, contractors, and agents will not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any lost profits, lost revenue, lost business opportunity, lost data, or loss of goodwill, arising out of or relating to your use of, or inability to use, this site. That applies whether the claim is based in contract, tort, negligence, strict liability, or any other theory, and even if we were advised that such damages were possible.`,
         "Our total aggregate liability for all claims relating to this site will not exceed one hundred United States dollars (US $100).",
         "This section applies to the website. Liability arising from a signed engagement is governed by that agreement instead.",
         "Some jurisdictions do not allow the limitation or exclusion of liability for incidental or consequential damages, so parts of this section may not apply to you.",
@@ -179,7 +179,7 @@ export const terms: LegalDoc = {
       id: "indemnification",
       title: "Indemnification",
       blocks: [
-        `You agree to indemnify and hold harmless ${site.legalEntity}, ${site.name}, and their owners, officers, employees, contractors, and agents from any claim, demand, loss, liability, or expense — including reasonable attorneys’ fees — arising out of your use of the site, your breach of these terms, or your violation of the rights of any third party.`,
+        `You agree to indemnify and hold harmless ${site.legalEntity}, ${site.name}, and their owners, officers, employees, contractors, and agents from any claim, demand, loss, liability, or expense, including reasonable attorneys’ fees, arising out of your use of the site, your breach of these terms, or your violation of the rights of any third party.`,
       ],
     },
     {
@@ -228,7 +228,7 @@ export const privacy: LegalDoc = {
       title: "Overview",
       blocks: [
         `${ENTITY} operates this website. This policy explains how we handle personal information collected through the site and through the conversations that follow from it.`,
-        "Two facts shape everything below. First, this is a small senior practice — what you send reaches Jarod Taylor rather than a sales team. Second, discretion is the product: a senior leader exploring a move cannot have that exploration leak. So we do not share a person’s information with a client without that person’s explicit approval, and we do not sell personal information to anyone.",
+        "Two facts shape everything below. First, this is a small senior practice: what you send reaches the team rather than a sales desk. Second, discretion is the product: a senior leader exploring a move cannot have that exploration leak. So we do not share a person’s information with a client without that person’s explicit approval, and we do not sell personal information to anyone.",
         "This policy covers the website and our search practice. It does not cover the independent practices of the third-party services we link to.",
       ],
     },
@@ -239,10 +239,10 @@ export const privacy: LegalDoc = {
         "We collect what a search conversation actually requires, and little else. In practice it falls into four groups:",
         {
           list: [
-            "Information you give us directly — your name, email address, phone number, employer, role, background, compensation expectations, references, and whatever else you choose to include when you write to us or speak with us.",
-            "Information generated by a search — the notes, assessments, interview feedback, and scheduling details created while an engagement is running.",
-            "Technical information — the IP address, browser and device type, referring page, and pages viewed that any web server records when a page is requested.",
-            "A preference stored on your device — currently one value recording whether you chose the light or dark version of this site.",
+            "Information you give us directly: your name, email address, phone number, employer, role, background, compensation expectations, references, and whatever else you choose to include when you write to us or speak with us.",
+            "Information generated by a search: the notes, assessments, interview feedback, and scheduling details created while an engagement is running.",
+            "Technical information: the IP address, browser and device type, referring page, and pages viewed that any web server records when a page is requested.",
+            "A preference stored on your device, currently one value recording whether you chose the light or dark version of this site.",
           ],
         },
         "We do not ask for, and do not want, government identification numbers, financial account details, health information, or any other sensitive category of personal information through this website. Please do not send them.",
@@ -261,7 +261,7 @@ export const privacy: LegalDoc = {
       id: "scheduling",
       title: "Scheduling requests",
       blocks: [
-        "Discovery calls are booked through a third-party scheduling provider, on a page that provider hosts. When you book, you give that provider the information its form requests — typically your name, email address, and the time you selected — and it passes the booking details to us.",
+        "Discovery calls are booked through a third-party scheduling provider, on a page that provider hosts. When you book, you give that provider the information its form requests, typically your name, email address, and the time you selected, and it passes the booking details to us.",
         "We receive the confirmation, any notes you include, and the calendar invitation. The provider processes the booking under its own privacy policy and may set its own cookies on the page it hosts. We do not control that page.",
         "Calls take place on a standard video meeting platform. We do not record a discovery call without telling you beforehand and getting your agreement.",
       ],
@@ -276,7 +276,7 @@ export const privacy: LegalDoc = {
             "Nothing goes to a client without your explicit, case-by-case approval. Approving one introduction does not approve the next.",
             "We do not post your profile to a job board, add you to a public database, or circulate your background to companies you have not agreed to.",
             "We do not sell, rent, or trade personal information, and we do not share it with advertisers or data brokers.",
-            "If you are not moving now, we can keep a light record of what you would consider — or delete everything. Your choice, and you can change it later.",
+            "If you are not moving now, we can keep a light record of what you would consider, or delete everything. Your choice, and you can change it later.",
           ],
         },
         "Information a client gives us about a role, its compensation, or its internal context is treated as that client’s confidential information and is used only to run the search.",
@@ -288,7 +288,7 @@ export const privacy: LegalDoc = {
       blocks: [
         "This site does not use advertising cookies, tracking pixels, or cross-site trackers, and it does not show a consent banner because it does not need one.",
         "It stores a single preference in your browser’s local storage: the theme you selected. That value stays on your device, is readable only by this site, and is never sent to us. Clearing your browser storage removes it and the site returns to its default appearance.",
-        "Third-party pages we link to — the scheduling provider and LinkedIn — set their own cookies once you are on them, governed by their policies rather than this one.",
+        "Third-party pages we link to, the scheduling provider and LinkedIn, set their own cookies once you are on them, governed by their policies rather than this one.",
       ],
     },
     {
@@ -296,7 +296,7 @@ export const privacy: LegalDoc = {
       title: "Analytics",
       blocks: [
         "We do not currently run a third-party analytics or advertising product on this site.",
-        "Our hosting provider keeps standard server logs — requests, timestamps, IP addresses, and error information — which are used to keep the site running and secure. They are not used to build a profile of you.",
+        "Our hosting provider keeps standard server logs (requests, timestamps, IP addresses, and error information) which are used to keep the site running and secure. They are not used to build a profile of you.",
         "If we later add privacy-respecting, aggregate analytics, it will be to understand which pages get read and where visitors arrive from, not to identify individuals. We will update this policy and its effective date before turning it on.",
       ],
     },
@@ -307,10 +307,10 @@ export const privacy: LegalDoc = {
         "A handful of providers process information on our behalf, in these categories:",
         {
           list: [
-            "Website hosting and content delivery — serving the pages you are reading.",
-            "Scheduling — hosting the booking page for discovery calls.",
-            "Email, calendar, and video meetings — receiving your messages and running the conversations.",
-            "Document and file storage — holding search materials while an engagement is live.",
+            "Website hosting and content delivery: serving the pages you are reading.",
+            "Scheduling: hosting the booking page for discovery calls.",
+            "Email, calendar, and video meetings: receiving your messages and running the conversations.",
+            "Document and file storage: holding search materials while an engagement is live.",
           ],
         },
         "We choose providers we consider reputable and give each one only what it needs to do its job. Each processes information under its own terms and privacy policy. None of them is authorized to use your information for their own marketing.",
@@ -324,7 +324,7 @@ export const privacy: LegalDoc = {
         {
           list: [
             "Answer your message and continue the conversation.",
-            "Run and complete a search engagement — calibration, market mapping, outreach, assessment, references, and offer negotiation.",
+            "Run and complete a search engagement: calibration, market mapping, outreach, assessment, references, and offer negotiation.",
             "Introduce you to a specific opportunity, with your approval, each time.",
             "Keep enough context that a conversation resumed months later does not start over.",
             "Operate, secure, and improve this website.",
@@ -343,7 +343,7 @@ export const privacy: LegalDoc = {
           list: [
             "With a client, when you have approved that specific introduction.",
             "With the service providers above, to the limited extent each needs it.",
-            "When the law requires it — in response to a valid legal request, or to establish, exercise, or defend a legal claim.",
+            "When the law requires it, in response to a valid legal request, or to establish, exercise, or defend a legal claim.",
             "In connection with a sale or reorganization of the practice, in which case the recipient would be bound by this policy or one at least as protective, and the change would be noted here.",
           ],
         },
@@ -357,11 +357,11 @@ export const privacy: LegalDoc = {
         "We keep information only as long as it serves the purpose it was collected for, or as long as the law requires:",
         {
           list: [
-            "Active search materials — for the length of the engagement and a reasonable period afterward, so references, guarantees, and follow-up questions can be answered.",
-            "Candidate conversations — for as long as the relationship is live. Where a conversation goes quiet, we review it periodically and delete what no longer serves a purpose.",
-            "Correspondence — retained with our business records.",
-            "Contracts, invoices, and tax records — for the period required by law, typically seven years.",
-            "Server logs — for the short window our hosting provider retains them.",
+            "Active search materials: for the length of the engagement and a reasonable period afterward, so references, guarantees, and follow-up questions can be answered.",
+            "Candidate conversations: for as long as the relationship is live. Where a conversation goes quiet, we review it periodically and delete what no longer serves a purpose.",
+            "Correspondence: retained with our business records.",
+            "Contracts, invoices, and tax records: for the period required by law, typically seven years.",
+            "Server logs: for the short window our hosting provider retains them.",
           ],
         },
         "When information is no longer needed we delete it, or strip the details that identify you.",
@@ -378,12 +378,12 @@ export const privacy: LegalDoc = {
             "Give you a copy of it.",
             "Correct anything wrong or out of date.",
             "Delete it.",
-            "Stop contacting you — permanently, or until you say otherwise.",
+            "Stop contacting you, permanently or until you say otherwise.",
             "Limit how we use it, or object to a particular use.",
           ],
         },
         "Email us and we will respond within thirty days. We will not treat you differently for asking. Deleting your information does not remove you from consideration for a role you are actively pursuing, though it may mean we no longer hold what the search requires.",
-        "Residents of Texas, California, and other states with comprehensive privacy laws, and individuals in the United Kingdom and the European Economic Area, may have additional statutory rights — including the right to appeal a refused request and the right to complain to a supervisory authority. We honor these requests for everyone rather than checking where you live first.",
+        "Residents of Texas, California, and other states with comprehensive privacy laws, and individuals in the United Kingdom and the European Economic Area, may have additional statutory rights, including the right to appeal a refused request and the right to complain to a supervisory authority. We honor these requests for everyone rather than checking where you live first.",
         "We may need to verify your identity before acting on a request, and we may have to decline where the law requires us to keep a record.",
       ],
     },
@@ -414,7 +414,7 @@ export const privacy: LegalDoc = {
       title: "Changes to this policy",
       blocks: [
         "We update this policy when our practices, our providers, or the law change. The effective date at the top of the page always reflects the current version.",
-        "If a change materially affects how we handle information you have already given us, we will say so here — and where we have a live conversation with you, we will tell you directly.",
+        "If a change materially affects how we handle information you have already given us, we will say so here, and where we have a live conversation with you we will tell you directly.",
       ],
     },
     {

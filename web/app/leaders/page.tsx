@@ -29,7 +29,7 @@ export default function LeadersPage() {
       <PageHero
         eyebrow="For senior leaders"
         title="The best time for this conversation is before you need it."
-        lede="Senior moves rarely come from a job search. They come from a relationship that already existed when the right mandate appeared. This is that line — private, low-frequency, and entirely on your terms."
+        lede="Senior moves rarely come from a job search. They come from a relationship that already existed when the right mandate appeared. This is that line: private, low-frequency, and entirely on your terms."
         primary={{
           label: "Start a confidential conversation",
           href: site.bookCall,
@@ -69,7 +69,7 @@ export default function LeadersPage() {
       <Finale
         eyebrow="Start privately"
         title="A confidential conversation, on your terms."
-        lede="No résumé blast and no automatic introduction. Start with the move you want to make—even if the timing is not now."
+        lede="No résumé blast and no automatic introduction. Start with the move you want to make, even if the timing is not now."
         bullets={["Nothing shared without approval", "Only relevant senior mandates", "A direct line to Jarod"]}
         cta="Start a Confidential Conversation"
       />

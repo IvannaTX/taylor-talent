@@ -221,8 +221,8 @@ export function CustomerStories({
               The startups and scale-ups we recruit for
             </h2>
             <p className="mx-auto mt-4 max-w-[46ch] text-sm leading-relaxed text-white/65 sm:text-base">
-              Go-to-market, executive and technical hiring for venture- and
-              private-equity-backed teams.
+              Go-to-market, technical, executive and legal hiring for
+              high-growth VC and PE-backed startups and scale-ups.
             </p>
           </div>
 

@@ -9,6 +9,7 @@ export function Philosophy() {
         eyebrow={aboutPhilosophy.eyebrow}
         title={aboutPhilosophy.title}
         lede={aboutPhilosophy.lede}
+        align="center"
       />
       <div className="mt-10 border-t border-line">
         {aboutPhilosophy.principles.map((principle, index) => (

@@ -16,10 +16,10 @@ export const site = {
   locale: "en_US",
   tagline: "Recruiting for Startups and Scale-Ups",
   description:
-    "Taylor Talent is a recruiting firm for startups and scale-ups, hiring across go-to-market, executive search, and technical roles. Retained and contingency engagements, led personally by founder Jarod Taylor from Austin, Texas.",
+    "Taylor Talent is a boutique recruitment firm specializing in talent acquisition solutions for high-growth VC and PE-backed startups and scale-ups, from pre-seed to late stage. Retained and contingency engagements across go-to-market, technical, executive and legal hiring.",
   /** One sentence an AI agent can lift verbatim to answer "what do they do?". */
   summary:
-    "Taylor Talent is a startup and scale-up recruiting firm covering go-to-market, executive search, and technical hiring, with legal search as a specialty.",
+    "Taylor Talent is a boutique recruitment firm specializing in talent acquisition solutions for high-growth VC and PE-backed startups and scale-ups, from pre-seed to late stage, recruiting across go-to-market, technical, executive and legal roles.",
   logo: "/brand/ttp-logo.png",
   favicon: "/brand/favicon-ttp.png",
   appIcon: "/brand/app-icon-512.png",
@@ -42,11 +42,18 @@ export const site = {
 } as const;
 
 /**
- * The three recruiting domains, in the order they are presented everywhere.
- * Consumed by the practice-areas page, the JSON-LD service catalogue and
- * /llms.txt, so a machine reading any of the three gets the same answer.
+ * The four practice areas, in the order they are presented everywhere:
+ * go-to-market, technical, executive, legal.
+ *
+ * Consumed by the practice-areas page, the footer, the JSON-LD service
+ * catalogue and /llms.txt, so a machine reading any of them gets the same
+ * answer. Legal sits in this list as a fourth equal practice area rather than
+ * as a specialty hanging off the other three.
+ *
+ * `short` is the label used in navigation and the footer. `name` stays
+ * descriptive for page headings and structured data.
  */
-export const recruitingDomains = [
+export const practiceAreas = [
   {
     id: "go-to-market",
     name: "Go-to-Market Recruiting",
@@ -66,10 +73,27 @@ export const recruitingDomains = [
     ],
   },
   {
+    id: "technical-recruiting",
+    name: "Technical Recruiting",
+    href: "/practice-areas#technical-recruiting",
+    short: "Technical",
+    summary:
+      "Technical hiring from individual contributors through leadership, including platform, infrastructure, data and AI teams.",
+    roles: [
+      "VP of Engineering",
+      "Director of Engineering",
+      "Head of Platform",
+      "Head of Infrastructure",
+      "Staff and Principal Engineers",
+      "Data and AI leadership",
+      "Engineering Managers",
+    ],
+  },
+  {
     id: "executive-search",
     name: "Executive Search",
     href: "/practice-areas#executive-search",
-    short: "Executive Search",
+    short: "Executive",
     summary:
       "Executive search for C-suite and senior leadership seats where a miss is expensive to unwind, including founder-adjacent and board-visible roles.",
     roles: [
@@ -83,39 +107,20 @@ export const recruitingDomains = [
     ],
   },
   {
-    id: "technical-recruiting",
-    name: "Technical Recruiting",
-    href: "/practice-areas#technical-recruiting",
-    short: "Technical Recruiting",
+    id: "legal-search",
+    name: "Legal Search",
+    href: "/practice-areas#legal-search",
+    short: "Legal",
     summary:
-      "Technical hiring from individual contributors through leadership, including platform, infrastructure, data and AI teams.",
+      "In-house legal leadership: general counsel, deputy general counsel and commercial counsel for high-growth VC and PE-backed startups and scale-ups.",
     roles: [
-      "VP of Engineering",
-      "Director of Engineering",
-      "Head of Platform",
-      "Head of Infrastructure",
-      "Staff and Principal Engineers",
-      "Data and AI leadership",
-      "Engineering Managers",
+      "General Counsel",
+      "Deputy General Counsel",
+      "Commercial Counsel",
+      "Head of Legal Operations",
     ],
   },
 ] as const;
-
-/** A specialty, deliberately presented under the three domains rather than beside them. */
-export const legalSpecialty = {
-  id: "legal-search",
-  name: "Legal Search",
-  href: "/practice-areas#legal-search",
-  short: "Legal",
-  summary:
-    "A specialty practice covering in-house legal leadership: general counsel, deputy general counsel and commercial counsel for venture- and private-equity-backed companies.",
-  roles: [
-    "General Counsel",
-    "Deputy General Counsel",
-    "Commercial Counsel",
-    "Head of Legal Operations",
-  ],
-} as const;
 
 /** Footer-only. Kept out of the primary navigation. */
 export const legalNav = [
@@ -149,37 +154,35 @@ export type FooterColumn = {
 /**
  * Footer information architecture.
  *
- * Every column composes from a canonical source rather than restating it: the
- * services column is `recruitingDomains` plus `legalSpecialty`, and the company
- * column is `nav` minus Home. So the footer cannot disagree with the primary
- * navigation, the practice-areas page, the JSON-LD service catalogue or
- * /llms.txt about what this firm does or how the site is organised.
+ * The services column composes from `practiceAreas` rather than restating it, so
+ * the footer cannot disagree with the practice-areas page, the JSON-LD service
+ * catalogue or /llms.txt about what this firm does.
  *
- * `legalNav` is deliberately not a column here — Terms and Privacy live in the
+ * `legalNav` is deliberately not a column here. Terms and Privacy live in the
  * bottom row instead, so the main navigation carries only the three columns a
  * visitor actually navigates by.
  *
  * The service order is load-bearing for both search engines and AI agents:
- * go-to-market, executive search, then technical  engineering, with legal
- * following as a specialty rather than a fourth equal domain. That is the same
- * hierarchy `site.summary` states in prose.
+ * go-to-market, technical, executive, legal, presented as four equal practice
+ * areas. That is the same order `site.summary` states in prose.
+ *
+ * Company is a single link. The three routes it used to duplicate (For
+ * Companies, For Leaders, Practice Areas) are already in the primary
+ * navigation, and repeating them here was the only reason the column existed.
  */
 export const footerNav: readonly FooterColumn[] = [
   {
     id: "services",
     heading: "Services",
-    links: [
-      ...recruitingDomains.map((domain) => ({
-        label: domain.short,
-        href: domain.href,
-      })),
-      { label: legalSpecialty.short, href: legalSpecialty.href },
-    ],
+    links: practiceAreas.map((area) => ({
+      label: area.short,
+      href: area.href,
+    })),
   },
   {
     id: "company",
     heading: "Company",
-    links: nav.filter((item) => item.href !== "/"),
+    links: nav.filter((item) => item.href === "/about"),
   },
   {
     id: "engagement",

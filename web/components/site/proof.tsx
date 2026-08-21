@@ -20,6 +20,7 @@ export function Proof() {
         eyebrow={proof.eyebrow}
         title={proof.title}
         lede={proof.lede}
+        align="center"
       />
 
       <Stagger className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3" stagger={0.1}>

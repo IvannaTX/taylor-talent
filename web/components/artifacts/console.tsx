@@ -33,7 +33,7 @@ export function SearchConsole({ className }: { className?: string }) {
       footer={
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="font-mono text-[0.5625rem] uppercase tracking-[0.14em] text-faint">
-            Illustrative — not a real client search
+            Illustrative, not a real client search
           </span>
           <span className="num font-mono text-[0.625rem] text-muted">
             {activeSearch.band}

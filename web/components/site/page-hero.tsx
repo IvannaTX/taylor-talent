@@ -3,10 +3,17 @@
 import * as React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { EASE } from "@/components/motion/reveal";
 
-/** Interior-page opener. Same rhythm as the homepage hero, less height. */
+/**
+ * Interior-page opener. Same rhythm as the homepage hero, less height.
+ *
+ * Standalone copy is centred. Where an artifact is passed as `aside` the copy is
+ * one half of a two-column split and stays left-aligned, because centring a
+ * column against a neighbouring panel reads as a mistake rather than a choice.
+ */
 export function PageHero({
   eyebrow,
   title,
@@ -33,7 +40,7 @@ export function PageHero({
               : ""
           }
         >
-          <div className="min-w-0">
+          <div className={aside ? "min-w-0" : "min-w-0 text-center"}>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -42,7 +49,7 @@ export function PageHero({
               <span className="eyebrow">{eyebrow}</span>
             </motion.div>
 
-            <h1 className="display mt-5 max-w-[24ch] text-display-md text-ink">
+            <h1 className={cn("display mt-5 max-w-[24ch] text-display-md text-ink", !aside && "mx-auto")}>
               <span className="block overflow-hidden pb-[0.05em]">
                 <motion.span
                   className="block"
@@ -59,7 +66,7 @@ export function PageHero({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.36, ease: EASE }}
-              className="mt-6 max-w-[46ch] text-[1.0625rem] leading-relaxed text-muted sm:text-lg"
+              className={cn("mt-6 max-w-[46ch] text-[1.0625rem] leading-relaxed text-muted sm:text-lg", !aside && "mx-auto")}
             >
               {lede}
             </motion.p>
@@ -68,7 +75,7 @@ export function PageHero({
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.46, ease: EASE }}
-              className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+              className={cn("mt-9 flex flex-col gap-3 sm:flex-row sm:items-center", !aside && "sm:justify-center")}
             >
               <Button href={primary.href} size="lg" className="w-full sm:w-auto">
                 {primary.label}

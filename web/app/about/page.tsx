@@ -8,12 +8,12 @@ import { breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "About Jarod Taylor",
   description:
-    "Jarod Taylor's recruiting background, hiring philosophy, and the in-house experience behind Taylor Talent — ten years across go-to-market, technical, legal and C-suite hiring.",
+    "Jarod Taylor's recruiting background, hiring philosophy, and the in-house experience behind Taylor Talent: ten years across go-to-market, technical, legal and C-suite hiring.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: `About Jarod Taylor | ${site.name}`,
     description:
-      "Ten years of in-house recruiting experience, now personally leading every Taylor Talent search.",
+      "Ten years of in-house recruiting experience, now overseeing every Taylor Talent search.",
     url: "/about",
   },
 };

@@ -12,9 +12,9 @@ import { Rule } from "@/components/ui/kit";
 import { breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "For Companies — How a Search Runs",
+  title: "For Companies: How a Search Runs",
   description:
-    "Recruiting for startups and scale-ups across go-to-market, executive and technical hiring. Calibrated in week one, mapped in full, shortlisted with the reservations left in — retained or contingency.",
+    "Recruiting for high-growth VC and PE-backed startups and scale-ups across go-to-market, technical, executive and legal hiring. Calibrated in week one, mapped in full, shortlisted with the reservations left in, retained or contingency.",
   alternates: { canonical: "/companies" },
   openGraph: {
     title: `For Companies | ${site.name}`,
@@ -30,7 +30,7 @@ export default function CompaniesPage() {
       <PageHero
         eyebrow="For companies"
         title="The seat is open. The clock is already running."
-        lede="Recruiting for startups and scale-ups across go-to-market, executive and technical hiring. You get the whole market, a calibrated shortlist, and the person who took your intake negotiating the offer."
+        lede="Recruiting for high-growth VC and PE-backed startups and scale-ups across go-to-market, technical, executive and legal hiring. You get the whole market, a calibrated shortlist, and a team that stays in the room through the offer."
         primary={{ label: "Book a Discovery Call", href: site.bookCall }}
         secondary={{ label: "Practice areas", href: "/practice-areas" }}
       />

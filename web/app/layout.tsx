@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
-import { site, recruitingDomains, legalSpecialty } from "@/lib/site";
+import { site, practiceAreas } from "@/lib/site";
 import { ThemeProvider } from "@/components/theme-provider";
 import { MotionRoot } from "@/components/motion/config";
 import { Backdrop } from "@/components/backdrop";
@@ -105,7 +105,7 @@ export const viewport: Viewport = {
 const ORG_ID = `${site.url}/#organization`;
 const SITE_ID = `${site.url}/#website`;
 
-const services = [...recruitingDomains, legalSpecialty].map((domain) => ({
+const services = practiceAreas.map((domain) => ({
   "@type": "Service",
   "@id": `${site.url}${domain.href}`,
   name: domain.name,
@@ -116,7 +116,7 @@ const services = [...recruitingDomains, legalSpecialty].map((domain) => ({
   areaServed: { "@type": "Country", name: "United States" },
   audience: {
     "@type": "BusinessAudience",
-    name: "Venture- and private-equity-backed startups and scale-ups",
+    name: "High-growth VC and PE-backed startups and scale-ups",
   },
 }));
 
@@ -173,7 +173,7 @@ const jsonLd = {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Recruiting services",
-        itemListElement: [...recruitingDomains, legalSpecialty].map((domain) => ({
+        itemListElement: practiceAreas.map((domain) => ({
           "@type": "Offer",
           itemOffered: { "@id": `${site.url}${domain.href}` },
         })),

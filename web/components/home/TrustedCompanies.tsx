@@ -172,7 +172,7 @@ function LogoTile({
         <button
           type="button"
           aria-expanded={active}
-          aria-label={`${company.name} — ${record.relationship}`}
+          aria-label={`${company.name}: ${record.relationship}`}
           onFocus={onEnter}
           onBlur={onLeave}
           onClick={onEnter}

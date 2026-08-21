@@ -55,7 +55,7 @@ export default function RecruitingAgreementPage() {
             </p>
             <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted sm:text-base">
               To see the terms that would apply to a search, ask for them on a
-              discovery call — you will get the agreement rather than a summary
+              discovery call. You will get the agreement rather than a summary
               of it.
             </p>
 
