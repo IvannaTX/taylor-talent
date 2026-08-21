@@ -24,7 +24,7 @@ export const searchStories: SearchStory[] = [
     id: "white-glove",
     title: "White Glove Support",
     description:
-      "White-glove support is delivered by a team of talent acquisition experts, from market mapping through offer acceptance. Jarod Taylor oversees the search and personally reviews every submission.",
+      "White-glove support is delivered by a team of talent acquisition experts, from market mapping through offer acceptance. Clients receive direct senior attention, proactive communication, and a concierge-level experience throughout the search.",
     metric: { value: "100%", label: "Client Satisfaction" },
     visual: {
       type: "image",

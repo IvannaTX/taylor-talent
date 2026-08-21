@@ -84,6 +84,38 @@ export const provenance: Record<string, Provenance> = {
     url: "https://www.swap-commerce.com",
     addedOn: "2026-08-19",
   },
+  "/logos/companies/loancrate.svg": {
+    kind: "licensed",
+    source: "Loancrate — /assets/images/logo.svg on www.loancrate.com",
+    license:
+      "Trademark of Loancrate. Used to identify an existing client relationship (nominative use); not a claim of endorsement. Fills flattened to one opaque colour for the mask pipeline; geometry unaltered. Icon only: no vector wordmark is published beside it.",
+    url: "https://www.loancrate.com",
+    addedOn: "2026-08-21",
+  },
+  "/logos/companies/humaans.svg": {
+    kind: "licensed",
+    source: "Humaans — inline header wordmark on humaans.io",
+    license:
+      "Trademark of Humaans. Used to identify an existing client relationship (nominative use); not a claim of endorsement. Fills flattened for the mask pipeline and the viewBox opened to the full glyph height the site crops; geometry unaltered.",
+    url: "https://humaans.io",
+    addedOn: "2026-08-21",
+  },
+  "/logos/companies/highlight.svg": {
+    kind: "licensed",
+    source: "Highlight — inline header lockup on highlightai.com",
+    license:
+      "Trademark of Highlight AI. Used to identify an existing client relationship (nominative use); not a claim of endorsement. Fills flattened for the mask pipeline; geometry unaltered.",
+    url: "https://highlightai.com",
+    addedOn: "2026-08-21",
+  },
+  "/logos/companies/basis.svg": {
+    kind: "licensed",
+    source: "Basis — inline header lockup on www.getbasis.ai",
+    license:
+      "Trademark of Basis. Used to identify an existing client relationship (nominative use); not a claim of endorsement. Fills flattened for the mask pipeline; geometry unaltered.",
+    url: "https://www.getbasis.ai",
+    addedOn: "2026-08-21",
+  },
 
   /* ---- Leadership Search: generated portraits ----------------------- */
   ...Object.fromEntries(

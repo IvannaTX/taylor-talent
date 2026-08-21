@@ -148,7 +148,7 @@ function LogoTile({
   const face = (
     <span
       className={cn(
-        "flex w-full items-center justify-center text-muted",
+        "flex w-full items-center justify-center text-muted lg:min-w-0",
         "transition-opacity duration-300 ease-apple",
         active ? "text-ink opacity-100" : dimmed ? "opacity-25" : "opacity-70",
       )}
@@ -160,7 +160,7 @@ function LogoTile({
   return (
     <div
       className={cn(
-        "relative grid h-[3.25rem] min-w-32 place-items-center rounded-lg px-3 md:min-w-0",
+        "relative grid h-[3.25rem] min-w-32 place-items-center rounded-lg px-3 md:min-w-0 lg:px-1.5",
         "transition-[background-color,opacity] duration-300 ease-apple",
         active ? "bg-raised/80" : "bg-surface/45",
       )}
@@ -176,7 +176,7 @@ function LogoTile({
           onFocus={onEnter}
           onBlur={onLeave}
           onClick={onEnter}
-          className="flex w-full items-center justify-center rounded"
+          className="flex w-full items-center justify-center rounded lg:min-w-0"
         >
           {face}
         </button>
@@ -220,7 +220,7 @@ function DesktopRows() {
               </div>
             )}
 
-            <div className="mt-2 grid grid-cols-4 gap-2 lg:grid-cols-7">
+            <div className="mt-2 grid grid-cols-4 gap-2 lg:grid-cols-9 lg:gap-1.5">
               {rowCompanies.map((company) => (
                 <LogoTile
                   key={company.name}
