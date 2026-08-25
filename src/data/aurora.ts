@@ -6,7 +6,7 @@ export interface ProcessStep { n: string; title: string; desc: string; }
 export interface LeaderValueProp { title: string; desc: string; }
 
 export const auroraLinks = {
-  bookCall: "mailto:jarod@taylortalentpartners.com", // TODO: replace with real scheduler URL
+  bookCall: "https://calendly.com/recruiter-jarod/taylortalent-client-discovery",
   email: "mailto:jarod@taylortalentpartners.com",
   linkedin: "https://www.linkedin.com/company/taylortalent/"
 };

@@ -29,7 +29,7 @@ export interface SiteLinks {
 }
 
 export const links: SiteLinks = {
-  bookCall: "#book-a-call", // TODO: replace with real scheduler URL
+  bookCall: "https://calendly.com/recruiter-jarod/taylortalent-client-discovery",
   email: "mailto:jarod@taylortalentpartners.com", // TODO: confirm address
   linkedin: "https://www.linkedin.com/company/taylortalent/"
 };
