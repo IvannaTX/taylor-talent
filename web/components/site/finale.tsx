@@ -11,9 +11,8 @@ import { SchedulerArtifact } from "@/components/artifacts/scheduler";
 /**
  * The close.
  *
- * The scheduler artifact sits right next to the CTA on purpose: the visitor sees
- * a day/time grid before they click, so landing on Jarod's Paraform booking page
- * is a continuation of something already started rather than a new context.
+ * The Calendly booking flow sits directly beside the supporting copy so a
+ * visitor can schedule without leaving the page.
  */
 export function Finale({
   eyebrow = finale.eyebrow,
