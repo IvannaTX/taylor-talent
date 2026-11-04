@@ -79,7 +79,7 @@ If the real booking page changes (duration, platform, host), update `booking` in
 
 - `lib/site.ts` — links + SEO. **`site.bookCall` drives every CTA on the site**,
   including the scheduler artifact. It is set to
-  `https://calendly.com/recruiter-jarod/taylortalent-client-discovery`; because it is an http(s) URL, `Button`
+  `https://calendly.com/taylortalent/business-connect-call-60m`; because it is an http(s) URL, `Button`
   and the scheduler open it in a new tab with `rel="noopener noreferrer"`
   automatically.
 - `lib/copy.ts` — all copy, including the beat definitions and their metrics.

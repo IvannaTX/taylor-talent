@@ -38,7 +38,7 @@ export const site = {
    * rel="noopener noreferrer" automatically. A dedicated scheduling URL can be
    * swapped in here without touching any component.
    */
-  bookCall: "https://calendly.com/recruiter-jarod/taylortalent-client-discovery",
+  bookCall: "https://calendly.com/taylortalent/business-connect-call-60m",
 } as const;
 
 /**

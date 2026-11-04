@@ -29,7 +29,7 @@ export interface SiteLinks {
 }
 
 export const links: SiteLinks = {
-  bookCall: "https://calendly.com/recruiter-jarod/taylortalent-client-discovery",
+  bookCall: "https://calendly.com/taylortalent/business-connect-call-60m",
   email: "mailto:jarod@taylortalentpartners.com", // TODO: confirm address
   linkedin: "https://www.linkedin.com/company/taylortalent/"
 };
