@@ -1,30 +1,23 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { site, legalNav, recruitingAgreement } from "@/lib/site";
+import { ArrowDownToLine, ArrowUpRight, FileText } from "lucide-react";
+import { site, recruitingAgreement } from "@/lib/site";
 import { PageHero } from "@/components/site/page-hero";
+import { Button } from "@/components/ui/button";
 import { Section } from "@/components/ui/kit";
 import { breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
-/**
- * Recruiting Agreement — route and placeholder.
- *
- * The footer links here, so the route exists rather than dead-ending. The
- * agreement itself is deliberately not drafted: commercial terms are a separate
- * piece of work and nothing on this page states a fee, a guarantee, a
- * replacement policy or any other provision that has not been settled and
- * reviewed. What it does say is true today — terms are issued directly as part
- * of an engagement — and it routes to the two documents that *are* published.
- */
+const contingencyAgreement =
+  "/documents/Taylor-Talent-Partners-Contingency-Recruiting-Agreement.pdf";
 
 export const metadata: Metadata = {
-  title: "Recruiting Agreement",
+  title: "Recruiting Agreements",
   description:
-    "Where Taylor Talent's recruiting agreement will be published. Engagement terms are currently issued directly as part of a search engagement.",
+    "View or download Taylor Talent's current contingency recruiting agreement. Retained search terms are provided separately and will be published when finalized.",
   alternates: { canonical: recruitingAgreement.href },
   openGraph: {
-    title: `Recruiting Agreement | ${site.name}`,
+    title: `Recruiting Agreements | ${site.name}`,
     description:
-      "Where Taylor Talent's recruiting agreement will be published. Engagement terms are currently issued directly.",
+      "Review Taylor Talent's current contingency recruiting agreement and the status of retained search terms.",
     url: recruitingAgreement.href,
   },
 };
@@ -33,59 +26,132 @@ export default function RecruitingAgreementPage() {
   return (
     <>
       <PageHero
-        eyebrow="Engagement"
-        title="The recruiting agreement will be published here."
-        lede="Retained and contingency engagements each run on written terms. Those terms are issued directly today, and this is the page they will live on once published."
-        primary={{ label: "Book a Discovery Call", href: site.bookCall }}
+        eyebrow="Engagement terms"
+        title="The contingency agreement is now published."
+        lede="Review the current contingency recruiting agreement here. Retained search terms are provided separately and will be added once finalized."
+        primary={{
+          label: "View contingency agreement",
+          href: contingencyAgreement,
+        }}
         secondary={{ label: "How a search runs", href: "/companies#search" }}
       />
 
       <Section>
-        <div className="card grain relative overflow-hidden p-8 sm:p-12">
-          <div className="max-w-[54ch]">
-            <h2 className="display text-display-xs text-ink">
-              Not yet published
-            </h2>
-            <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted sm:text-base">
-              Nothing on this page sets out fees, notice periods, replacement
-              terms or any other provision of an engagement. Those are agreed in
-              writing for each search, and publishing a summary before the
-              agreement itself exists would only create a second version to
-              disagree with.
-            </p>
-            <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted sm:text-base">
-              To see the terms that would apply to a search, ask for them on a
-              discovery call. You will get the agreement rather than a summary
-              of it.
-            </p>
-
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)]">
+          <article className="card grain relative overflow-hidden p-7 sm:p-10">
             <div
               aria-hidden
-              className="mt-9 h-px w-full bg-hairline-b"
+              className="absolute inset-x-0 top-0 h-px bg-ring-gradient opacity-70"
             />
 
-            <p className="mt-8 text-[0.8125rem] uppercase tracking-[0.14em] text-faint font-mono">
-              Published today
-            </p>
-            <ul className="mt-4 flex flex-col gap-2.5">
-              {legalNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-[0.9375rem] text-muted underline decoration-line underline-offset-4 transition-colors duration-300 hover:text-ink hover:decoration-accent-indigo"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <div className="relative flex h-full flex-col">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex min-w-0 items-start gap-4">
+                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-line bg-raised text-accent-indigo">
+                    <FileText className="h-5 w-5" strokeWidth={1.8} aria-hidden />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="eyebrow">Current agreement</p>
+                    <h2 className="display mt-2 text-display-xs text-ink">
+                      Contingency Recruiting Agreement
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="inline-flex w-fit shrink-0 items-center gap-2 rounded-pill border border-line bg-raised px-3 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-muted">
+                  <span
+                    aria-hidden
+                    className="h-1.5 w-1.5 rounded-full bg-ok"
+                  />
+                  Published
+                </div>
+              </div>
+
+              <p className="mt-7 max-w-[62ch] text-[1rem] leading-relaxed text-muted sm:text-[1.0625rem]">
+                The complete written terms for nonexclusive contingency
+                recruiting engagements with clients other than law firms. Open
+                the agreement to review fees, payment terms, candidate
+                introductions, and the placement guarantee.
+              </p>
+
+              <dl className="mt-8 grid gap-5 border-y border-line py-6 sm:grid-cols-3">
+                <div>
+                  <dt className="eyebrow">Format</dt>
+                  <dd className="mt-2 text-[0.9375rem] text-ink">PDF</dd>
+                </div>
+                <div>
+                  <dt className="eyebrow">Length</dt>
+                  <dd className="mt-2 text-[0.9375rem] text-ink">2 pages</dd>
+                </div>
+                <div>
+                  <dt className="eyebrow">Engagement</dt>
+                  <dd className="mt-2 text-[0.9375rem] text-ink">
+                    Contingency
+                  </dd>
+                </div>
+              </dl>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button
+                  href={contingencyAgreement}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                >
+                  Open agreement
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={2.2} />
+                  <span className="sr-only"> (opens in a new tab)</span>
+                </Button>
+                <a
+                  href={contingencyAgreement}
+                  download
+                  className="group inline-flex h-[3.25rem] w-full select-none items-center justify-center gap-2 rounded-pill border border-line bg-surface/70 px-7 text-base font-medium text-ink transition-[transform,background-color,border-color] duration-300 ease-apple hover:border-accent-indigo/45 hover:bg-raised/80 active:scale-[0.985] motion-reduce:active:scale-100 motion-reduce:transition-none sm:w-auto"
+                >
+                  Download PDF
+                  <ArrowDownToLine className="h-4 w-4" strokeWidth={2.2} />
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <aside className="card p-7 sm:p-10">
+            <div className="flex h-full flex-col">
+              <div className="inline-flex w-fit items-center gap-2 rounded-pill border border-line bg-raised px-3 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.12em] text-faint">
+                <span
+                  aria-hidden
+                  className="h-1.5 w-1.5 rounded-full bg-faint"
+                />
+                In preparation
+              </div>
+
+              <h2 className="display mt-6 text-display-xs text-ink">
+                Retained Search Agreement
+              </h2>
+              <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted sm:text-base">
+                Retained engagements run on separate written terms. That
+                agreement is not published yet and will be added here once it
+                is finalized.
+              </p>
+
+              <div className="mt-auto pt-8">
+                <Button
+                  href={site.bookCall}
+                  variant="secondary"
+                  className="w-full"
+                >
+                  Discuss a retained search
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={2} />
+                </Button>
+              </div>
+            </div>
+          </aside>
         </div>
       </Section>
 
       <script
         {...jsonLdProps(
-          breadcrumbSchema("Recruiting Agreement", recruitingAgreement.href),
+          breadcrumbSchema("Recruiting Agreements", recruitingAgreement.href),
         )}
       />
     </>
