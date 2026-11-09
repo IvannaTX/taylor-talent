@@ -122,14 +122,14 @@ export const executiveProfiles: ExecutiveProfile[] = [
     id: "talent-acquisition",
     title: "Director of Talent Acquisition",
     practiceArea: "Talent & People",
-    industry: "Technolgy",
+    industry: "Technology",
     location: "Charlotte, NC",
     previously: ["Pallet", "Wise", "Red Ventures"],
     brief:
       "Talent acquisition leader",
     image: {
       src: "/images/executive-network/warehouse-woman.png",
-      alt: "VP leadership",
+      alt: "Talent acquisition leadership",
     },
   },
   {

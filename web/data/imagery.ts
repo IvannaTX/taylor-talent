@@ -119,14 +119,7 @@ export const provenance: Record<string, Provenance> = {
 
   /* ---- Leadership Search: generated portraits ----------------------- */
   ...Object.fromEntries(
-    [
-      "chief-technology-officer-v2",
-      "chief-product-officer-v2",
-      "vp-engineering-v2",
-      "vp-customer-success-v2",
-      "vp-gtm-v2",
-      "director-warehouse-operations-v2",
-    ].map((id) => [
+    ["chief-technology-officer-v2", "vp-gtm-v2"].map((id) => [
       `/images/executive-network/${id}.webp`,
       {
         kind: "generated",
@@ -167,8 +160,12 @@ export const provenance: Record<string, Provenance> = {
   ),
 
   /* ---- inherited photographs: origin unknown ----------------------- */
+  "/images/executive-network/blue-dress.png": { kind: "unknown", firstCommit: "6fa91ab", note: UNATTRIBUTED },
+  "/images/executive-network/clay-shoe-guy.png": { kind: "unknown", firstCommit: "6fa91ab", note: UNATTRIBUTED },
+  "/images/executive-network/mug-guy.png": { kind: "unknown", firstCommit: "6fa91ab", note: UNATTRIBUTED },
+  "/images/executive-network/sr-dir.png": { kind: "unknown", firstCommit: "6fa91ab", note: UNATTRIBUTED },
+  "/images/executive-network/warehouse-woman.png": { kind: "unknown", firstCommit: "6fa91ab", note: UNATTRIBUTED },
   "/images/executive-network/cpo.webp": { kind: "unknown", firstCommit: "0fb1882", note: UNATTRIBUTED },
-  "/images/executive-network/cfo.webp": { kind: "unknown", firstCommit: "0fb1882", note: UNATTRIBUTED },
   "/images/founder.png": {
     kind: "unknown",
     firstCommit: "8b1c255",
@@ -246,13 +243,13 @@ export const imageSlots: ImageSlot[] = [
 
   /* Leadership Search — ten distinct profile photographs. */
   portrait("chief-technology-officer", "Chief Technology Officer", "/images/executive-network/chief-technology-officer-v2.webp"),
-  portrait("chief-product-officer", "Chief Product Officer", "/images/executive-network/chief-product-officer-v2.webp"),
-  portrait("vp-engineering", "VP of Engineering", "/images/executive-network/vp-engineering-v2.webp"),
-  portrait("vp-customer-success", "VP of Customer Success", "/images/executive-network/vp-customer-success-v2.webp"),
+  portrait("chief-product-officer", "Chief Product Officer", "/images/executive-network/clay-shoe-guy.png"),
+  portrait("vp-engineering", "VP of Engineering", "/images/executive-network/mug-guy.png"),
+  portrait("vp-customer-success", "VP of Customer Success", "/images/executive-network/blue-dress.png"),
   portrait("vp-gtm", "VP, Go-to-Market", "/images/executive-network/vp-gtm-v2.webp"),
   portrait("head-of-product", "Head of Product", "/images/executive-network/cpo.webp"),
-  portrait("senior-director-operations", "Senior Director, Operations", "/images/executive-network/cfo.webp"),
-  portrait("warehouse-operations", "Director of Warehouse Operations", "/images/executive-network/director-warehouse-operations-v2.webp"),
+  portrait("senior-director-operations", "Senior Director, Operations", "/images/executive-network/sr-dir.png"),
+  portrait("talent-acquisition", "Director of Talent Acquisition", "/images/executive-network/warehouse-woman.png"),
   portrait("staff-engineer", "Staff Software Engineer", "/images/executive-network/staff-software-engineer-pexels.webp"),
   portrait("technical-lead", "Principal Technical Lead", "/images/executive-network/technical-lead-pexels.webp"),
 

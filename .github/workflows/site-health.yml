@@ -1,0 +1,63 @@
+name: Site health
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-health
+  cancel-in-progress: true
+
+jobs:
+  production:
+    name: DNS and production endpoints
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Resolve both domain variants
+        run: |
+          set -euo pipefail
+          getent ahostsv4 taylortalentpartners.com | grep -q .
+          getent ahostsv4 www.taylortalentpartners.com | grep -q .
+
+      - name: Check critical endpoints
+        run: |
+          set -euo pipefail
+          check() {
+            curl \
+              --fail \
+              --silent \
+              --show-error \
+              --location \
+              --retry 3 \
+              --retry-all-errors \
+              --retry-delay 5 \
+              --connect-timeout 10 \
+              --max-time 30 \
+              --output /dev/null \
+              "$1"
+          }
+
+          check "https://taylortalentpartners.com/"
+          check "https://www.taylortalentpartners.com/"
+          check "https://www.taylortalentpartners.com/recruiting-agreement"
+          check "https://www.taylortalentpartners.com/documents/Taylor-Talent-Partners-Contingency-Recruiting-Agreement.pdf"
+
+      - name: Verify homepage identity
+        run: |
+          set -euo pipefail
+          curl \
+            --fail \
+            --silent \
+            --show-error \
+            --location \
+            --retry 3 \
+            --retry-all-errors \
+            --connect-timeout 10 \
+            --max-time 30 \
+            "https://www.taylortalentpartners.com/" \
+            | grep -q "Taylor Talent"
