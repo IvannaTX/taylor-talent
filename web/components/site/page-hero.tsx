@@ -42,7 +42,7 @@ export function PageHero({
         >
           <div className={aside ? "min-w-0" : "min-w-0 text-center"}>
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.08, ease: EASE }}
             >
@@ -53,7 +53,7 @@ export function PageHero({
               <span className="block overflow-hidden pb-[0.05em]">
                 <motion.span
                   className="block"
-                  initial={{ y: "110%" }}
+                  initial={false}
                   animate={{ y: "0%" }}
                   transition={{ duration: 1.05, delay: 0.16, ease: EASE }}
                 >
@@ -63,7 +63,7 @@ export function PageHero({
             </h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.36, ease: EASE }}
               className={cn("mt-6 max-w-[46ch] text-[1.0625rem] leading-relaxed text-muted sm:text-lg", !aside && "mx-auto")}
@@ -72,7 +72,7 @@ export function PageHero({
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.46, ease: EASE }}
               className={cn("mt-9 flex flex-col gap-3 sm:flex-row sm:items-center", !aside && "sm:justify-center")}
@@ -96,7 +96,7 @@ export function PageHero({
 
           {aside && (
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
+              initial={false}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.1, delay: 0.3, ease: EASE }}
             >

@@ -154,7 +154,7 @@ function BeatBlock({
 
       <motion.h3
         className="display mt-4 max-w-[26ch] text-display-sm text-ink"
-        initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+        initial={false}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "0px 0px -12% 0px" }}
         transition={{ duration: 0.9, ease: EASE }}

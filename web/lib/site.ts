@@ -12,7 +12,7 @@ export const site = {
   name: "Taylor Talent",
   /** Legacy form retained by the domain. Emitted as schema alternateName only. */
   alternateName: "Taylor Talent Partners",
-  url: "https://taylortalentpartners.com",
+  url: "https://www.taylortalentpartners.com",
   locale: "en_US",
   tagline: "Recruiting for Startups and Scale-Ups",
   description:

@@ -55,7 +55,7 @@ export function Jarod() {
           <div className="card overflow-hidden">
             <div className="flex items-center gap-4 p-5 sm:p-6">
               <motion.span
-                initial={{ scale: 1.06, opacity: 0 }}
+                initial={false}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "0px 0px -10% 0px" }}
                 transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}

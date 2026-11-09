@@ -39,7 +39,7 @@ export function Hero() {
       >
         {/* Eyebrow */}
         <motion.div
-          initial={{ opacity: 0, y: 14 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
           className="inline-flex items-center gap-2.5 rounded-pill border border-line bg-surface/60 py-1.5 pl-2 pr-3.5 backdrop-blur-md ring-grad"
@@ -60,7 +60,7 @@ export function Hero() {
             <span key={line} className="block overflow-hidden pb-[0.06em]">
               <motion.span
                 className="block"
-                initial={{ y: "108%", opacity: 0 }}
+                initial={false}
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{
                   duration: 1.05,
@@ -79,7 +79,7 @@ export function Hero() {
         </h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 18 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.46, ease: EASE }}
           className="mt-7 max-w-[46rem] text-[1.0625rem] leading-relaxed text-muted sm:text-xl sm:leading-relaxed"
@@ -89,7 +89,7 @@ export function Hero() {
 
         {/* CTAs — stack full-width on mobile, inline from sm up */}
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.56, ease: EASE }}
           className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
@@ -111,7 +111,7 @@ export function Hero() {
 
         {/* Proof strip — a real grid on mobile, no horizontal scroll */}
         <motion.dl
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.68, ease: EASE }}
           className="mt-14 grid grid-cols-2 gap-x-6 gap-y-7 border-t border-line pt-8 sm:mt-16 sm:grid-cols-3 sm:gap-8"

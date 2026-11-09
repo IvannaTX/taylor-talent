@@ -59,7 +59,7 @@ export function SearchConsole({ className }: { className?: string }) {
         {activeSearch.stages.map((s, i) => (
           <motion.div
             key={s.label}
-            initial={{ opacity: 0, y: 8 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px 0px -15% 0px" }}
             transition={{ duration: 0.5, delay: 0.06 * i, ease: EASE }}
@@ -102,7 +102,7 @@ export function SearchConsole({ className }: { className?: string }) {
         {candidates.slice(0, 3).map((c, i) => (
           <motion.div
             key={c.id}
-            initial={{ opacity: 0, x: -10 }}
+            initial={false}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "0px 0px -12% 0px" }}
             transition={{ duration: 0.55, delay: 0.3 + i * 0.09, ease: EASE }}

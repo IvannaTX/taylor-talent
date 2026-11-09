@@ -53,7 +53,7 @@ export function Hero() {
           {/* Eyebrow and claim. Centred across the hero at every width. */}
           <div className="min-w-0">
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
             >
@@ -67,7 +67,7 @@ export function Hero() {
                 <span key={line} className="block overflow-hidden pb-[0.06em]">
                   <motion.span
                     className="block"
-                    initial={{ y: "110%" }}
+                    initial={false}
                     animate={{ y: "0%" }}
                     transition={{
                       duration: 1.1,
@@ -90,7 +90,7 @@ export function Hero() {
               stack and stay centred with everything above them. */}
           <div className="mt-8 grid grid-cols-1 gap-8 lg:mt-12 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-14">
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.44, ease: EASE }}
               className="min-w-0"
@@ -107,7 +107,7 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.54, ease: EASE }}
               className="min-w-0 lg:self-center"
@@ -134,7 +134,7 @@ export function Hero() {
             than the stacked mobile version, so the logo row was arriving too
             close behind it. */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.68, ease: EASE }}
           className="mt-14 sm:mt-16 lg:mt-28"

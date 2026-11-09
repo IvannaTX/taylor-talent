@@ -79,7 +79,7 @@ function RelationshipCard({
   return (
     <motion.aside
       role="status"
-      initial={{ opacity: 0, y: above ? 6 : -6 }}
+      initial={false}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: above ? 4 : -4 }}
       /* Spring on the lift, tween on the fade — a spring on opacity settles too

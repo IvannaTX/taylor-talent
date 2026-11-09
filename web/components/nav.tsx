@@ -64,7 +64,7 @@ export function Nav() {
       </a>
 
       <motion.header
-        initial={{ y: -72, opacity: 0 }}
+        initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: EASE, delay: 0.05 }}
         className="fixed inset-x-0 top-0 z-50"

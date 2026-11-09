@@ -157,7 +157,7 @@ export function MarketMapArtifact() {
           return (
             <motion.span
               key={i}
-              initial={{ opacity: 0, scale: 0.5 }}
+              initial={false}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "0px 0px -10% 0px" }}
               transition={{ duration: 0.3, delay: i * 0.006, ease: EASE }}

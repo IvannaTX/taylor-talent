@@ -207,7 +207,7 @@ export function Meter({
     >
       <motion.span
         className={cn("block h-full rounded-pill", tones[tone])}
-        initial={{ width: "0%" }}
+        initial={false}
         whileInView={{ width: `${pct}%` }}
         viewport={{ once: true, margin: "0px 0px -15% 0px" }}
         transition={{ duration: 0.9, delay, ease: EASE }}

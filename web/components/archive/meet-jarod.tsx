@@ -29,7 +29,7 @@ export function MeetJarod() {
                 className="absolute -inset-6 rounded-full bg-ring-gradient opacity-20 blur-3xl"
               />
               <motion.div
-                initial={{ scale: 1.06, opacity: 0 }}
+                initial={false}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true, margin: "0px 0px -10% 0px" }}
                 transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}

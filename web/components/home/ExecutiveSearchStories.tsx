@@ -45,7 +45,7 @@ function SearchWorkflow() {
                 <span className="mt-2 block h-1 overflow-hidden rounded-full bg-sunken">
                   <motion.span
                     className="block h-full origin-left rounded-full bg-accent-indigo"
-                    initial={{ scaleX: 0 }}
+                    initial={false}
                     whileInView={{ scaleX: parseInt(stage.width, 10) / 100 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, delay: index * 0.08, ease: EASE }}

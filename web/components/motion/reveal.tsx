@@ -12,14 +12,6 @@ const VIEWPORT = { once: true, margin: "0px 0px -12% 0px" } as const;
 
 type Dir = "up" | "down" | "left" | "right" | "none";
 
-const offset: Record<Dir, { x: number; y: number }> = {
-  up: { x: 0, y: 24 },
-  down: { x: 0, y: -24 },
-  left: { x: 24, y: 0 },
-  right: { x: -24, y: 0 },
-  none: { x: 0, y: 0 },
-};
-
 /*
  * IMPORTANT: nothing in this file may branch its rendered output on
  * useReducedMotion(). That hook resolves differently on the server than on the
@@ -36,9 +28,9 @@ export function Reveal({
   className,
   delay = 0,
   duration = 0.75,
-  dir = "up",
+  dir: _dir = "up",
   as = "div",
-  blur = true,
+  blur: _blur = true,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -49,12 +41,10 @@ export function Reveal({
   blur?: boolean;
 }) {
   const Comp = motion[as] as typeof motion.div;
-  const { x, y } = offset[dir];
-
   return (
     <Comp
       className={className}
-      initial={{ opacity: 0, x, y, filter: blur ? "blur(6px)" : "blur(0px)" }}
+      initial={false}
       whileInView={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
       viewport={VIEWPORT}
       transition={{ duration, delay, ease: EASE }}
@@ -116,7 +106,7 @@ export function Stagger({
     <Comp
       className={className}
       variants={container(stagger, delay)}
-      initial="hidden"
+      initial={false}
       whileInView="show"
       viewport={VIEWPORT}
     >
@@ -175,7 +165,7 @@ export function TextReveal({
           key={`${word}-${i}`}
           aria-hidden
           className="inline-block whitespace-pre will-change-[transform,opacity]"
-          initial={{ opacity: 0, y: "0.4em", filter: "blur(8px)" }}
+          initial={false}
           whileInView={{ opacity: 1, y: "0em", filter: "blur(0px)" }}
           viewport={VIEWPORT}
           transition={{ duration: 0.8, delay: delay + i * stagger, ease: EASE }}
